@@ -3,6 +3,11 @@ const video = (src, label = "", mime = "video/mp4") => ({ type: "video", src, la
 const h = (text) => ({ type: "heading", text });
 const p = (text) => ({ type: "paragraph", text });
 
+const localUrl = (url = "") => {
+  if (!url || /^(?:[a-z][a-z0-9+.-]*:|\/\/|#)/i.test(url)) return url;
+  return `${document.body.dataset.root || ""}${url}`;
+};
+
 const caseStudies = {
   campaigns: {
     title: "The design process of a new feature: Campaign Board",
@@ -41,10 +46,10 @@ const caseStudies = {
       p("This process has taught me a lot. I gained a better understanding of how to reach out to customers and how to ask questions in a way that I'll get an honest answer, an answer that will help me in the next steps. I also became better at planning and working on complex flows."),
       img("assets/wix/038-Group-143417713.png", "Group 143417713.png")
     ],
-    next: { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions.html", image: "assets/Home page/Home_page_Image_2_intent.png" },
+    next: { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions/", image: "assets/Home page/Home_page_Image_2_intent.png" },
     explore: [
-      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions.html", image: "assets/Home page/Home_page_Image_2_intent.png" },
-      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/flow/more_to_explore.jpg" }
+      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions/", image: "assets/Home page/Home_page_Image_2_intent.png" },
+      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" }
     ]
   },
   intent: {
@@ -86,10 +91,10 @@ const caseStudies = {
       h("In Short"),
       p("The process has taught me so much about how to build a product that will best serve our customers. I feel lucky that I had this opportunity to be part of the birth of a product. I learned that product design never truly ends and should be carefully revisited at all times.\nCurrently, IBP is a full-blown product, containing hundreds of frames and used by more than 100 customers.")
     ],
-    next: { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/flow/more_to_explore.jpg" },
+    next: { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" },
     explore: [
-      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
-      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/flow/more_to_explore.jpg" }
+      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board/", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
+      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" }
     ]
   },
   journey: {
@@ -138,10 +143,10 @@ const caseStudies = {
       h("Possible Improvements"),
       p("I believe there are still ways to improve the current UI/UX. For example, simplifying the navigation between the main flow and the secondary flow.")
     ],
-    next: { title: "Simple management of data: Activations", href: "activations.html", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" },
+    next: { title: "Simple management of data: Activations", href: "activations/", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" },
     explore: [
-      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions.html", image: "assets/Home page/Home_page_Image_2_intent.png" },
-      { title: "Simple management of data: Activations", href: "activations.html", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" }
+      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions/", image: "assets/Home page/Home_page_Image_2_intent.png" },
+      { title: "Simple management of data: Activations", href: "activations/", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" }
     ]
   },
   activations: {
@@ -179,10 +184,10 @@ const caseStudies = {
       h("Self-Reflection"),
       p("This project was a good reminder of the importance of mapping all the flows. It was challenging work collecting and extracting objectives from management.\nThere is always a tendency to start with the solutions after hearing the challenges, which leads to faulty design outcomes. I learned to guess less and focus more on the user, and business aspects.")
     ],
-    next: { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
+    next: { title: "The design process of a new feature: Campaign Board", href: "campaigns-board/", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
     explore: [
-      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/flow/more_to_explore.jpg" },
-      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" }
+      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" },
+      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board/", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" }
     ]
   },
   varonis: {
@@ -210,10 +215,10 @@ const caseStudies = {
       h("Finalizing Design"),
       p("The next step was to take everything I had learned and apply it to the existing pane. The general information tab became an overview tab with more relevant data, including the option to see all related accounts, since one user can have multiple accounts. I also added clearer sections for statistics, recent activities organized by priority, and membership information related to the account.")
     ],
-    next: { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
+    next: { title: "The design process of a new feature: Campaign Board", href: "campaigns-board/", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
     explore: [
-      { title: "Simple management of data: Activations", href: "activations.html", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" },
-      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/flow/more_to_explore.jpg" }
+      { title: "Simple management of data: Activations", href: "activations/", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" },
+      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" }
     ]
   }
 };
@@ -231,7 +236,7 @@ const withTitleKeeps = (value) =>
   escapeHtml(value).replace("a\u00A0complex", '<span class="text-keep">a&nbsp;complex</span>');
 
 function renderMoreToExplore(data) {
-  const projectClassName = (href) => href.replace(".html", "").replaceAll("-", "_");
+  const projectClassName = (href) => href.replace(/\/$/, "").replace(".html", "").replaceAll("-", "_");
 
   return `
     <section class="more-to-explore">
@@ -240,8 +245,8 @@ function renderMoreToExplore(data) {
         ${data.explore
           .map(
             (project) => `
-              <a class="explore-card explore-card--${projectClassName(project.href)}" href="${project.href}">
-                <img src="${project.image}" alt="${escapeHtml(project.title)}">
+              <a class="explore-card explore-card--${projectClassName(project.href)}" href="${localUrl(project.href)}">
+                <img src="${localUrl(project.image)}" alt="${escapeHtml(project.title)}">
                 <span>${escapeHtml(project.title)}</span>
               </a>
             `
@@ -288,7 +293,7 @@ function renderCaseStudy() {
       if (block.type === "heading") return `<h2>${escapeHtml(block.text)}</h2>`;
       if (block.type === "paragraph") return `<p>${withBreaks(block.text)}</p>`;
       if (block.type === "image") {
-        return `<figure><img src="${block.src}" alt="${escapeHtml(block.alt)}"></figure>`;
+        return `<figure><img src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}"></figure>`;
       }
       return "";
     })
@@ -381,16 +386,16 @@ function renderCampaignCase(root, data) {
     alert: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.3 4.1 2.8 17.4A2 2 0 0 0 4.5 20h15a2 2 0 0 0 1.7-2.6L13.7 4.1a2 2 0 0 0-3.4 0Z"/><path d="M12 8v5"/><path d="M12 17h.01"/></svg>',
     target: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3"/><path d="m16 8 4-4"/><path d="M20 4v4h-4"/></svg>',
     pen: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4Z"/></svg>',
-    background: '<img class="campaign-brief-icon" src="assets/campaign board/Background_icon.svg" alt="" aria-hidden="true">',
-    problem: '<img class="campaign-brief-icon" src="assets/campaign board/The_Problem_icon.svg" alt="" aria-hidden="true">',
-    goal: '<img class="campaign-brief-icon" src="assets/campaign board/The_Goal_icon.svg" alt="" aria-hidden="true">',
-    myRole: '<img class="campaign-brief-icon" src="assets/campaign board/My_Role_icon.svg" alt="" aria-hidden="true">'
+    background: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/Background_icon.svg")}" alt="" aria-hidden="true">`,
+    problem: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/The_Problem_icon.svg")}" alt="" aria-hidden="true">`,
+    goal: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/The_Goal_icon.svg")}" alt="" aria-hidden="true">`,
+    myRole: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/My_Role_icon.svg")}" alt="" aria-hidden="true">`
   };
 
   const renderFigure = (block) => {
     if (!block || block.type !== "image") return "";
     const classAttribute = block.className ? ` class="${escapeHtml(block.className)}"` : "";
-    return `<figure${classAttribute}><img src="${block.src}" alt="${escapeHtml(block.alt)}"></figure>`;
+    return `<figure${classAttribute}><img src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}"></figure>`;
   };
 
   const renderVideo = (block) => {
@@ -398,8 +403,8 @@ function renderCampaignCase(root, data) {
     return `
       <figure>
         <video class="scroll-play-video" controls muted playsinline loop preload="metadata" aria-label="${escapeHtml(block.label)}">
-          <source src="${block.src}" type="${escapeHtml(block.mime)}">
-          <a href="${block.src}">Watch the Campaign Board video</a>
+          <source src="${localUrl(block.src)}" type="${escapeHtml(block.mime)}">
+          <a href="${localUrl(block.src)}">Watch the Campaign Board video</a>
         </video>
       </figure>
     `;
@@ -498,7 +503,7 @@ function renderCampaignCase(root, data) {
           <p>${withBreaks(data.blocks[1].text)}</p>
         </div>
         <figure>
-          <img src="assets/campaign board/header_image.jpg" alt="Campaign Board calendar interface">
+          <img src="${localUrl("assets/campaign board/header_image.jpg")}" alt="Campaign Board calendar interface">
         </figure>
       </section>
 
@@ -960,15 +965,15 @@ function renderVaronisCase(root, data) {
 
 function renderStructuredCase(root, data, options) {
   const iconSvg = {
-    background: '<img class="campaign-brief-icon" src="assets/campaign board/Background_icon.svg" alt="" aria-hidden="true">',
-    problem: '<img class="campaign-brief-icon" src="assets/campaign board/The_Problem_icon.svg" alt="" aria-hidden="true">',
-    goal: '<img class="campaign-brief-icon" src="assets/campaign board/The_Goal_icon.svg" alt="" aria-hidden="true">',
-    myRole: '<img class="campaign-brief-icon" src="assets/campaign board/My_Role_icon.svg" alt="" aria-hidden="true">'
+    background: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/Background_icon.svg")}" alt="" aria-hidden="true">`,
+    problem: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/The_Problem_icon.svg")}" alt="" aria-hidden="true">`,
+    goal: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/The_Goal_icon.svg")}" alt="" aria-hidden="true">`,
+    myRole: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/My_Role_icon.svg")}" alt="" aria-hidden="true">`
   };
 
   const renderFigure = (block) => {
     if (!block || block.type !== "image") return "";
-    return `<figure><img src="${block.src}" alt="${escapeHtml(block.alt)}"></figure>`;
+    return `<figure><img src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}"></figure>`;
   };
 
   const renderVideo = (block) => {
@@ -976,8 +981,8 @@ function renderStructuredCase(root, data, options) {
     return `
       <figure>
         <video class="scroll-play-video" controls muted playsinline loop preload="metadata" aria-label="${escapeHtml(block.label)}">
-          <source src="${block.src}" type="${escapeHtml(block.mime)}">
-          <a href="${block.src}">Watch the video</a>
+          <source src="${localUrl(block.src)}" type="${escapeHtml(block.mime)}">
+          <a href="${localUrl(block.src)}">Watch the video</a>
         </video>
       </figure>
     `;
@@ -1003,9 +1008,9 @@ function renderStructuredCase(root, data, options) {
         <figure class="account-mockup-pager-frame">
           <div class="account-mockup-pager-viewport">
             <div class="account-mockup-pager-track">
-              <img class="account-mockup-pager-image" src="${firstMockup.src}" alt="${escapeHtml(firstMockup.alt)}">
-              <img class="account-mockup-pager-image" src="${secondMockup.src}" alt="${escapeHtml(secondMockup.alt)}">
-              <img class="account-mockup-pager-image" src="${firstMockup.src}" alt="">
+              <img class="account-mockup-pager-image" src="${localUrl(firstMockup.src)}" alt="${escapeHtml(firstMockup.alt)}">
+              <img class="account-mockup-pager-image" src="${localUrl(secondMockup.src)}" alt="${escapeHtml(secondMockup.alt)}">
+              <img class="account-mockup-pager-image" src="${localUrl(firstMockup.src)}" alt="">
             </div>
           </div>
           <button class="account-mockup-pager-arrow account-mockup-pager-arrow--next" type="button" aria-label="Show next mockup">
@@ -1083,7 +1088,7 @@ function renderStructuredCase(root, data, options) {
           <p>${withBreaks(data.blocks[1].text)}</p>
         </div>
         <figure>
-          <img src="${options.heroImage.src}" alt="${escapeHtml(options.heroImage.alt)}">
+          <img src="${localUrl(options.heroImage.src)}" alt="${escapeHtml(options.heroImage.alt)}">
         </figure>
       </section>
 

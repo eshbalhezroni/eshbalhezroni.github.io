@@ -352,12 +352,12 @@ nav a:not(.active):focus-visible {
 }
 
 .final-case {
-  margin-bottom: 110px;
+  margin-bottom: 64px;
 }
 
 .site-footer {
   color: var(--ink);
-  padding: 34px 24px 38px;
+  padding: 24px 24px 38px;
 }
 
 .footer-inner {
@@ -395,7 +395,7 @@ nav a:not(.active):focus-visible {
 .blog-list {
   display: grid;
   gap: 18px;
-  margin: 0 auto 110px;
+  margin: 0 auto 56px;
   max-width: var(--container);
 }
 
@@ -544,6 +544,10 @@ nav a:not(.active):focus-visible {
   max-width: var(--container);
 }
 
+.creative-section:last-child {
+  margin-bottom: 64px;
+}
+
 .creative-section h2 {
   margin-bottom: 2px;
 }
@@ -643,7 +647,7 @@ nav a:not(.active):focus-visible {
 }
 
 .case-study-page {
-  margin: 0 auto 36px;
+  margin: 0 auto 24px;
   max-width: var(--container);
   padding-top: 58px;
 }
@@ -680,7 +684,7 @@ body[data-case="campaigns"] .case-study-page h1::before {
 }
 
 .campaign-case-study {
-  margin: 0 auto 36px;
+  margin: 0 auto 24px;
   max-width: var(--container);
   padding-top: 58px;
 }
@@ -1483,7 +1487,7 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   border-top: 1px solid var(--line);
   clear: both;
   margin-top: 96px;
-  padding: var(--explore-section-spacing) 0 18px;
+  padding: var(--explore-section-spacing) 0 10px;
 }
 
 .more-to-explore h2 {
@@ -1807,6 +1811,15 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
     white-space: normal;
   }
 
+  .blog-intro .hero-title {
+    display: block;
+    text-wrap: wrap;
+  }
+
+  .blog-intro .hero-line {
+    display: inline;
+  }
+
   .case-image {
     height: 220px;
   }
@@ -1853,7 +1866,7 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   }
 
   .case-study-page h1 {
-    font-size: 43px;
+    font-size: clamp(30px, 8.6vw, 42px);
     margin-bottom: 50px;
   }
 
@@ -1863,7 +1876,7 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   }
 
   .campaign-case-hero h1 {
-    font-size: clamp(40px, 13vw, 62px);
+    font-size: clamp(30px, 8.6vw, 42px);
   }
 
   .campaign-case-hero figure {

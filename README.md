@@ -4,7 +4,7 @@ This is a static website made from HTML, CSS, JavaScript, and image assets. It d
 
 ## View Locally
 
-The quickest way to view the site is to open `index.html` in a browser.
+The quickest way to view the homepage is to open `index.html` in a browser.
 
 1. Open this folder on your computer:
 
@@ -14,11 +14,11 @@ The quickest way to view the site is to open `index.html` in a browser.
 
 2. Double-click `index.html`.
 
-The homepage should open in your default browser. From there, you can use the site navigation to visit the other pages.
+The homepage should open in your default browser.
 
 ## Run Locally With a Server
 
-For a more website-like local setup, serve the folder with a small local server.
+For a more website-like local setup, serve the folder with a small local server. This is the recommended way to test the clean URLs such as `/blog/` and `/campaigns-board/`.
 
 1. Open a terminal.
 
@@ -81,6 +81,9 @@ This website is already set up as a static site, so GitHub Pages can publish it 
 
    ```text
    index.html
+   blog/
+   about/
+   campaigns-board/
    styles.css
    case-pages.js
    assets/
@@ -142,6 +145,7 @@ GitHub Pages republishes the site automatically after each push to the selected 
 ## Main Files
 
 - `index.html` is the homepage.
+- Page folders such as `blog/` and `about/` contain their own `index.html` files so GitHub Pages can show clean URLs without `.html`.
 - `styles.css` contains the site styling.
 - `case-pages.js` contains JavaScript used by the case study pages.
 - `assets/` contains images and other visual assets.
