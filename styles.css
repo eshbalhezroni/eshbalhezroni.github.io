@@ -180,16 +180,8 @@ nav a:not(.active):focus-visible {
   display: none;
 }
 
-.blog-intro .hero-title {
-  gap: 0;
-}
-
 .blog-intro .hero-line {
   line-height: 1.12;
-}
-
-.blog-intro .hero-lead {
-  margin-bottom: 10px;
 }
 
 .intro h1 {
@@ -1813,19 +1805,6 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
 
   .hero-line {
     white-space: normal;
-  }
-
-  .blog-intro .hero-title {
-    display: block;
-    text-wrap: wrap;
-  }
-
-  .blog-intro .hero-line {
-    display: inline;
-  }
-
-  .blog-intro .hero-lead {
-    display: block;
   }
 
   .case-image {
