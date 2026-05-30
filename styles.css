@@ -188,6 +188,10 @@ nav a:not(.active):focus-visible {
   line-height: 1.12;
 }
 
+.blog-intro .hero-lead {
+  margin-bottom: 10px;
+}
+
 .intro h1 {
   color: var(--ink);
   font-size: clamp(32px, 4.35vw, 54px);
@@ -1818,6 +1822,10 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
 
   .blog-intro .hero-line {
     display: inline;
+  }
+
+  .blog-intro .hero-lead {
+    display: block;
   }
 
   .case-image {
