@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blog | Eshbal Hezroni</title>
     <link rel="icon" href="../favicon.svg?v=white-favicon-v1" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css?v=blog-up-link-spacing-v1">
+    <link rel="stylesheet" href="../styles.css?v=blog-desktop-emoji-nudge-v2">
   </head>
   <body id="top">
     <header class="site-header">
@@ -25,10 +25,14 @@
     <main>
       <section class="intro blog-intro">
         <h1 class="hero-title">
-          <span class="hero-lead">Welcome to my <span class="headline-keep">blog&nbsp;✍🏼</span></span>
+          <span class="hero-lead">Welcome to my <span class="headline-keep">blog<span class="blog-emoji" aria-hidden="true">✍🏼</span></span></span>
           <span class="hero-rest" aria-label="The place where I share my thoughts about design, working processes, and more.">
-            <span class="hero-line">The place where I share my thoughts about</span>
-            <span class="hero-line">design, working processes, and more.</span>
+            <span class="hero-line blog-subtitle-desktop">The place where I share my thoughts about</span>
+            <span class="hero-line blog-subtitle-desktop">design, working processes, and more.</span>
+            <span class="hero-line blog-subtitle-mobile">The place where I</span>
+            <span class="hero-line blog-subtitle-mobile">share my thoughts</span>
+            <span class="hero-line blog-subtitle-mobile">about design, working</span>
+            <span class="hero-line blog-subtitle-mobile">processes, and more.</span>
           </span>
         </h1>
       </section>
@@ -136,7 +140,9 @@
       const updateHeroTone = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
         document.body.classList.toggle("is-scrolled", scrollTop > 24);
-        document.querySelectorAll(".hero-line").forEach((line, index) => {
+        [...document.querySelectorAll(".hero-line")]
+          .filter((line) => getComputedStyle(line).display !== "none")
+          .forEach((line, index) => {
           const threshold = 40 + index * 90;
           line.classList.toggle("is-dark", scrollTop >= threshold);
         });

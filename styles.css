@@ -205,11 +205,23 @@ nav a:not(.active):focus-visible {
   color: var(--ink);
   display: inline-flex;
   flex-wrap: wrap;
+  column-gap: 0.26em;
 }
 
 .hero-flower {
   display: inline-block;
-  margin-left: 0.14em;
+  margin-left: 0;
+}
+
+.blog-emoji {
+  display: inline-block;
+  margin-left: 0.08em;
+}
+
+@media (min-width: 621px) {
+  .blog-emoji {
+    margin-left: 0.22em;
+  }
 }
 
 .headline-keep {
@@ -224,6 +236,10 @@ nav a:not(.active):focus-visible {
   color: rgb(128, 128, 128);
   display: block;
   white-space: nowrap;
+}
+
+.blog-intro .blog-subtitle-mobile {
+  display: none;
 }
 
 .hero-line.is-dark {
@@ -514,7 +530,7 @@ nav a:not(.active):focus-visible {
 .about-copy h1,
 .creative-section h2 {
   color: var(--ink);
-  font-size: clamp(32px, 4.35vw, 54px);
+  font-size: clamp(30px, 3.65vw, 46px);
   font-weight: 620;
   letter-spacing: 0;
   line-height: 1.12;
@@ -1881,6 +1897,90 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
 
   .intro h1 {
     font-size: clamp(30px, 8.6vw, 42px);
+  }
+
+  .hero-lead {
+    column-gap: 0.24em;
+  }
+
+  .blog-intro .hero-lead {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+  }
+
+  .blog-intro .headline-keep {
+    margin-left: 0;
+  }
+
+  .blog-emoji {
+    margin-left: 0.08em;
+  }
+
+  .blog-subtitle-desktop {
+    display: none;
+  }
+
+  .blog-intro .blog-subtitle-mobile {
+    display: block;
+  }
+
+  .logo:hover .logo-default {
+    opacity: 1;
+  }
+
+  .logo:hover .logo-hover {
+    opacity: 0;
+  }
+
+  nav a:not(.active):hover {
+    background: transparent;
+    color: var(--muted);
+  }
+
+  .case-copy h2 a:hover,
+  .blog-card h2 a:hover,
+  .next-project a:hover span,
+  .explore-card:hover span {
+    background: none;
+    color: inherit;
+    -webkit-text-fill-color: currentColor;
+  }
+
+  .case-link:hover,
+  .up-link:hover {
+    background: transparent;
+    border-color: var(--line-strong);
+    color: var(--ink);
+    transform: none;
+  }
+
+  .case-link:hover span {
+    transform: none;
+  }
+
+  .case-image:hover img,
+  .blog-card:hover img {
+    filter: none;
+    transform: none;
+  }
+
+  .account-mockup-pager-arrow:hover {
+    transform: none;
+  }
+
+  .account-mockup-pager-arrow:hover path {
+    fill: #4b4b4b;
+    stroke: #000;
+  }
+
+  .account-mockup-pager-dot:hover {
+    background: var(--line-strong);
+  }
+
+  .explore-card:hover {
+    border-color: var(--line);
+    box-shadow: none;
+    transform: none;
   }
 
   .case-copy {
