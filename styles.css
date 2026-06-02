@@ -204,12 +204,16 @@ nav a:not(.active):focus-visible {
 .hero-lead {
   color: var(--ink);
   display: inline-flex;
-  white-space: nowrap;
+  flex-wrap: wrap;
 }
 
 .hero-flower {
   display: inline-block;
   margin-left: 0.14em;
+}
+
+.headline-keep {
+  white-space: nowrap;
 }
 
 .hero-rest {
@@ -391,7 +395,12 @@ nav a:not(.active):focus-visible {
 .blog-list {
   display: grid;
   gap: 18px;
-  margin: 0 auto 56px;
+  margin: 0 auto;
+  max-width: var(--container);
+}
+
+.blog-up-section {
+  margin: 0 auto 64px;
   max-width: var(--container);
 }
 
@@ -505,7 +514,7 @@ nav a:not(.active):focus-visible {
 .about-copy h1,
 .creative-section h2 {
   color: var(--ink);
-  font-size: clamp(34px, 4.8vw, 58px);
+  font-size: clamp(32px, 4.35vw, 54px);
   font-weight: 620;
   letter-spacing: 0;
   line-height: 1.12;
@@ -545,7 +554,7 @@ nav a:not(.active):focus-visible {
 }
 
 .creative-section h2 {
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .creative-section p {
@@ -1438,6 +1447,37 @@ body[data-case="intent"] .case-study-page .campaign-story-section--sketches-stac
   overflow: hidden;
 }
 
+body[data-case="intent"] .campaign-case-study .intent-sketches-section .campaign-story-media figure {
+  border-radius: 0;
+  overflow: visible;
+}
+
+body[data-case="intent"] .campaign-case-study .intent-sketches-section .campaign-story-media {
+  margin-top: 28px;
+}
+
+body[data-case="intent"] .campaign-case-study .intent-wireframes-section .campaign-story-media figure {
+  border-radius: 0;
+  overflow: visible;
+}
+
+body[data-case="intent"] .campaign-case-study .intent-wireframes-section .campaign-story-media {
+  margin-top: 28px;
+}
+
+body[data-case="campaigns"] .campaign-case-study .campaign-board-wireframes-section .campaign-story-media {
+  margin-top: 28px;
+}
+
+body[data-case="campaigns"] .campaign-case-study .campaign-board-wireframes-section .campaign-story-media figure {
+  border-radius: 0;
+  overflow: visible;
+}
+
+body[data-case="intent"] .intent-user-stories-section .campaign-story-copy {
+  position: static;
+}
+
 body[data-case="campaigns"] .campaign-story-section--competitor-analysis .campaign-story-media figure {
   background: transparent;
   border: 0;
@@ -1660,8 +1700,11 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   }
 
   .about-media {
-    max-width: 360px;
+    justify-self: center;
+    margin: -16px auto 0;
+    max-width: 340px;
     position: static;
+    width: 100%;
   }
 
   .about-copy {
@@ -1753,6 +1796,61 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
 
 }
 
+@media (max-width: 1024px) {
+  .about-page {
+    grid-template-columns: 1fr;
+  }
+
+  .about-media {
+    justify-self: center;
+    margin: -16px auto 0;
+    max-width: 340px;
+    position: static;
+    width: 100%;
+  }
+
+  body[data-case="campaigns"] .campaign-case-brief {
+    margin-bottom: 72px;
+  }
+
+  body[data-case="intent"] .campaign-case-brief {
+    margin-bottom: 72px;
+  }
+
+  body[data-case="journey"] .campaign-case-brief {
+    margin-bottom: 72px;
+  }
+
+  body[data-case="activations"] .campaign-case-brief {
+    margin-bottom: 72px;
+  }
+
+  body[data-case="activations"] .activations-sketches-section,
+  body[data-case="activations"] .campaign-story-section:nth-child(even).activations-sketches-section {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-case="journey"] .journey-map-gif-section,
+  body[data-case="journey"] .campaign-story-section:nth-child(even).journey-map-gif-section {
+    grid-template-columns: 1fr;
+  }
+
+  .campaign-story-section--findings,
+  .campaign-story-section:nth-child(even).campaign-story-section--findings {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-case="intent"] .intent-user-stories-section,
+  body[data-case="intent"] .campaign-story-section:nth-child(even).intent-user-stories-section {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-case="intent"] .intent-user-stories-section .campaign-story-media {
+    margin-top: 16px;
+  }
+
+}
+
 @media (max-width: 620px) {
   :root {
     --container: min(100vw - 40px, 1180px);
@@ -1836,16 +1934,12 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   }
 
   .about-media {
-    max-width: 300px;
+    width: 100%;
   }
 
   .about-copy h1,
   .creative-section h2 {
-    font-size: clamp(40px, 13vw, 62px);
-  }
-
-  .about-copy h1 {
-    font-size: clamp(34px, 10.5vw, 48px);
+    font-size: clamp(30px, 8.6vw, 42px);
   }
 
   .case-study-page {
@@ -1873,6 +1967,70 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   .campaign-case-brief,
   .campaign-story-media:has(figure:nth-child(2)) {
     grid-template-columns: 1fr;
+  }
+
+  body[data-case="campaigns"] .campaign-case-brief {
+    margin-bottom: 54px;
+  }
+
+  body[data-case="intent"] .campaign-case-brief {
+    margin-bottom: 54px;
+  }
+
+  body[data-case="journey"] .campaign-case-brief {
+    margin-bottom: 54px;
+  }
+
+  body[data-case="activations"] .campaign-case-brief {
+    margin-bottom: 54px;
+  }
+
+  body[data-case="varonis"] .campaign-case-brief {
+    margin-bottom: 54px;
+  }
+
+  body[data-case="journey"] .journey-map-gif-section {
+    margin-top: -20px;
+    padding-top: 0;
+  }
+
+  body[data-case="journey"] .campaign-story-section--design-followup {
+    margin-top: -24px;
+    padding-top: 8px;
+  }
+
+  .campaign-story-section--findings .campaign-insights-grid {
+    gap: 28px;
+    grid-template-columns: 1fr;
+  }
+
+  .campaign-story-section--findings .campaign-insight-item {
+    min-height: 0;
+  }
+
+  .account-mockup-pager,
+  .account-mockup-pager-frame {
+    overflow: hidden;
+  }
+
+  .campaign-story-media figure.account-mockup-pager-frame,
+  .account-mockup-pager-frame {
+    gap: 8px;
+    grid-template-columns: minmax(0, 1fr) 40px;
+  }
+
+  .account-mockup-pager-arrow {
+    height: 48px;
+    width: 40px;
+  }
+
+  .account-mockup-pager-arrow svg {
+    height: 34px;
+    width: 20px;
+  }
+
+  body[data-case="varonis"] .account-first-mockups-slider .campaign-story-media {
+    margin-top: 0;
   }
 
   .campaign-case-brief > div,

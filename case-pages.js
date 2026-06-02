@@ -83,7 +83,7 @@ const caseStudies = {
       p("I sketched a current-state user journey map, to identify opportunities for improvement. I identified 3 unnecessary steps (campaign goal, type and color) and potential dropoff points in the flow. Together with the product manager, we decided to remove these steps from the new design."),
       img("assets/Intent-Based Promotions/User Journey.png?v=20260513-1359", "User Journey"),
       h("Wireframes"),
-      p("Using Figma, I translated my first sketches into wireframes.\nIn this step, I could test the flow and overall user experience and iterate through many design options quickly. It helped me define our expectations and remind me of what I wanted to present on each screen. Wireframes are the first time I put elements on the screen and create a product that starts to feel real."),
+      p("I translated my first sketches into wireframes.\nIn this step, I could test the flow and overall user experience and iterate through many design options quickly. It helped me define our expectations and remind me of what I wanted to present on each screen. Wireframes are the first time I put elements on the screen and create a product that starts to feel real."),
       img("assets/Intent-Based Promotions/Wireframes.png", "Wireframes"),
       h("Finalizing Design"),
       p("When I completed the wireframes, I started working on the visual design. The Campaign Creation area is divided into 3 steps in which the user chooses:\n1. A template from the templates page\n2. Define settings like start/end date of the campaign, discount range and more\n3. Tweaking and customizing the promotions in the studio, and when done, publish!\nThe video below provides a current overview of IBP's campaign creation area, the core of the product."),
@@ -363,8 +363,8 @@ function renderCampaignCase(root, data) {
       title: data.blocks[22].text,
       text: `${data.blocks[23].text}\n\n${data.blocks[25].text}`,
       media: [
-        img("assets/campaign board/Wireframes_image_1.png", "Wireframes overview"),
-        img("assets/campaign board/Wireframes_image_2.png", "Wireframes board concept")
+        img("assets/campaign board/Wireframes_1.png", "Wireframes 1"),
+        img("assets/campaign board/Wireframes_2.png", "Wireframes 2")
       ]
     },
     {
@@ -554,13 +554,12 @@ function renderCampaignCase(root, data) {
               const [introText, followupText] = chapter.text.split("\n\n");
 
               return `
-                <section class="campaign-story-section campaign-story-section--wireframes">
+                <section class="campaign-story-section campaign-story-section--wireframes campaign-board-wireframes-section">
                   <div class="campaign-story-copy campaign-wireframes-copy">
                     <h2>${escapeHtml(chapter.title)}</h2>
                     <p>${withBreaks(introText)}</p>
-                    <div class="campaign-wireframes-media">${renderFigure(chapter.media[0])}</div>
                     <p>${withBreaks(followupText)}</p>
-                    <div class="campaign-wireframes-media campaign-wireframes-media--wide">${renderFigure(chapter.media[1])}</div>
+                    ${renderMedia(chapter.media)}
                   </div>
                 </section>
               `;
@@ -659,16 +658,20 @@ function renderIntentCase(root, data) {
       media: [data.blocks[17]]
     },
     {
-      className: "campaign-story-section--copy-left",
+      className: "campaign-story-section--copy-left intent-user-stories-section",
       title: data.blocks[18].text,
       text: data.blocks[19].text,
       media: [data.blocks[20]]
     },
     {
-      className: "campaign-story-section--sketches-stack",
+      className: "campaign-story-section--sketches-stack intent-sketches-section",
       title: data.blocks[21].text,
       text: data.blocks[22].text,
-      media: [data.blocks[23]]
+      media: [
+        img("assets/Intent-Based Promotions/Sketches_1.png", "Sketches 1"),
+        img("assets/Intent-Based Promotions/Sketches_2.png", "Sketches 2")
+      ],
+      mediaPlacement: "underText"
     },
     {
       className: "campaign-story-section--sketches-stack",
@@ -677,10 +680,14 @@ function renderIntentCase(root, data) {
       media: [data.blocks[26]]
     },
     {
-      className: "campaign-story-section--sketches-stack",
+      className: "campaign-story-section--sketches-stack intent-wireframes-section",
       title: data.blocks[27].text,
       text: data.blocks[28].text,
-      media: [data.blocks[29]]
+      media: [
+        img("assets/Intent-Based Promotions/Wireframes_1.png", "Wireframes 1"),
+        img("assets/Intent-Based Promotions/Wireframes_2.png", "Wireframes 2")
+      ],
+      mediaPlacement: "underText"
     },
     {
       className: "campaign-story-section--sketches-stack campaign-story-section--final-delivery",
@@ -760,7 +767,7 @@ function renderJourneyCase(root, data) {
       media: [data.blocks[25]]
     },
     {
-      className: "campaign-story-section--copy-left campaign-story-section--same-topic-continuation",
+      className: "campaign-story-section--copy-left campaign-story-section--same-topic-continuation journey-map-gif-section",
       text: data.blocks[26].text,
       media: [data.blocks[27]]
     },
@@ -861,7 +868,7 @@ function renderActivationsCase(root, data) {
       media: [data.blocks[18]]
     },
     {
-      className: "campaign-story-section--copy-left campaign-story-section--static-copy",
+      className: "campaign-story-section--copy-left campaign-story-section--static-copy activations-sketches-section",
       title: data.blocks[20].text,
       text: data.blocks[21].text,
       media: [data.blocks[22]]
