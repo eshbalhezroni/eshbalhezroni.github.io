@@ -1999,6 +1999,16 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
     padding-top: 8px;
   }
 
+  body[data-case="journey"] .campaign-story-media figure:has(img[alt="Changing Direction inspiration"]) {
+    aspect-ratio: 1 / 1;
+  }
+
+  body[data-case="journey"] .campaign-story-media img[alt="Changing Direction inspiration"] {
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
   .campaign-story-section--findings .campaign-insights-grid {
     gap: 28px;
     grid-template-columns: 1fr;
