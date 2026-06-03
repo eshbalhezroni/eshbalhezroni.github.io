@@ -194,7 +194,7 @@ const caseStudies = {
     title: "Reimagining the Account Pane for a\u00A0complex security\u00A0platform",
     blocks: [
       h("Summary"),
-      p("At Varonis, I redesigned the Account Pane to turn complex data into a clearer, easier to scan experience, with added functionality that supports deeper investigation."),
+      p("This case study is based on work completed at Varonis. In this project, I redesigned the Account Pane to turn complex data into a clearer, easier to scan experience, with added functionality that supports deeper investigation."),
       img("assets/Home page/Home_page_Image_5_varonis.png?v=account-pane-inline-v2", "Account Pane interface mockup"),
       h("Background"),
       p("Varonis has been around for more than 20 years, and over time the platform became rich with capabilities, data, and workflows. As the product evolved, some areas of the interface were not revisited often enough and no longer reflected the way users needed to work. The Account Pane was one of those places. It had to be updated with more relevant information and clearer hierarchy."),
