@@ -238,6 +238,10 @@ nav a:not(.active):focus-visible {
   white-space: nowrap;
 }
 
+.home-subtitle-mobile {
+  display: none;
+}
+
 .blog-intro .blog-subtitle-mobile {
   display: none;
 }
@@ -2003,6 +2007,15 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
 
   .hero-line {
     white-space: normal;
+  }
+
+  .home-subtitle-desktop {
+    display: none;
+  }
+
+  .home-subtitle-mobile {
+    display: block;
+    white-space: nowrap;
   }
 
   .case-image {
