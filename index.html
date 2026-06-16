@@ -41,46 +41,57 @@
 
       <section class="case-row">
         <div class="case-copy">
-          <h2><a href="campaigns-board/">The design process of a new feature: Campaign Board</a></h2>
-          <p>A fun and intuitive way to build a campaign calendar board for eCommerce website managers.</p>
-          <a class="case-link" href="campaigns-board/">Read Case Study <span aria-hidden="true">➜</span></a>
+          <h2><a href="varonis/">Reimagining the Account Pane for a complex security platform</a></h2>
+          <p>I redesigned the Account Pane to turn complex data into a clearer, easier to scan experience for deeper investigation.</p>
+          <a class="case-link" href="varonis/">Read Case Study <span aria-hidden="true">➜</span></a>
         </div>
-        <a class="case-image tilted" href="campaigns-board/">
-          <img src="assets/Home page/optimized/Home_page_Image_1_campaign_board.jpg" width="1800" height="1355" decoding="async" alt="Campaign Board feature design process">
+        <a class="case-image" href="varonis/">
+          <img src="assets/Home page/optimized/Home_page_Image_5_varonis.png" width="1800" height="989" decoding="async" alt="Account Pane interface mockup">
         </a>
       </section>
 
       <section class="case-row reverse">
-        <a class="case-image" href="intent-based-promotions/">
-          <img src="assets/Home page/optimized/Home_page_Image_2_intent.png" width="1800" height="989" decoding="async" alt="Intent-Based Promotions interface mockup">
+        <a class="case-image tilted" href="campaigns-board/">
+          <img src="assets/Home page/optimized/Home_page_Image_1_campaign_board.jpg" width="1800" height="1355" decoding="async" alt="Campaign Board feature design process">
         </a>
         <div class="case-copy">
-          <h2><a href="intent-based-promotions/">Creating a product from scratch: Intent-Based Promotions</a></h2>
-          <p>I designed a whole new product that offers individualized promotions to eCommerce site visitors based on real-time buying intent.</p>
-          <a class="case-link" href="intent-based-promotions/">Read Case Study <span aria-hidden="true">➜</span></a>
+          <h2><a href="campaigns-board/">The design process of a new feature: Campaign Board</a></h2>
+          <p>A fun and intuitive way to build a campaign calendar board for eCommerce website managers.</p>
+          <a class="case-link" href="campaigns-board/">Read Case Study <span aria-hidden="true">➜</span></a>
         </div>
       </section>
 
       <section class="case-row">
         <div class="case-copy">
+          <h2><a href="intent-based-promotions/">Creating a product from scratch: Intent-Based Promotions</a></h2>
+          <p>I designed a whole new product that offers individualized promotions to eCommerce site visitors based on real-time buying intent.</p>
+          <a class="case-link" href="intent-based-promotions/">Read Case Study <span aria-hidden="true">➜</span></a>
+        </div>
+        <a class="case-image" href="intent-based-promotions/">
+          <img src="assets/Home page/optimized/Home_page_Image_2_intent.png" width="1800" height="989" decoding="async" alt="Intent-Based Promotions interface mockup">
+        </a>
+      </section>
+
+      <section class="case-row reverse">
+        <a class="case-image" href="journey-flow/">
+          <img src="assets/Home page/optimized/Home_page_Image_3_flow.png" width="1800" height="989" decoding="async" alt="Journey Flow data visualization mockup">
+        </a>
+        <div class="case-copy">
           <h2><a href="journey-flow/">Building a data visualization tool: Journey Flow</a></h2>
           <p>My inspiration for designing this visualization tool came from an unexpected source: roads in navigation apps.</p>
           <a class="case-link" href="journey-flow/">Read Case Study <span aria-hidden="true">➜</span></a>
         </div>
-        <a class="case-image" href="journey-flow/">
-          <img src="assets/Home page/optimized/Home_page_Image_3_flow.png" width="1800" height="989" decoding="async" alt="Journey Flow data visualization mockup">
-        </a>
       </section>
 
-      <section class="case-row reverse final-case">
-        <a class="case-image" href="activations/">
-          <img src="assets/Home page/optimized/Home_page_Image_4_activation.jpg" width="1800" height="989" decoding="async" alt="Activations data management interface">
-        </a>
+      <section class="case-row final-case">
         <div class="case-copy">
           <h2><a href="activations/">Simple management of data: Activations</a></h2>
           <p>I created a page that allows website managers to easily control data about their users and send it to different sources.</p>
           <a class="case-link" href="activations/">Read Case Study <span aria-hidden="true">➜</span></a>
         </div>
+        <a class="case-image" href="activations/">
+          <img src="assets/Home page/optimized/Home_page_Image_4_activation.jpg" width="1800" height="989" decoding="async" alt="Activations data management interface">
+        </a>
       </section>
     </main>
 
@@ -98,10 +109,14 @@
 
       const updateHeroTone = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
+        const visibleHeroLines = [...heroLines].filter((line) => line.getClientRects().length > 0);
+        const isCompactHero = window.matchMedia("(max-width: 620px)").matches;
+        const thresholdStep = isCompactHero ? 58 : 90;
         document.body.classList.toggle("is-scrolled", scrollTop > 24);
-        heroLines.forEach((line, index) => {
-          const threshold = 40 + index * 90;
-          line.classList.toggle("is-dark", scrollTop >= threshold);
+        heroLines.forEach((line) => line.classList.remove("is-dark"));
+        visibleHeroLines.forEach((line, index) => {
+          const threshold = 40 + index * thresholdStep;
+          if (scrollTop >= threshold) line.classList.add("is-dark");
         });
         heroToneTicking = false;
       };

@@ -232,6 +232,12 @@ const withBreaks = (value) =>
     .map((part) => part.replaceAll("\n", "<br>"))
     .join("</p><p>");
 
+const withJourneyConclusionUnderlines = (value) =>
+  withBreaks(value)
+    .replace("Get feedback", "<u>Get feedback</u>")
+    .replace("Don’t limit yourself.", "<u>Don’t limit yourself.</u>")
+    .replace("let things go", "<u>let things go</u>");
+
 const withTitleKeeps = (value) =>
   escapeHtml(value).replace("a\u00A0complex", '<span class="text-keep">a&nbsp;complex</span>');
 
@@ -796,6 +802,7 @@ function renderJourneyCase(root, data) {
       className: "campaign-story-section--conclusion-icons",
       title: data.blocks[37].text,
       text: data.blocks[38].text,
+      textHtml: withJourneyConclusionUnderlines(data.blocks[38].text),
       insightItems: [
         {
           icon: "feedback",
@@ -1042,7 +1049,10 @@ function renderStructuredCase(root, data, options) {
     `;
   };
 
-  const renderChapterText = (text) => (text ? `<p>${withBreaks(text)}</p>` : "");
+  const renderChapterText = (chapter) => {
+    if (chapter.textHtml) return `<p>${chapter.textHtml}</p>`;
+    return chapter.text ? `<p>${withBreaks(chapter.text)}</p>` : "";
+  };
 
   const renderChapterBullets = (bullets = []) => {
     if (!bullets.length) return "";
@@ -1120,7 +1130,7 @@ function renderStructuredCase(root, data, options) {
               <section class="campaign-story-section${chapter.insightItems ? " campaign-story-section--findings" : ""}${chapter.className ? ` ${chapter.className}` : ""}">
                 <div class="campaign-story-copy">
                   ${chapter.title ? `<h2>${escapeHtml(chapter.title)}</h2>` : ""}
-                  ${renderChapterText(chapter.text)}
+                  ${renderChapterText(chapter)}
                   ${renderChapterBullets(chapter.bullets)}
                   ${chapter.mediaPlacement === "underText" ? renderMedia(chapter.media) : ""}
                 </div>
