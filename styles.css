@@ -11,9 +11,33 @@
   --pink: #f65ca8;
   --shadow: 0 24px 80px rgba(17, 17, 17, 0.12);
   --radius: 8px;
-  --container: min(1180px, calc(100vw - 48px));
-  --container-edge: max(24px, calc((100vw - 1180px) / 2));
+  --container: min(1080px, calc(100vw - 48px));
+  --container-edge: max(24px, calc((100vw - 1080px) / 2));
   --hover-gradient: linear-gradient(115deg, var(--coral), var(--pink) 44%, var(--blue) 78%, #0f43b5);
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Pridi";
+  font-style: normal;
+  font-weight: 400;
+  src: url("assets/Pridi/Pridi-Regular.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Pridi";
+  font-style: normal;
+  font-weight: 500;
+  src: url("assets/Pridi/Pridi-Medium.ttf") format("truetype");
+}
+
+@font-face {
+  font-display: swap;
+  font-family: "Pridi";
+  font-style: normal;
+  font-weight: 600;
+  src: url("assets/Pridi/Pridi-SemiBold.ttf") format("truetype");
 }
 
 * {
@@ -152,7 +176,7 @@ nav a {
   border-radius: 999px;
   color: var(--muted);
   font-size: 13px;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: 0;
   line-height: 1;
   padding: 11px 14px;
@@ -186,8 +210,9 @@ nav a:not(.active):focus-visible {
 
 .intro h1 {
   color: var(--ink);
+  font-family: "Pridi", Georgia, "Times New Roman", serif;
   font-size: clamp(32px, 4.35vw, 54px);
-  font-weight: 620;
+  font-weight: 400;
   letter-spacing: 0;
   line-height: 1.12;
   margin: 0;
@@ -205,12 +230,16 @@ nav a:not(.active):focus-visible {
   color: var(--ink);
   display: inline-flex;
   flex-wrap: wrap;
+  font-size: clamp(42px, 6.2vw, 76px);
+  line-height: 1.02;
   column-gap: 0.26em;
 }
 
 .hero-flower {
   display: inline-block;
-  margin-left: 0;
+  font-size: 0.68em;
+  margin-left: -0.16em;
+  transform: translateY(-0.08em);
 }
 
 .blog-emoji {
@@ -278,12 +307,22 @@ nav a:not(.active):focus-visible {
 
 .case-copy h2 {
   color: var(--ink);
+  font-family: "Pridi", Georgia, "Times New Roman", serif;
   font-size: clamp(25px, 3.15vw, 40px);
-  font-weight: 760;
+  font-weight: 400;
   letter-spacing: 0;
-  line-height: 0.98;
+  line-height: 1.05;
   margin: 0 0 16px;
   max-width: 560px;
+}
+
+.intent-home-card .case-copy h2 {
+  font-size: clamp(25px, 3.15vw, 40px);
+  max-width: 610px;
+}
+
+.intent-home-card {
+  grid-template-columns: minmax(380px, 0.95fr) minmax(0, 1.05fr);
 }
 
 .case-copy h2 a:hover,
@@ -317,7 +356,7 @@ nav a:not(.active):focus-visible {
   color: var(--ink);
   display: inline-flex;
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 600;
   gap: 8px;
   justify-self: start;
   letter-spacing: 0;
@@ -714,6 +753,37 @@ body[data-case="campaigns"] .case-study-page h1::before {
   padding-top: 58px;
 }
 
+body[data-case="varonis"] .campaign-case-study {
+  max-width: min(1080px, calc(100vw - 96px));
+}
+
+body[data-case="varonis"] .site-header {
+  padding-inline: max(48px, calc((100vw - 1080px) / 2));
+}
+
+body[data-case="varonis"] nav {
+  right: max(48px, calc((100vw - 1080px) / 2));
+}
+
+body[data-case="varonis"] .campaign-case-hero h1,
+body[data-case="campaigns"] .campaign-case-hero h1,
+body[data-case="intent"] .campaign-case-hero h1,
+body[data-case="journey"] .campaign-case-hero h1,
+body[data-case="activations"] .campaign-case-hero h1 {
+  font-family: "Pridi", Georgia, "Times New Roman", serif;
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 400;
+  line-height: 1.08;
+}
+
+body[data-case="varonis"] .campaign-case-hero p,
+body[data-case="campaigns"] .campaign-case-hero p,
+body[data-case="intent"] .campaign-case-hero p,
+body[data-case="journey"] .campaign-case-hero p,
+body[data-case="activations"] .campaign-case-hero p {
+  font-weight: 400;
+}
+
 .campaign-case-hero {
   align-items: center;
   display: grid;
@@ -738,12 +808,17 @@ body[data-case="campaigns"] .case-study-page h1::before {
 }
 
 .campaign-case-hero p,
-.campaign-story-copy > p {
+.campaign-story-copy > p,
+.campaign-story-rich-text p {
   color: var(--muted);
   font-size: clamp(18px, 1.65vw, 22px);
   font-weight: 450;
   line-height: 1.58;
   margin: 0;
+}
+
+.campaign-story-rich-text p + p {
+  margin-top: 18px;
 }
 
 .campaign-story-after-text > p {
@@ -770,6 +845,12 @@ body[data-case="campaigns"] .case-study-page h1::before {
 
 body[data-case="intent"] .campaign-case-hero figure {
   background: #f766b6;
+  height: 420px;
+  min-height: 420px;
+}
+
+body[data-case="intent"] .campaign-case-hero img {
+  object-position: 82% 22%;
 }
 
 body[data-case="intent"] .campaign-insight-icon {
@@ -796,15 +877,20 @@ body[data-case="activations"] .campaign-case-hero--plain img {
 
 body[data-case="activations"] .campaign-case-hero figure {
   background: #66c9f7;
+  height: 420px;
+  min-height: 420px;
+}
+
+body[data-case="campaigns"] .campaign-case-hero figure {
+  height: 420px;
+  min-height: 420px;
 }
 
 body[data-case="varonis"] .campaign-case-hero figure {
   background: #f7ac66;
   border-color: #f7ac66;
-}
-
-body[data-case="varonis"] .campaign-case-hero--plain img {
-  transform: translateY(3%) scale(1.06);
+  height: 420px;
+  min-height: 420px;
 }
 
 .campaign-case-brief {
@@ -816,7 +902,7 @@ body[data-case="varonis"] .campaign-case-hero--plain img {
 
 .campaign-case-brief > div {
   border-right: 1px solid var(--line);
-  padding: 28px 24px 30px 0;
+  padding: 28px 15px 30px 0;
 }
 
 .campaign-case-brief > div + div {
@@ -951,6 +1037,10 @@ body[data-case="varonis"] .campaign-case-hero--plain img {
 
 .campaign-story-section:nth-child(even).campaign-story-section--conclusion-icons .campaign-story-copy {
   order: 0;
+}
+
+.campaign-story-section--conclusion-icons .campaign-story-copy {
+  position: static;
 }
 
 .campaign-story-copy {
@@ -1147,10 +1237,183 @@ body[data-case="varonis"] .campaign-case-hero--plain img {
   min-height: 190px;
 }
 
+body[data-case="varonis"] .varonis-pain-points-section .campaign-insights-grid--compact {
+  gap: 28px;
+  grid-template-columns: 1fr;
+}
+
+body[data-case="varonis"] .varonis-pain-points-section,
+body[data-case="varonis"] .campaign-story-section:nth-child(even).varonis-pain-points-section {
+  gap: 8px;
+  grid-template-columns: 1fr;
+}
+
+body[data-case="varonis"] .varonis-pain-points-section .campaign-story-copy {
+  position: static;
+}
+
+body[data-case="varonis"] .varonis-users-needs-section,
+body[data-case="varonis"] .campaign-story-section:nth-child(even).varonis-users-needs-section {
+  grid-template-columns: minmax(0, 0.84fr) minmax(0, 1.16fr);
+}
+
+body[data-case="varonis"] .varonis-pain-points-section .campaign-insight-icon {
+  display: none;
+}
+
+body[data-case="varonis"] .varonis-pain-points-section .campaign-insight-item {
+  min-height: 0;
+}
+
+body[data-case="varonis"] .varonis-pain-points-section .campaign-insight-item h3,
+body[data-case="varonis"] .varonis-pain-points-section .campaign-insight-item p {
+  max-width: 760px;
+}
+
+body[data-case="varonis"] .campaign-pain-points-list {
+  color: var(--ink);
+  counter-reset: pain-point;
+  display: grid;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  width: 100%;
+  padding-left: 0;
+}
+
+body[data-case="varonis"] .campaign-pain-points-list li {
+  background: rgba(247, 172, 102, 0.08);
+  border: 1px solid rgba(247, 172, 102, 0.34);
+  border-radius: var(--radius);
+  column-gap: 10px;
+  counter-increment: pain-point;
+  display: grid;
+  grid-template-columns: 34px minmax(0, 1fr);
+  padding: 18px 20px 18px 18px;
+}
+
+body[data-case="varonis"] .campaign-pain-points-list li::before {
+  align-items: center;
+  background: rgba(247, 172, 102, 0.2);
+  border: 1px solid rgba(247, 172, 102, 0.72);
+  border-radius: 999px;
+  color: var(--ink);
+  content: counter(pain-point);
+  display: inline-flex;
+  font-size: 14px;
+  font-weight: 400;
+  grid-row: 1 / span 2;
+  height: 24px;
+  justify-content: center;
+  line-height: 1;
+  margin-top: 2px;
+  width: 24px;
+}
+
+body[data-case="varonis"] .campaign-pain-points-list h3 {
+  font-family: "Pridi", Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 400;
+  grid-column: 2;
+  line-height: 1.2;
+  margin: 0 0 6px;
+  min-width: 0;
+}
+
+body[data-case="varonis"] .campaign-pain-points-list p {
+  color: var(--muted);
+  font-size: 18px;
+  font-weight: 400;
+  grid-column: 2;
+  line-height: 1.58;
+  margin: 0;
+  min-width: 0;
+}
+
+body[data-case="varonis"] .campaign-pain-points-list strong {
+  background: rgba(247, 172, 102, 0.22);
+  border-radius: 4px;
+  color: var(--ink);
+  font-weight: 500;
+  padding: 0 0.18em;
+}
+
+body[data-case="varonis"] .campaign-story-copy > p,
+body[data-case="varonis"] .campaign-story-after-text > p,
+body[data-case="varonis"] .campaign-insight-item p,
+body[data-case="campaigns"] .campaign-story-copy > p,
+body[data-case="campaigns"] .campaign-story-after-text > p,
+body[data-case="campaigns"] .campaign-insight-item p,
+body[data-case="intent"] .campaign-story-copy > p,
+body[data-case="intent"] .campaign-story-after-text > p,
+body[data-case="intent"] .campaign-insight-item p,
+body[data-case="intent"] .campaign-story-bullets,
+body[data-case="journey"] .campaign-story-copy > p,
+body[data-case="journey"] .campaign-story-rich-text p,
+body[data-case="journey"] .campaign-story-after-text > p,
+body[data-case="journey"] .campaign-insight-item p,
+body[data-case="journey"] .campaign-story-bullets,
+body[data-case="activations"] .campaign-story-copy > p,
+body[data-case="activations"] .campaign-story-after-text > p,
+body[data-case="activations"] .campaign-insight-item p {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.58;
+}
+
+body[data-case="varonis"] .campaign-story-copy > p + p {
+  margin-top: 18px;
+}
+
+body[data-case="varonis"] .campaign-case-brief p,
+body[data-case="campaigns"] .campaign-case-brief p,
+body[data-case="intent"] .campaign-case-brief p,
+body[data-case="journey"] .campaign-case-brief p,
+body[data-case="activations"] .campaign-case-brief p {
+  font-weight: 400;
+}
+
+body[data-case="varonis"] .campaign-case-brief svg {
+  margin-bottom: 12px;
+  stroke-width: 1.5;
+}
+
+body[data-case="varonis"] .campaign-story-copy h2,
+body[data-case="campaigns"] .campaign-story-copy h2,
+body[data-case="campaigns"] .campaign-story-heading-block h2,
+body[data-case="intent"] .campaign-story-copy h2,
+body[data-case="journey"] .campaign-story-copy h2,
+body[data-case="activations"] .campaign-story-copy h2 {
+  font-family: "Pridi", Georgia, "Times New Roman", serif;
+  font-size: clamp(26px, 2.7vw, 36px);
+  font-weight: 400;
+  line-height: 1.14;
+}
+
+body[data-case="varonis"] .campaign-insight-item h3,
+body[data-case="campaigns"] .campaign-insight-item h3,
+body[data-case="intent"] .campaign-insight-item h3,
+body[data-case="journey"] .campaign-insight-item h3,
+body[data-case="activations"] .campaign-insight-item h3 {
+  font-family: "Pridi", Georgia, "Times New Roman", serif;
+  font-size: clamp(20px, 1.8vw, 26px);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+body[data-case="varonis"] .campaign-case-brief h2,
+body[data-case="campaigns"] .campaign-case-brief h2,
+body[data-case="intent"] .campaign-case-brief h2,
+body[data-case="journey"] .campaign-case-brief h2,
+body[data-case="activations"] .campaign-case-brief h2 {
+  font-family: "Pridi", Georgia, "Times New Roman", serif;
+  font-weight: 400;
+}
+
 .campaign-story-section--conclusion-icons .campaign-insights-grid--compact {
   gap: 44px;
   grid-template-columns: 1fr;
-  padding-top: 48px;
+  padding-top: 0;
 }
 
 .campaign-story-section--conclusion-icons .campaign-insight-item {
@@ -1398,7 +1661,12 @@ body[data-case="journey"] .campaign-case-hero figure {
 
 body[data-case="journey"] .campaign-case-hero figure {
   background: transparent;
-  min-height: 0;
+  height: 420px;
+  min-height: 420px;
+}
+
+body[data-case="journey"] .campaign-case-hero--plain img {
+  object-position: center 26%;
 }
 
 body[data-case="journey"] .campaign-story-section--sketches-stack .campaign-story-media figure {
@@ -1653,7 +1921,7 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   color: var(--ink);
   display: inline-flex;
   font-size: 13px;
-  font-weight: 850;
+  font-weight: 600;
   letter-spacing: 0;
   line-height: 1;
   float: right;
@@ -1780,6 +2048,31 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
     min-height: 360px;
   }
 
+  body[data-case="varonis"] .campaign-case-hero figure {
+    height: 320px;
+    min-height: 320px;
+  }
+
+  body[data-case="campaigns"] .campaign-case-hero figure {
+    height: 320px;
+    min-height: 320px;
+  }
+
+  body[data-case="intent"] .campaign-case-hero figure {
+    height: 320px;
+    min-height: 320px;
+  }
+
+  body[data-case="journey"] .campaign-case-hero figure {
+    height: 320px;
+    min-height: 320px;
+  }
+
+  body[data-case="activations"] .campaign-case-hero figure {
+    height: 320px;
+    min-height: 320px;
+  }
+
   .campaign-case-brief {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1800,6 +2093,27 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
 
   .campaign-story-section:nth-child(even) .campaign-story-copy {
     order: 0;
+  }
+
+  body[data-case="varonis"] .varonis-users-needs-section,
+  body[data-case="varonis"] .campaign-story-section:nth-child(even).varonis-users-needs-section {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-case="varonis"] .varonis-users-needs-section .campaign-story-copy {
+    order: 0;
+  }
+
+  body[data-case="varonis"] .varonis-users-needs-section .campaign-story-media {
+    order: 1;
+  }
+
+  body[data-case="varonis"] .varonis-competitor-section .campaign-story-copy {
+    order: 0;
+  }
+
+  body[data-case="varonis"] .varonis-competitor-section .campaign-story-media {
+    order: 1;
   }
 
   .campaign-story-copy {
@@ -1867,6 +2181,23 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
 
   body[data-case="intent"] .intent-user-stories-section .campaign-story-media {
     margin-top: 16px;
+  }
+
+  body[data-case="varonis"] .varonis-users-needs-section,
+  body[data-case="varonis"] .campaign-story-section:nth-child(even).varonis-users-needs-section,
+  body[data-case="varonis"] .varonis-competitor-section,
+  body[data-case="varonis"] .campaign-story-section:nth-child(even).varonis-competitor-section {
+    grid-template-columns: 1fr;
+  }
+
+  body[data-case="varonis"] .varonis-users-needs-section .campaign-story-copy,
+  body[data-case="varonis"] .varonis-competitor-section .campaign-story-copy {
+    order: 0;
+  }
+
+  body[data-case="varonis"] .varonis-users-needs-section .campaign-story-media,
+  body[data-case="varonis"] .varonis-competitor-section .campaign-story-media {
+    order: 1;
   }
 
 }
@@ -2080,6 +2411,43 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   .campaign-case-brief,
   .campaign-story-media:has(figure:nth-child(2)) {
     grid-template-columns: 1fr;
+  }
+
+  body[data-case="varonis"] .campaign-case-study {
+    max-width: calc(100vw - 40px);
+  }
+
+  body[data-case="varonis"] .site-header {
+    padding-inline: 20px;
+  }
+
+  body[data-case="varonis"] nav {
+    right: 20px;
+  }
+
+  body[data-case="varonis"] .campaign-case-hero figure {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  body[data-case="campaigns"] .campaign-case-hero figure {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  body[data-case="intent"] .campaign-case-hero figure {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  body[data-case="journey"] .campaign-case-hero figure {
+    height: 220px;
+    min-height: 220px;
+  }
+
+  body[data-case="activations"] .campaign-case-hero figure {
+    height: 220px;
+    min-height: 220px;
   }
 
   body[data-case="campaigns"] .campaign-case-brief {

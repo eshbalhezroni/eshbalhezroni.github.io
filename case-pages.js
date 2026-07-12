@@ -138,7 +138,7 @@ const caseStudies = {
       p("This is the flow, a result of a long and complex process. We have the main flow on the top and the sub-flows on the button, the user can open or close them.\nIn that way, we are different from our competitors - we don’t overwhelm our users with a lot of data, we are giving them the opportunity to play with the tool.\nWe have the icons of the road-the pin at the start and the flag at the end. We have elements to emphasize the direction and the flowing feeling, like the gradient color on the sides, and the lines that are curved and not straight."),
       img("assets/wix/056-fa557c_f09ec6ae9b4b40638b8f3108d7f132ccf001.jpg"),
       h("Conclusion"),
-      p("Every time I thought I solved something and moved a step forward, I suddenly took a step back. It also was a test on how much I can stretch boundaries - go more to the extreme - but then find the right balance.\nA few things that were really important and helped me in the process are:\nGet feedback and constantly improve. Also know how to take feedback and sometimes compromise, because ‘a lot of people a lot of opinions’. During the process, I got feedback all the time: from other Designers, the Product Managers, the Developers, the Data Team, and also from our Clients.\nDon’t limit yourself. Don’t be afraid to think differently and out of the box, because even if it’s not the direction, I learned from the process.\nAnd the last one, let things go. During the process, I created a lot of different versions. It’s a process, the flow is updated all the time. It’s important to know to say to myself: that’s it, I took it as far as I can, I did the best for now."),
+      p("Every time I thought I solved something and moved a step forward, I suddenly took a step back. It also was a test on how much I can stretch boundaries - go more to the extreme - but then find the right balance.\n\nA few things that were really important and helped me in the process are:\n\nGet feedback and constantly improve. Also know how to take feedback and sometimes compromise, because ‘a lot of people a lot of opinions’. During the process, I got feedback all the time: from other Designers, the Product Managers, the Developers, the Data Team, and also from our Clients.\n\nDon’t limit yourself. Don’t be afraid to think differently and out of the box, because even if it’s not the direction, I learned from the process.\n\nAnd the last one, let things go. During the process, I created a lot of different versions. It’s a process, the flow is updated all the time. It’s important to know to say to myself: that’s it, I took it as far as I can, I did the best for now."),
       p("Get feedback, constantly improve\n\nWhen collaborating, compromising is necessary since different people have different opinions\n\nThink out of the box\n\nEven if it's not the \"right\" direction, I learned from the process\n\nLet things go\n\nI created a lot of different versions. It’s a process, the flow is updated all the time"),
       h("Possible Improvements"),
       p("I believe there are still ways to improve the current UI/UX. For example, simplifying the navigation between the main flow and the secondary flow.")
@@ -205,8 +205,8 @@ const caseStudies = {
       h("My Role"),
       p("I worked on this project as a Product Designer at Varonis. I was responsible for the UX and UI of the Account Pane redesign, from understanding the existing experience and defining the information hierarchy to creating the updated interface."),
       h("Overview of the previous Account Pane"),
-      p("My first step was reviewing the previous Account Pane to understand what information it showed, how it was organized, and how users were expected to move through it. I looked at the hierarchy, the placement of key details, and the areas where important information was difficult to understand quickly."),
-      h("Understanding users' needs"),
+      p("My first step was reviewing the previous Account Pane to understand its structure, hierarchy, and how users moved through it. I focused on identifying where key information was hard to scan. \n\nAs part of the redesign requirements, the pane needed to shift from a single user perspective to an account level perspective."),
+      h("Understanding\nusers' needs"),
       p("I spoke with stakeholders across the product to better understand users’ needs, pain points, and expectations. These conversations helped me identify what was missing from the pane, which information users needed most, and where the existing experience made their work harder."),
       h("Competitor Analysis"),
       p("I compared similar account and user pages to understand how other products present this type of information. The research helped me identify patterns, understand what makes these pages easier to scan, and see where the Account Pane could become clearer and more useful."),
@@ -232,8 +232,11 @@ const withBreaks = (value) =>
     .map((part) => part.replaceAll("\n", "<br>"))
     .join("</p><p>");
 
+const withInlineBreaks = (value) =>
+  escapeHtml(value).replaceAll("\n", "<br>");
+
 const withJourneyConclusionUnderlines = (value) =>
-  withBreaks(value)
+  `<p>${withBreaks(value)}</p>`
     .replace("Get feedback", "<u>Get feedback</u>")
     .replace("Don’t limit yourself.", "<u>Don’t limit yourself.</u>")
     .replace("let things go", "<u>let things go</u>");
@@ -939,13 +942,35 @@ function renderVaronisCase(root, data) {
       media: [img("assets/Account Pane/current_Account_Pane.png?v=20260527-114929", "Current Account Pane interface")]
     },
     {
-      className: "campaign-story-section--static-copy",
+      className: "campaign-story-section--static-copy campaign-story-section--copy-left varonis-users-needs-section",
       title: data.blocks[13].text,
       text: data.blocks[14].text,
       media: [img("assets/Account Pane/Understanding_users'_needs.png?v=20260529-0828", "Understanding users' needs notes")]
     },
     {
-      className: "campaign-story-section--static-copy",
+      className: "campaign-story-section--findings varonis-pain-points-section",
+      title: "Main Pain Points",
+      listMode: "bullets",
+      insightItems: [
+        {
+          icon: "usability",
+          title: "Poor usability",
+          textHtml: "The pane isn't intuitive and includes <strong>unnecessary/duplicated actions.</strong>"
+        },
+        {
+          icon: "outdatedUi",
+          title: "Outdated UI",
+          textHtml: "The visual design feels heavy and limited, and <strong>isn't aligned with the rest of the platform.</strong>"
+        },
+        {
+          icon: "growth",
+          title: "Limited flexibility and no support for growth",
+          textHtml: "The pane is built around a <strong>single-user perspective</strong>, which limits its ability to support more complex account structures with <strong>multiple members.</strong>"
+        }
+      ]
+    },
+    {
+      className: "campaign-story-section--static-copy campaign-story-section--copy-left varonis-competitor-section",
       title: data.blocks[15].text,
       text: data.blocks[16].text,
       media: [img("assets/Account Pane/Competitor Analysis.png?v=20260527-competitor-analysis", "Competitor analysis examples")]
@@ -964,7 +989,7 @@ function renderVaronisCase(root, data) {
       className: "campaign-story-section--static-copy account-finalizing-design-video",
       title: data.blocks[19].text,
       text: data.blocks[20].text,
-      media: [video("assets/Account Pane/Finalizing Design.mov?v=20260528-mov-mp4-type", "Finalizing Design walkthrough", "video/mp4")],
+      media: [video("assets/Account Pane/Finalizing Design2.mp4?v=20260710-finalizing-design-2", "Finalizing Design walkthrough", "video/mp4")],
       mediaPlacement: "underText"
     }
   ];
@@ -978,12 +1003,20 @@ function renderVaronisCase(root, data) {
 }
 
 function renderStructuredCase(root, data, options) {
-  const iconSvg = {
+  const isVaronisCase = document.body.dataset.case === "varonis";
+  const defaultIconSvg = {
     background: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/Background_icon.svg")}" alt="" aria-hidden="true">`,
     problem: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/The_Problem_icon.svg")}" alt="" aria-hidden="true">`,
     goal: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/The_Goal_icon.svg")}" alt="" aria-hidden="true">`,
     myRole: `<img class="campaign-brief-icon" src="${localUrl("assets/campaign board/My_Role_icon.svg")}" alt="" aria-hidden="true">`
   };
+  const varonisIconSvg = {
+    background: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.2 14.5 9.5 21.6l9.3-10-5-2.8.7-6.4-9.3 10Z"/></svg>',
+    problem: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 13V8.1m0 8.4v.1m6.1 4H5.9a3.6 3.6 0 0 1-3.4-2.6c-.2-.6 0-1.3.4-1.9L8.9 5.1c1.4-2.3 4.8-2.3 6.2 0l6 11c.4.6.6 1.3.4 1.9a3.6 3.6 0 0 1-3.4 2.6Z"/></svg>',
+    goal: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.8 12.6a9.3 9.3 0 1 1-9.3-9.3"/><path d="M16.3 12.6a4.8 4.8 0 1 1-4.8-4.8"/><path d="m11.5 12.6 4.2-4.2"/><path d="m22.1 5.2-3.8 3.8-2.5-.8-.8-2.5 3.8-3.8.4 3 3 .4Z"/></svg>',
+    myRole: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12.5 19.2.8-.8a2.1 2.1 0 0 1 3.3.3 2.1 2.1 0 0 0 3.1.4l1.3-1.2"/><path d="m3 19.5 4.4-.9a1.2 1.2 0 0 0 .6-.3l9.7-9.8a1.2 1.2 0 0 0 0-1.7l-2-2.1a1.2 1.2 0 0 0-1.7 0l-9.8 9.8a1.2 1.2 0 0 0-.3.6Z"/></svg>'
+  };
+  const iconSvg = isVaronisCase ? varonisIconSvg : defaultIconSvg;
 
   const renderFigure = (block) => {
     if (!block || block.type !== "image") return "";
@@ -1050,7 +1083,7 @@ function renderStructuredCase(root, data, options) {
   };
 
   const renderChapterText = (chapter) => {
-    if (chapter.textHtml) return `<p>${chapter.textHtml}</p>`;
+    if (chapter.textHtml) return `<div class="campaign-story-rich-text">${chapter.textHtml}</div>`;
     return chapter.text ? `<p>${withBreaks(chapter.text)}</p>` : "";
   };
 
@@ -1072,7 +1105,10 @@ function renderStructuredCase(root, data, options) {
       customize: '<svg class="campaign-insight-icon-customize" viewBox="0 0 40 40" aria-hidden="true"><path d="M35.9979 15.5862V4H24.4117M35.9979 4L22.4807 17.5172M4 24.4138V36H15.5862M4 36L17.5172 22.4827"/></svg>',
       feedback: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M6.5 8.5h19v12h-11l-5.5 4v-4H6.5Z"/><path d="M11 13h10"/><path d="M11 16.5h6"/></svg>',
       outOfBox: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M8 13.5 16 9l8 4.5-8 4.5Z"/><path d="M8 13.5v8.5l8 4.5 8-4.5v-8.5"/><path d="M16 18v8.5"/><path d="M15 13 24 4"/><path d="M18.8 4H24v5.2"/></svg>',
-      letGo: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="7" width="11" height="11" rx="2"/><rect x="11" y="11" width="11" height="11" rx="2"/><rect x="15" y="15" width="11" height="11" rx="2"/></svg>'
+      letGo: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="7" y="7" width="11" height="11" rx="2"/><rect x="11" y="11" width="11" height="11" rx="2"/><rect x="15" y="15" width="11" height="11" rx="2"/></svg>',
+      usability: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="7" width="20" height="15" rx="2.5"/><path d="M11 26h10"/><path d="M16 22v4"/><path d="M12 13h8"/><path d="M12 17h5"/><path d="M23 10l3 3-3 3"/></svg>',
+      outdatedUi: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="6" y="6" width="20" height="20" rx="3"/><path d="M6 12h20"/><path d="M11 10h.1"/><path d="M15 10h.1"/><path d="M11 17h10"/><path d="M11 21h6"/></svg>',
+      growth: '<svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="10" cy="11" r="3"/><circle cx="22" cy="11" r="3"/><circle cx="16" cy="22" r="3"/><path d="M12.4 13.5 14.3 19"/><path d="M19.6 13.5 17.7 19"/><path d="M13 11h6"/></svg>'
     };
 
     return icons[name] || "";
@@ -1088,12 +1124,31 @@ function renderStructuredCase(root, data, options) {
             (item) => `
               <article class="campaign-insight-item">
                 <span class="campaign-insight-icon">${renderInsightIcon(item.icon)}</span>
-                ${item.text ? `<h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.text)}</p>` : `<p>${escapeHtml(item.title)}</p>`}
+                ${item.text || item.textHtml ? `<h3>${escapeHtml(item.title)}</h3><p>${item.textHtml || escapeHtml(item.text)}</p>` : `<p>${escapeHtml(item.title)}</p>`}
               </article>
             `
           )
           .join("")}
       </div>
+    `;
+  };
+
+  const renderBulletInsightItems = (items = []) => {
+    if (!items.length) return "";
+
+    return `
+      <ul class="campaign-pain-points-list" aria-label="Pain points">
+        ${items
+          .map(
+            (item) => `
+              <li>
+                <h3>${escapeHtml(item.title)}</h3>
+                <p>${item.textHtml || escapeHtml(item.text)}</p>
+              </li>
+            `
+          )
+          .join("")}
+      </ul>
     `;
   };
 
@@ -1129,12 +1184,12 @@ function renderStructuredCase(root, data, options) {
             (chapter) => `
               <section class="campaign-story-section${chapter.insightItems ? " campaign-story-section--findings" : ""}${chapter.className ? ` ${chapter.className}` : ""}">
                 <div class="campaign-story-copy">
-                  ${chapter.title ? `<h2>${escapeHtml(chapter.title)}</h2>` : ""}
+                  ${chapter.title ? `<h2>${withInlineBreaks(chapter.title)}</h2>` : ""}
                   ${renderChapterText(chapter)}
                   ${renderChapterBullets(chapter.bullets)}
                   ${chapter.mediaPlacement === "underText" ? renderMedia(chapter.media) : ""}
                 </div>
-                ${chapter.mediaPlacement === "underText" ? "" : chapter.insightItems ? renderInsightItems(chapter.insightItems) : chapter.mediaMode === "mockupPager" ? renderMockupPager(chapter.media) : renderMedia(chapter.media, chapter.afterText)}
+                ${chapter.mediaPlacement === "underText" ? "" : chapter.insightItems && chapter.listMode === "bullets" ? renderBulletInsightItems(chapter.insightItems) : chapter.insightItems ? renderInsightItems(chapter.insightItems) : chapter.mediaMode === "mockupPager" ? renderMockupPager(chapter.media) : renderMedia(chapter.media, chapter.afterText)}
               </section>
             `
           )
