@@ -5230,14 +5230,15 @@ body.blog-page.is-scrolled .logo {
 @media (max-width: 620px) {
   /* Keep the mobile audience row and its message clear of the header. */
   .home-page .intro {
-    top: -32px;
+    top: -12px;
   }
 
   .home-page .intro h1 {
-    font-size: clamp(42px, 11.8vw, 48px) !important;
+    font-size: clamp(36px, 11.8vw, 48px) !important;
     letter-spacing: -0.01em;
     line-height: 1.02;
     max-width: none;
+    min-width: 0;
     width: 100%;
   }
 
@@ -5245,8 +5246,13 @@ body.blog-page.is-scrolled .logo {
   .home-page .audience-message,
   .home-page .hero-rest,
   .home-page .hero-line {
+    hyphens: none;
     line-height: 1.02;
     max-width: none;
+    min-width: 0;
+    overflow-wrap: normal;
+    text-wrap: wrap;
+    word-break: normal;
     white-space: normal;
     width: 100%;
   }
@@ -5288,7 +5294,8 @@ body.blog-page.is-scrolled .logo {
   .has-mobile-menu body[data-case] nav a.active,
   .has-mobile-menu.home-page nav a,
   .has-mobile-menu.home-page nav a.active {
-    font-size: 48px;
+    font-size: 52px;
+    font-weight: 600;
     text-align: left;
     transform: none;
   }
@@ -5296,8 +5303,30 @@ body.blog-page.is-scrolled .logo {
   .has-mobile-menu nav a:hover,
   .has-mobile-menu nav a:focus-visible,
   .has-mobile-menu nav a:active {
-    font-size: 48px !important;
+    font-size: 52px !important;
+    opacity: 1;
     transform: none;
+  }
+
+  .home-page.has-mobile-menu nav a:not(.active):hover,
+  .home-page.has-mobile-menu nav a:not(.active):focus-visible,
+  .home-page.has-mobile-menu nav a:not(.active):active,
+  .blog-page.has-mobile-menu nav a:not(.active):hover,
+  .blog-page.has-mobile-menu nav a:not(.active):focus-visible,
+  .blog-page.has-mobile-menu nav a:not(.active):active {
+    color: #193A3C;
+  }
+
+  .about-page-body.has-mobile-menu nav a:not(.active):hover,
+  .about-page-body.has-mobile-menu nav a:not(.active):focus-visible,
+  .about-page-body.has-mobile-menu nav a:not(.active):active {
+    color: #E24A3E;
+  }
+
+  body[data-case].has-mobile-menu nav a:not(.active):hover,
+  body[data-case].has-mobile-menu nav a:not(.active):focus-visible,
+  body[data-case].has-mobile-menu nav a:not(.active):active {
+    color: #171717;
   }
 }
 
