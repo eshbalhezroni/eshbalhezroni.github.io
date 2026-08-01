@@ -3617,6 +3617,27 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   text-transform: uppercase;
 }
 
+/* Use a consistently black, readable Up CTA on every page and viewport. */
+.up-link,
+.up-link:hover,
+.up-link:focus-visible,
+.up-link:active {
+  background: transparent;
+  border-color: var(--line-strong);
+  color: #171717;
+}
+
+.home-up-section {
+  display: flex;
+  justify-content: flex-end;
+  margin: 0 auto 64px;
+  max-width: var(--container);
+}
+
+.home-up-section .up-link {
+  float: none;
+}
+
 @media (max-width: 900px) {
   body {
     padding-top: 0;
@@ -5207,8 +5228,15 @@ body.blog-page.is-scrolled .logo {
 
 /* Final mobile audience type scale. This appears after the earlier mobile rules. */
 @media (max-width: 620px) {
+  /* Keep the mobile audience row and its message clear of the header. */
+  .home-page .intro {
+    top: -32px;
+  }
+
   .home-page .intro h1 {
-    font-size: 60px !important;
+    font-size: clamp(42px, 11.8vw, 48px) !important;
+    letter-spacing: -0.01em;
+    line-height: 1.02;
     max-width: none;
     width: 100%;
   }
@@ -5217,9 +5245,23 @@ body.blog-page.is-scrolled .logo {
   .home-page .audience-message,
   .home-page .hero-rest,
   .home-page .hero-line {
+    line-height: 1.02;
     max-width: none;
     white-space: normal;
     width: 100%;
+  }
+
+  .home-page .home-audience-wrap {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 3;
+  }
+
+  .home-page .home-audience {
+    display: flex !important;
+    opacity: 1 !important;
+    visibility: visible !important;
   }
 }
 
@@ -5246,7 +5288,7 @@ body.blog-page.is-scrolled .logo {
   .has-mobile-menu body[data-case] nav a.active,
   .has-mobile-menu.home-page nav a,
   .has-mobile-menu.home-page nav a.active {
-    font-size: 120px;
+    font-size: 48px;
     text-align: left;
     transform: none;
   }
@@ -5254,7 +5296,7 @@ body.blog-page.is-scrolled .logo {
   .has-mobile-menu nav a:hover,
   .has-mobile-menu nav a:focus-visible,
   .has-mobile-menu nav a:active {
-    font-size: 120px !important;
+    font-size: 48px !important;
     transform: none;
   }
 }
