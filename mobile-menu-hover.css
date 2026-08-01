@@ -1,0 +1,32 @@
+/* Loaded after styles.css so the mobile menu hover state cannot be overridden. */
+@media (max-width: 620px) {
+  .has-mobile-menu.is-menu-open nav a:hover,
+  .has-mobile-menu.is-menu-open nav a:focus-visible,
+  .has-mobile-menu.is-menu-open nav a:active {
+    font-size: 56px !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .home-page.has-mobile-menu.is-menu-open nav a:hover,
+  .home-page.has-mobile-menu.is-menu-open nav a:focus-visible,
+  .home-page.has-mobile-menu.is-menu-open nav a:active,
+  .blog-page.has-mobile-menu.is-menu-open nav a:hover,
+  .blog-page.has-mobile-menu.is-menu-open nav a:focus-visible,
+  .blog-page.has-mobile-menu.is-menu-open nav a:active {
+    color: #193A3C !important;
+  }
+
+  .about-page-body.has-mobile-menu.is-menu-open nav a:hover,
+  .about-page-body.has-mobile-menu.is-menu-open nav a:focus-visible,
+  .about-page-body.has-mobile-menu.is-menu-open nav a:active {
+    color: #E24A3E !important;
+  }
+
+  body[data-case].has-mobile-menu.is-menu-open nav a:hover,
+  body[data-case].has-mobile-menu.is-menu-open nav a:focus-visible,
+  body[data-case].has-mobile-menu.is-menu-open nav a:active {
+    color: #171717 !important;
+  }
+}

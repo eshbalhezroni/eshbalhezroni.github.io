@@ -842,6 +842,13 @@ nav a:not(.active):focus-visible {
   scroll-margin-top: calc(var(--home-menu-top) - 3px);
 }
 
+/* On desktop, align the Work anchor with the About creative-work anchor. */
+@media (min-width: 621px) {
+  .home-page #selected-work {
+    scroll-margin-top: 20px;
+  }
+}
+
 .home-page .work-scroll-anchor {
   display: block;
   height: 0;
@@ -4349,7 +4356,7 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   }
 
   .home-page #selected-work {
-    scroll-margin-top: 96px;
+    scroll-margin-top: 17px;
   }
 
   .intro h1 {
@@ -4769,6 +4776,39 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   .has-mobile-menu.is-menu-open nav a:nth-child(2) { transition-delay: 135ms; }
   .has-mobile-menu.is-menu-open nav a:nth-child(3) { transition-delay: 190ms; }
   .has-mobile-menu.is-menu-open nav a:nth-child(4) { transition-delay: 245ms; }
+}
+
+/* Final mobile menu hover override: must remain after the faded-link rules above. */
+@media (max-width: 620px) {
+  .has-mobile-menu.is-menu-open nav a:hover,
+  .has-mobile-menu.is-menu-open nav a:focus-visible,
+  .has-mobile-menu.is-menu-open nav a:active {
+    font-size: 56px !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+    transform: none;
+  }
+
+  .home-page.has-mobile-menu.is-menu-open nav a:hover,
+  .home-page.has-mobile-menu.is-menu-open nav a:focus-visible,
+  .home-page.has-mobile-menu.is-menu-open nav a:active,
+  .blog-page.has-mobile-menu.is-menu-open nav a:hover,
+  .blog-page.has-mobile-menu.is-menu-open nav a:focus-visible,
+  .blog-page.has-mobile-menu.is-menu-open nav a:active {
+    color: #193A3C !important;
+  }
+
+  .about-page-body.has-mobile-menu.is-menu-open nav a:hover,
+  .about-page-body.has-mobile-menu.is-menu-open nav a:focus-visible,
+  .about-page-body.has-mobile-menu.is-menu-open nav a:active {
+    color: #E24A3E !important;
+  }
+
+  body[data-case].has-mobile-menu.is-menu-open nav a:hover,
+  body[data-case].has-mobile-menu.is-menu-open nav a:focus-visible,
+  body[data-case].has-mobile-menu.is-menu-open nav a:active {
+    color: #171717 !important;
+  }
 }
 
 /* Final home hero type scale override. */
@@ -5234,7 +5274,7 @@ body.blog-page.is-scrolled .logo {
   }
 
   .home-page .intro h1 {
-    font-size: clamp(36px, 11.8vw, 48px) !important;
+    font-size: clamp(32px, 10vw, 40px) !important;
     letter-spacing: -0.01em;
     line-height: 1.02;
     max-width: none;
@@ -5294,7 +5334,7 @@ body.blog-page.is-scrolled .logo {
   .has-mobile-menu body[data-case] nav a.active,
   .has-mobile-menu.home-page nav a,
   .has-mobile-menu.home-page nav a.active {
-    font-size: 52px;
+    font-size: 56px;
     font-weight: 600;
     text-align: left;
     transform: none;
@@ -5303,30 +5343,31 @@ body.blog-page.is-scrolled .logo {
   .has-mobile-menu nav a:hover,
   .has-mobile-menu nav a:focus-visible,
   .has-mobile-menu nav a:active {
-    font-size: 52px !important;
+    font-size: 56px !important;
+    font-weight: 600 !important;
     opacity: 1;
     transform: none;
   }
 
-  .home-page.has-mobile-menu nav a:not(.active):hover,
-  .home-page.has-mobile-menu nav a:not(.active):focus-visible,
-  .home-page.has-mobile-menu nav a:not(.active):active,
-  .blog-page.has-mobile-menu nav a:not(.active):hover,
-  .blog-page.has-mobile-menu nav a:not(.active):focus-visible,
-  .blog-page.has-mobile-menu nav a:not(.active):active {
-    color: #193A3C;
+  .home-page.has-mobile-menu nav a:hover,
+  .home-page.has-mobile-menu nav a:focus-visible,
+  .home-page.has-mobile-menu nav a:active,
+  .blog-page.has-mobile-menu nav a:hover,
+  .blog-page.has-mobile-menu nav a:focus-visible,
+  .blog-page.has-mobile-menu nav a:active {
+    color: #193A3C !important;
   }
 
-  .about-page-body.has-mobile-menu nav a:not(.active):hover,
-  .about-page-body.has-mobile-menu nav a:not(.active):focus-visible,
-  .about-page-body.has-mobile-menu nav a:not(.active):active {
-    color: #E24A3E;
+  .about-page-body.has-mobile-menu nav a:hover,
+  .about-page-body.has-mobile-menu nav a:focus-visible,
+  .about-page-body.has-mobile-menu nav a:active {
+    color: #E24A3E !important;
   }
 
-  body[data-case].has-mobile-menu nav a:not(.active):hover,
-  body[data-case].has-mobile-menu nav a:not(.active):focus-visible,
-  body[data-case].has-mobile-menu nav a:not(.active):active {
-    color: #171717;
+  body[data-case].has-mobile-menu nav a:hover,
+  body[data-case].has-mobile-menu nav a:focus-visible,
+  body[data-case].has-mobile-menu nav a:active {
+    color: #171717 !important;
   }
 }
 

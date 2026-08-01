@@ -6,7 +6,8 @@
     <script>history.scrollRestoration = "manual";</script>
     <title>Home | Eshbal Hezroni</title>
     <link rel="icon" href="favicon.svg?v=white-favicon-v1" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=mobile-menu-size-v132">
+    <link rel="stylesheet" href="styles.css?v=mobile-case-focus-v148">
+    <link rel="stylesheet" href="mobile-menu-hover.css?v=1">
     <script src="site-nav.js?v=mobile-about-link-v31" defer></script>
   </head>
   <body class="home-page" id="top">
@@ -131,6 +132,12 @@
       if (returnToIntro) history.replaceState(null, "", window.location.pathname);
       window.addEventListener("pageshow", () => {
         if (!window.location.hash) window.scrollTo(0, 0);
+        if (window.matchMedia("(max-width: 620px)").matches) {
+          requestAnimationFrame(() => {
+            const restoredCaseLink = document.activeElement?.closest(".home-work-area .case-row");
+            restoredCaseLink?.blur();
+          });
+        }
       });
 
       const heroLines = document.querySelectorAll(".hero-line");
