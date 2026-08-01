@@ -3,11 +3,13 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>history.scrollRestoration = "manual";</script>
     <title>Home | Eshbal Hezroni</title>
     <link rel="icon" href="favicon.svg?v=white-favicon-v1" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=home-intent-title-wrap-v3">
+    <link rel="stylesheet" href="styles.css?v=mobile-selected-work-visibility-v91">
+    <script src="site-nav.js?v=about-nav-scroll-v28" defer></script>
   </head>
-  <body>
+  <body class="home-page">
     <header class="site-header">
       <a class="logo" href="./" aria-label="Eshbal home">
         <span class="logo-mark">
@@ -16,83 +18,94 @@
         </span>
       </a>
       <nav aria-label="Site">
-        <a class="active" href="./">Home</a>
+        <a class="active" id="intro-nav-link" href="#intro">Intro</a>
+        <a id="work-nav-link" href="#selected-work">Work</a>
         <a href="blog/">Blog</a>
         <a href="about/">About</a>
       </nav>
     </header>
 
     <main>
-      <section class="intro">
-        <h1 class="hero-title">
-          <span class="hero-lead">Hello, I’m <span class="headline-keep">Eshbal <span class="hero-flower" aria-hidden="true">🌸</span></span></span>
-          <span class="hero-rest" aria-label="A product designer who loves turning complex problems into simple, elegant experiences.">
-            <span class="hero-line home-subtitle-desktop">A product designer who loves</span>
-            <span class="hero-line home-subtitle-desktop">turning complex problems into</span>
-            <span class="hero-line home-subtitle-desktop">simple, elegant experiences.</span>
-            <span class="hero-line home-subtitle-mobile home-subtitle-mobile-main">A product designer</span>
-            <span class="hero-line home-subtitle-mobile">who loves turning</span>
-            <span class="hero-line home-subtitle-mobile">complex problems</span>
-            <span class="hero-line home-subtitle-mobile">into simple, elegant</span>
-            <span class="hero-line home-subtitle-mobile">experiences.</span>
-          </span>
-        </h1>
-      </section>
+      <div class="home-intro-band">
+        <section class="intro" id="intro">
+          <div class="home-audience-wrap">
+            <div class="home-audience" aria-label="Choose an audience">
+              <button class="active" type="button" data-audience="anyone" aria-pressed="true">For anyone</button>
+              <button type="button" data-audience="recruiters" aria-pressed="false">Recruiters</button>
+              <button type="button" data-audience="directors" aria-pressed="false">Design Directors</button>
+              <button type="button" data-audience="designers" aria-pressed="false">Product Designers</button>
+              <button type="button" data-audience="managers" aria-pressed="false">Product Managers</button>
+            </div>
+            <span class="home-audience-fade home-audience-fade--left" aria-hidden="true"></span>
+            <span class="home-audience-fade home-audience-fade--right is-visible" aria-hidden="true"></span>
+          </div>
+          <h1 class="hero-title">
+            <span class="hero-lead" id="hero-lead">Hello, I’m <span class="headline-keep"><span class="eshbal-initial">E</span>shbal<span class="headline-period">.</span></span></span>
+            <span class="hero-rest">
+              <span class="hero-line audience-message" id="audience-message">I’m a product designer who gets excited about turning <span class="audience-highlight">ideas into products</span> that people use.</span>
+            </span>
+          </h1>
+          <a class="home-work-link" href="#selected-work">Selected Work <span aria-hidden="true">↓</span></a>
+        </section>
+      </div>
 
-      <section class="case-row">
+      <div class="home-work-area">
+      <span class="work-scroll-anchor" id="selected-work" aria-hidden="true"></span>
+      <a class="case-row" href="varonis/" aria-label="Read the Varonis Account Pane case study">
         <div class="case-copy">
-          <h2><a href="varonis/">Reimagining the Account Pane for a complex security platform</a></h2>
+          <h2>Reimagining the Account Pane for a complex security platform</h2>
           <p>I redesigned the Account Pane to turn complex data into a clearer, easier to scan experience for deeper investigation.</p>
-          <a class="case-link" href="varonis/">Read Case Study <span aria-hidden="true">➜</span></a>
+          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
         </div>
-        <a class="case-image" href="varonis/">
+        <div class="case-image">
           <img src="assets/Home page/optimized/Home_page_Image_5_varonis.png" width="1800" height="989" decoding="async" alt="Account Pane interface mockup">
-        </a>
-      </section>
-
-      <section class="case-row reverse">
-        <a class="case-image tilted" href="campaigns-board/">
-          <img src="assets/Home page/optimized/Home_page_Image_1_campaign_board.jpg" width="1800" height="1355" decoding="async" alt="Campaign Board feature design process">
-        </a>
-        <div class="case-copy">
-          <h2><a href="campaigns-board/">The design process of a new feature: Campaign Board</a></h2>
-          <p>A fun and intuitive way to build a campaign calendar board for eCommerce website managers.</p>
-          <a class="case-link" href="campaigns-board/">Read Case Study <span aria-hidden="true">➜</span></a>
         </div>
-      </section>
+      </a>
 
-      <section class="case-row intent-home-card">
-        <div class="case-copy">
-          <h2><a href="intent-based-promotions/">Creating a product from scratch: Intent-Based Promotions</a></h2>
-          <p>I designed a whole new product that offers individualized promotions to eCommerce site visitors based on real-time buying intent.</p>
-          <a class="case-link" href="intent-based-promotions/">Read Case Study <span aria-hidden="true">➜</span></a>
-        </div>
-        <a class="case-image" href="intent-based-promotions/">
+      <a class="case-row reverse intent-home-card" href="intent-based-promotions/" aria-label="Read the Intent-Based Promotions case study">
+        <div class="case-image">
           <img src="assets/Home page/optimized/Home_page_Image_2_intent.png" width="1800" height="989" decoding="async" alt="Intent-Based Promotions interface mockup">
-        </a>
-      </section>
+        </div>
+        <div class="case-copy">
+          <h2>Creating a product from scratch: Intent-Based Promotions</h2>
+          <p class="intent-home-description">I designed a whole new product that offers<br>individualized promotions to eCommerce site<br>visitors based on real-time buying intent.</p>
+          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
+        </div>
+      </a>
 
-      <section class="case-row reverse">
-        <a class="case-image" href="journey-flow/">
+      <a class="case-row" href="campaigns-board/" aria-label="Read the Campaign Board case study">
+        <div class="case-copy">
+          <h2>The design process of a new feature: Campaign Board</h2>
+          <p>A fun and intuitive way to build a campaign calendar board for eCommerce website managers.</p>
+          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
+        </div>
+        <div class="case-image tilted">
+          <img src="assets/Home page/optimized/Home_page_Image_1_campaign_board.jpg" width="1800" height="1355" decoding="async" alt="Campaign Board feature design process">
+        </div>
+      </a>
+
+      <a class="case-row reverse" href="journey-flow/" aria-label="Read the Journey Flow case study">
+        <div class="case-image">
           <img src="assets/Home page/optimized/Home_page_Image_3_flow.png" width="1800" height="989" decoding="async" alt="Journey Flow data visualization mockup">
-        </a>
+        </div>
         <div class="case-copy">
-          <h2><a href="journey-flow/">Building a data visualization tool: Journey Flow</a></h2>
+          <h2>Building a data visualization tool: Journey Flow</h2>
           <p>My inspiration for designing this visualization tool came from an unexpected source: roads in navigation apps.</p>
-          <a class="case-link" href="journey-flow/">Read Case Study <span aria-hidden="true">➜</span></a>
+          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
         </div>
-      </section>
+      </a>
 
-      <section class="case-row final-case">
+      <a class="case-row final-case" href="activations/" aria-label="Read the Activations case study">
         <div class="case-copy">
-          <h2><a href="activations/">Simple management of data: Activations</a></h2>
+          <h2>Simple management of data: Activations</h2>
           <p>I created a page that allows website managers to easily control data about their users and send it to different sources.</p>
-          <a class="case-link" href="activations/">Read Case Study <span aria-hidden="true">➜</span></a>
+          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
         </div>
-        <a class="case-image" href="activations/">
+        <div class="case-image">
           <img src="assets/Home page/optimized/Home_page_Image_4_activation.jpg" width="1800" height="989" decoding="async" alt="Activations data management interface">
-        </a>
-      </section>
+        </div>
+      </a>
+      </div>
     </main>
 
     <footer class="site-footer">
@@ -104,13 +117,138 @@
       </div>
     </footer>
     <script>
+      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+      const returnToIntro = new URLSearchParams(window.location.search).has("intro");
+      if (!window.location.hash || returnToIntro) {
+        window.scrollTo(0, 0);
+        requestAnimationFrame(() => window.scrollTo(0, 0));
+      }
+      if (returnToIntro) history.replaceState(null, "", window.location.pathname);
+      window.addEventListener("pageshow", () => {
+        if (!window.location.hash) window.scrollTo(0, 0);
+      });
+
       const heroLines = document.querySelectorAll(".hero-line");
+      const homeAudience = document.querySelector(".home-audience");
+      const audienceFadeLeft = document.querySelector(".home-audience-fade--left");
+      const audienceFadeRight = document.querySelector(".home-audience-fade--right");
+      const homeIntroBand = document.querySelector(".home-intro-band");
+      const audienceMessage = document.querySelector("#audience-message");
+      const heroLead = document.querySelector("#hero-lead");
+      const heroTitle = document.querySelector(".hero-title");
+      const audienceButtons = document.querySelectorAll("[data-audience]");
+      const introNavLink = document.querySelector("#intro-nav-link");
+      const workNavLink = document.querySelector("#work-nav-link");
+      const selectedWork = document.querySelector("#selected-work");
       let heroToneTicking = false;
+
+      introNavLink?.addEventListener("click", (event) => {
+        event.preventDefault();
+        history.replaceState(null, "", "#intro");
+        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+      });
+
+      const audienceMessages = {
+        anyone: "I’m a product designer who gets excited about turning ideas into products that people use.",
+        recruiters: "I’m a Senior Product Designer with 7+ years of experience creating meaningful, high\u2011impact digital products.",
+        directors: "I take ownership from concept through execution to post launch iteration. My strength is bringing clarity to complex problems.",
+        designers: "I thrive in collaborative teams, where sharing ideas, giving thoughtful feedback, and learning from one another make the work stronger.",
+        managers: "I partner closely with PMs to turn ambiguous problems into clear priorities, practical decisions, and products people want to use."
+      };
+
+      const desktopAudienceMessages = {
+        directors: "I take ownership from\nconcept through execution\nto post launch iteration.\nMy strength is bringing\nclarity to complex problems."
+      };
+
+      const getAudienceMessage = (audience) =>
+        window.matchMedia("(min-width: 621px)").matches && desktopAudienceMessages[audience]
+          ? desktopAudienceMessages[audience]
+          : audienceMessages[audience];
+
+      const audienceHighlights = {
+        anyone: ["ideas into products"],
+        recruiters: ["7+ years"],
+        directors: ["ownership", "concept", "execution", "bringing clarity"],
+        designers: ["collaborative", "learning", "work stronger"],
+        managers: ["clear priorities", "products people want to use"]
+      };
+      let activeAudience = "anyone";
+      let audienceScrollTicking = false;
+
+      const updateAudienceFades = () => {
+        if (!homeAudience || !audienceFadeLeft || !audienceFadeRight) return;
+        const maxScrollLeft = Math.max(0, homeAudience.scrollWidth - homeAudience.clientWidth);
+        audienceFadeLeft.classList.toggle("is-visible", homeAudience.scrollLeft > 2);
+        audienceFadeRight.classList.toggle("is-visible", homeAudience.scrollLeft < maxScrollLeft - 2);
+        audienceScrollTicking = false;
+      };
+
+      const requestAudienceFadeUpdate = () => {
+        if (audienceScrollTicking) return;
+        audienceScrollTicking = true;
+        requestAnimationFrame(updateAudienceFades);
+      };
+
+      const escapeHtml = (value) => value.replace(/[&<>'"]/g, (character) => ({
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        "'": "&#039;",
+        "\"": "&quot;"
+      })[character]);
+
+      const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+      const renderAudienceMessage = (audience) => {
+        if (!audienceMessage || !audienceMessages[audience]) return;
+        let message = escapeHtml(getAudienceMessage(audience));
+        (audienceHighlights[audience] || []).forEach((phrase) => {
+          message = message.replace(
+            new RegExp(`(${escapeRegExp(phrase)})`, "gi"),
+            '<span class="audience-highlight">$1</span>'
+          );
+        });
+        audienceMessage.innerHTML = message;
+      };
+
+      const setAudienceMessage = (audience) => {
+        if (!audienceMessage || !audienceMessages[audience]) return;
+        activeAudience = audience;
+        renderAudienceMessage(audience);
+        heroLead?.classList.toggle("is-hidden", audience !== "anyone");
+        heroLead?.setAttribute("aria-hidden", String(audience !== "anyone"));
+        heroTitle?.classList.toggle("is-audience-selected", audience !== "anyone");
+        audienceButtons.forEach((button) => {
+          const isActive = button.dataset.audience === audience;
+          button.classList.toggle("active", isActive);
+          button.setAttribute("aria-pressed", String(isActive));
+        });
+      };
+
+      const stabilizeAudienceLayout = () => {
+        const intro = document.querySelector(".home-page .intro");
+        if (!intro || !homeAudience || !heroTitle || !audienceMessage) return;
+
+        intro.style.removeProperty("--audience-layout-offset");
+        heroTitle.style.minHeight = "";
+        const startingTop = homeAudience.getBoundingClientRect().top;
+        let tallestTitle = heroTitle.getBoundingClientRect().height;
+
+        Object.keys(audienceMessages).forEach((audience) => {
+          audienceMessage.textContent = getAudienceMessage(audience);
+          tallestTitle = Math.max(tallestTitle, heroTitle.getBoundingClientRect().height);
+        });
+
+        renderAudienceMessage(activeAudience);
+        heroTitle.style.minHeight = `${Math.ceil(tallestTitle)}px`;
+        const offset = startingTop - homeAudience.getBoundingClientRect().top;
+        intro.style.setProperty("--audience-layout-offset", `${Math.round(offset)}px`);
+      };
 
       const updateHeroTone = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
         const visibleHeroLines = [...heroLines].filter((line) => line.getClientRects().length > 0);
-        const isCompactHero = window.matchMedia("(max-width: 620px)").matches;
+        const isCompactHero = window.matchMedia("(max-width: 1100px)").matches;
         const thresholdStep = isCompactHero ? 58 : 90;
         document.body.classList.toggle("is-scrolled", scrollTop > 24);
         heroLines.forEach((line) => line.classList.remove("is-dark"));
@@ -118,6 +256,11 @@
           const threshold = 40 + index * thresholdStep;
           if (scrollTop >= threshold) line.classList.add("is-dark");
         });
+        const isViewingWork = selectedWork && selectedWork.getBoundingClientRect().top <= window.innerHeight * 0.88;
+        introNavLink?.classList.toggle("active", !isViewingWork);
+        workNavLink?.classList.toggle("active", isViewingWork);
+        document.body.classList.toggle("is-work-entering", Boolean(selectedWork && selectedWork.getBoundingClientRect().top <= window.innerHeight));
+        document.body.classList.toggle("is-past-intro", Boolean(homeIntroBand && homeIntroBand.getBoundingClientRect().bottom <= 0));
         heroToneTicking = false;
       };
 
@@ -128,7 +271,21 @@
       };
 
       updateHeroTone();
+      requestAnimationFrame(stabilizeAudienceLayout);
+      requestAnimationFrame(updateAudienceFades);
+      audienceButtons.forEach((button) => {
+        button.addEventListener("click", () => setAudienceMessage(button.dataset.audience));
+      });
       window.addEventListener("scroll", requestHeroToneUpdate, { passive: true });
+      homeAudience?.addEventListener("scroll", requestAudienceFadeUpdate, { passive: true });
+      window.addEventListener("resize", () => {
+        stabilizeAudienceLayout();
+        requestAudienceFadeUpdate();
+      });
+      window.addEventListener("load", () => {
+        stabilizeAudienceLayout();
+        requestAudienceFadeUpdate();
+      });
     </script>
   </body>
 </html>

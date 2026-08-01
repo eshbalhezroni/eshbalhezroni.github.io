@@ -65,8 +65,8 @@ const caseStudies = {
       p("Develop a platform that can present the appropriate promotion at the right time based on a user's intent to purchase."),
       h("My Role"),
       p("Intent-Based Promotions (IBP) is a product that I led at Namogoo. I was responsible for the UI/UX of IBP since its conception. From initial efforts, including research on existing solutions, prototyping, and building wireframes, to finalizing a design that maximizes user experience and appeal. The effort required close collaboration with product managers and developers."),
-      h("Kickoff"),
-      p("Our team started off with a meeting in order to go over the project plan and familiarize ourselves with the product.\nSince this project is a continuation of the initial product, there were a lot to review.\nIt was a lot of information thrown in our direction and I asked the customers questions to clarify their goals for creating a campaign in such platform."),
+      h("Speaking to users"),
+      p("I went out and interviewed 6 users who\ncreate and manage eCommerce\npromotion campaigns.\n\nHearing their perspectives was important because it gave me a deeper understanding of their workflows, decision-making, and the challenges they face when creating\u00a0promotions."),
       img("assets/Intent-Based Promotions/Kickoff.png?v=20260513", "Kickoff"),
       h("What Did I Find Out?"),
       p("The flow of creating a campaign should be very quick, intuitive, simple, and easy. The user should be able to create a campaign in a few minutes.\n\nA first impression is a matter of seconds — and if the user does not have a positive impression, they will abandon the product and look elsewhere.\n\nThe flow should be divided into steps. This will help us create a user-friendly product that doesn’t overwhelm our users with options — each step will be focused on one main task.\n\nNo matter how many prepared templates we will offer, we need the ability to customize each template to the user’s needs\n\nThe flow should be quick, intuitive, simple, and easy\n\nThe flow should be divided into steps\n\nA first impression is a matter of seconds\n\nAbility to customize each template to the user’s needs"),
@@ -77,19 +77,19 @@ const caseStudies = {
       p("It was important to understand what exactly users would want to accomplish when using the 'Create Campaign'. I created user stories which gave me a clear vision of what our goals for this design must accomplish. They were organized from high, medium to low priority."),
       img("assets/Intent-Based Promotions/User Stories.png?v=20260513-2", "User Stories"),
       h("Sketches"),
-      p("I began the design process with low-fidelity sketches and to accelerate decision-making through visualization without losing time. My sketches were based on the initial research.\nI had a lot of questions, like how should I split the campaign creation flow into steps? What should be the order of these steps? How many decisions should the user need to make in each step? Should they first see our amazing promotions? Or should they start off by defining their campaign goal or incentive type?\nFollowing a conversation with the product manager, I started putting everything I knew on the page. It helped me focus and better understand the product capabilities:"),
+      p("My next step was to summarize the information I gathered from users, competitors, product, marketing, and sales.\n\nI had a lot of questions: How should I split the campaign creation flow into steps? What should the order of those steps be? How many decisions should users make in each step? Should they first see our templates, or start by defining their campaign goal or incentive type?\n\nFollowing a conversation with the PM, I started putting everything I knew on the page. It helped me focus and better understand the product capabilities:"),
       img("assets/Intent-Based Promotions/Sketches.png", "Sketches"),
-      h("User Journey"),
-      p("I sketched a current-state user journey map, to identify opportunities for improvement. I identified 3 unnecessary steps (campaign goal, type and color) and potential dropoff points in the flow. Together with the product manager, we decided to remove these steps from the new design."),
+      h("Update the user flow"),
+      p("After the first release, I mapped the user flow to understand where users were slowing down.\n\nWe found that choosing a campaign goal, promotion type, and brand color as separate steps added decisions without enough value. Instead, we combined them into the templates step.\n\nThis reduced unnecessary steps and made the flow faster and more intuitive."),
       img("assets/Intent-Based Promotions/User Journey.png?v=20260513-1359", "User Journey"),
-      h("Wireframes"),
-      p("I translated my first sketches into wireframes.\nIn this step, I could test the flow and overall user experience and iterate through many design options quickly. It helped me define our expectations and remind me of what I wanted to present on each screen. Wireframes are the first time I put elements on the screen and create a product that starts to feel real."),
+      h("Refining the creation flow"),
+      p("With the insights from the first release, I revisited the structure of the campaign creation experience. I reduced it to three clear steps: Templates, Settings, and Studio.\n\nI chose a layout that makes better use of the available space. We also expanded template customization, giving users more control to create promotions that matched their brand."),
       img("assets/Intent-Based Promotions/Wireframes.png", "Wireframes"),
       h("Finalizing Design"),
-      p("When I completed the wireframes, I started working on the visual design. The Campaign Creation area is divided into 3 steps in which the user chooses:\n1. A template from the templates page\n2. Define settings like start/end date of the campaign, discount range and more\n3. Tweaking and customizing the promotions in the studio, and when done, publish!\nThe video below provides a current overview of IBP's campaign creation area, the core of the product."),
-      video("assets/Intent-Based Promotions/Create a campaign.mp4", "Create Campaign walkthrough"),
-      h("In Short"),
-      p("The process has taught me so much about how to build a product that will best serve our customers. I feel lucky that I had this opportunity to be part of the birth of a product. I learned that product design never truly ends and should be carefully revisited at all times.\nCurrently, IBP is a full-blown product, containing hundreds of frames and used by more than 100 customers.")
+      p("With the flow and structure defined, I moved forward and refined the whole experience. The final flow is organized into three steps: Templates, Settings, and Studio.\n\nUsers have more freedom to customize each template, including control over every color, unrestricted text, the promotion's background on their website, and more.\n\nThe video below shows the final Campaign Creation, the core of the Intent-Based Promotions product."),
+      video("assets/Intent-Based Promotions/Create a campaign.mp4?v=lossless-vfr-remux-20260727", "Create Campaign walkthrough"),
+      h("Impact"),
+      p("After the second release, we saw a reduction in the time it took to create a campaign and an increase in the number of active campaigns. We also received positive feedback from users, some of which you can find below.")
     ],
     next: { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" },
     explore: [
@@ -228,6 +228,7 @@ const escapeHtml = (value) =>
 
 const withBreaks = (value) =>
   escapeHtml(value)
+    .replace("manage eCommerce promotion\u00a0campaigns.", '<span class="text-keep">manage&nbsp;eCommerce&nbsp;promotion&nbsp;campaigns.</span>')
     .split("\n\n")
     .map((part) => part.replaceAll("\n", "<br>"))
     .join("</p><p>");
@@ -244,6 +245,12 @@ const withJourneyConclusionUnderlines = (value) =>
 const withTitleKeeps = (value) =>
   escapeHtml(value).replace("a\u00A0complex", '<span class="text-keep">a&nbsp;complex</span>');
 
+const withExploreTitleKeeps = (value) =>
+  escapeHtml(value)
+    .replaceAll("Campaign Board", "Campaign&nbsp;Board")
+    .replaceAll("Journey Flow", "Journey&nbsp;Flow")
+    .replaceAll("Intent-Based Promotions", "Intent-Based&nbsp;Promotions");
+
 function renderMoreToExplore(data) {
   const projectClassName = (href) => href.replace(/\/$/, "").replace(".html", "").replaceAll("-", "_");
 
@@ -256,7 +263,7 @@ function renderMoreToExplore(data) {
             (project) => `
               <a class="explore-card explore-card--${projectClassName(project.href)}" href="${localUrl(project.href)}">
                 <img src="${localUrl(project.image)}" alt="${escapeHtml(project.title)}">
-                <span>${escapeHtml(project.title)}</span>
+                <span>${withExploreTitleKeeps(project.title)}</span>
               </a>
             `
           )
@@ -629,9 +636,15 @@ function renderIntentCase(root, data) {
 
   const chapters = [
     {
+      className: "intent-speaking-users-section",
       title: data.blocks[10].text,
       text: data.blocks[11].text,
-      media: [data.blocks[12]]
+    media: [
+      { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 10.03.46 AM.png", "User research findings"), caption: "Affinity mapping" }
+    ],
+    underTextMedia: [
+      { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 9.52.08 AM.png", "Interview protocol"), caption: "Interview Protocol" }
+    ]
     },
     {
       title: data.blocks[13].text,
@@ -678,23 +691,34 @@ function renderIntentCase(root, data) {
       text: data.blocks[22].text,
       media: [
         img("assets/Intent-Based Promotions/Sketches_1.png", "Sketches 1"),
-        img("assets/Intent-Based Promotions/Sketches_2.png", "Sketches 2")
+        img("assets/Intent-Based Promotions/Sketches_2.png", "Sketches 2"),
+        { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 11.00.13 AM.png", "First release campaign creation flow"), caption: "More sketches" }
       ],
       mediaPlacement: "underText"
     },
     {
-      className: "campaign-story-section--sketches-stack",
+      className: "intent-first-release-section campaign-story-section--copy-left",
+      title: "First Release",
+      text: "The campaign creation flow was built around short, focused steps. Users started by selecting their goal, promotion type, and brand color, then saw all templates in that color, making it easier to imagine each promotion on their own site.\n\nAs we observed users moving back and forth between steps, we realized the flow was not saving as much time as it could. In later iterations, we combined several steps to create a more fluid campaign-building\u00a0experience.\n\nMany users saved campaigns as drafts instead of publishing them. One reason was limited control over the promotion design. In later iterations, we added more customization capabilities, allowing users to adjust colors, sizes, and fonts to create promotions that better matched their brand.",
+      media: [
+        { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 11.59.44 AM.png", "First release campaign creation flow"), caption: "First Release" }
+      ]
+    },
+    {
+      className: "campaign-story-section--sketches-stack intent-user-flow-section",
       title: data.blocks[24].text,
       text: data.blocks[25].text,
-      media: [data.blocks[26]]
+      media: [
+        img("assets/Intent-Based Promotions/screens/Frame 143417726.png?v=20260729-1208", "Updated campaign creation user flow")
+      ]
     },
     {
       className: "campaign-story-section--sketches-stack intent-wireframes-section",
       title: data.blocks[27].text,
       text: data.blocks[28].text,
       media: [
-        img("assets/Intent-Based Promotions/Wireframes_1.png", "Wireframes 1"),
-        img("assets/Intent-Based Promotions/Wireframes_2.png", "Wireframes 2")
+        img("assets/Intent-Based Promotions/screens/image_1.png", "Templates step wireframe"),
+        img("assets/Intent-Based Promotions/screens/image_2.png", "Studio step wireframe")
       ],
       mediaPlacement: "underText"
     },
@@ -702,12 +726,116 @@ function renderIntentCase(root, data) {
       className: "campaign-story-section--sketches-stack campaign-story-section--final-delivery",
       title: data.blocks[30].text,
       text: data.blocks[31].text,
-      media: [data.blocks[32]]
+      media: [data.blocks[32]],
+      screenGallery: [
+        {
+          src: "assets/Intent-Based Promotions/screens/Group 143418246.png?v=3",
+          alt: "Promotion template selection",
+          headline: "Seasonal event selection: Christmas",
+          layout: "top-left"
+        },
+        {
+          src: "assets/Intent-Based Promotions/screens/Group 143418293.png?v=3",
+          alt: "Campaign settings and promotion preview",
+          headline: "Campaign goal selection",
+          layout: "top-right"
+        },
+        {
+          src: "assets/Intent-Based Promotions/screens/Product list.png",
+          alt: "Product list selection screen",
+          headline: "Limit options: Triggers",
+          layout: "second-left"
+        },
+        {
+          src: "assets/Intent-Based Promotions/screens/Group 1434198565.png",
+          alt: "URL targeting rules",
+          headline: "URL rules: Which pages\nthe promotion will appear on",
+          layout: "trigger-rules"
+        },
+        {
+          images: [
+            {
+              src: "assets/Intent-Based Promotions/screens/Modal.png",
+              alt: "Publish campaign confirmation"
+            },
+            {
+              src: "assets/Intent-Based Promotions/screens/Modal2.png",
+              alt: "Campaign selection change modal"
+            },
+            {
+              src: "assets/Intent-Based Promotions/screens/Modal1.png",
+              alt: "Campaign publishing restriction modal"
+            },
+            {
+              src: "assets/Intent-Based Promotions/screens/Group 1434198566.png",
+              alt: "Save campaign as draft confirmation"
+            }
+          ],
+          headline: "In-platform informational modals",
+          layout: "trigger-modals"
+        },
+        {
+          images: [
+            {
+              src: "assets/Intent-Based Promotions/screens/Group 1434198562.png",
+              alt: "Email integration selector"
+            },
+            {
+              src: "assets/Intent-Based Promotions/screens/Group 1434198563.png",
+              alt: "Klaviyo integration field mapping"
+            }
+          ],
+          headline: "Required campaign integrations",
+          layout: "integration-stack"
+        },
+        {
+          images: [
+            {
+              src: "assets/Intent-Based Promotions/screens/Group 1434198568.png?v=2",
+              alt: "Product selection list"
+            },
+            {
+              src: "assets/Intent-Based Promotions/screens/Group 1434198564.png",
+              alt: "Empty product search results"
+            }
+          ],
+          headline: "Which products the promotion will appear on",
+          layout: "product-stack"
+        },
+        {
+          src: "assets/Intent-Based Promotions/screens/Campaigns Management_table.png?v=3",
+          alt: "Campaign management dashboard",
+          headline: "Campaign Management overview",
+          layout: "feature"
+        },
+        {
+          src: "assets/Intent-Based Promotions/screens/3.png?v=2",
+          alt: "Coupon file upload modal",
+          headline: "Coupon code upload",
+          layout: "pair"
+        },
+        {
+          src: "assets/Intent-Based Promotions/screens/4.png?v=2",
+          alt: "Uploaded coupon files modal",
+          headline: "Coupons management",
+          layout: "pair"
+        }
+      ]
     },
     {
       className: "campaign-story-section--sketches-stack",
       title: data.blocks[33].text,
-      text: data.blocks[34].text
+      textWithEmphasis: {
+        before: "A month after the redesign launched, we saw\u00a0a\u00a0",
+        emphasis: "decrease in the time it took to create a campaign and an increase in the number of active campaigns",
+        after: ". We also received positive feedback from users, some of which you can find\u00a0below."
+      },
+      feedbackQuotes: [
+        "I love this! It looks great and it’s so much easier to\u00a0navigate.",
+        "It is pretty much everything I could ask for when creating a campaign.",
+        "Creating a promotion feels much easier now. I can really create what I have in mind.",
+        "I have much more control over my promotions,\nwithout making the process complicated."
+      ]
     }
   ];
 
@@ -1020,7 +1148,7 @@ function renderStructuredCase(root, data, options) {
 
   const renderFigure = (block) => {
     if (!block || block.type !== "image") return "";
-    return `<figure><img src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}"></figure>`;
+    return `<figure><img src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ""}</figure>`;
   };
 
   const renderVideo = (block) => {
@@ -1044,6 +1172,29 @@ function renderStructuredCase(root, data, options) {
     const mediaMarkup = media.map(renderMediaItem).join("");
     if (!mediaMarkup) return "";
     return `<div class="campaign-story-media">${mediaMarkup}${afterText ? `<div class="campaign-story-after-text">${renderChapterText(afterText)}</div>` : ""}</div>`;
+  };
+
+  const renderScreenGallery = (screens = []) => {
+    if (!screens.length) return "";
+
+    return `
+      <section class="intent-design-screens" aria-label="Intent-Based Promotions design screens">
+        ${screens
+          .map(
+            (screen) => `
+              <figure class="intent-design-screen${screen.layout ? ` intent-design-screen--${escapeHtml(screen.layout)}` : ""}">
+                <figcaption>${escapeHtml(screen.headline || "Placeholder headline")}</figcaption>
+                <div class="intent-design-screen-media">
+                  ${(screen.images || [screen])
+                    .map((image) => `<img src="${localUrl(image.src)}" alt="${escapeHtml(image.alt)}">`)
+                    .join("")}
+                </div>
+              </figure>
+            `
+          )
+          .join("")}
+      </section>
+    `;
   };
 
   const renderMockupPager = (media = []) => {
@@ -1084,6 +1235,10 @@ function renderStructuredCase(root, data, options) {
 
   const renderChapterText = (chapter) => {
     if (chapter.textHtml) return `<div class="campaign-story-rich-text">${chapter.textHtml}</div>`;
+    if (chapter.textWithEmphasis) {
+      const { before = "", emphasis = "", after = "" } = chapter.textWithEmphasis;
+      return `<p>${escapeHtml(before)}<span class="impact-emphasis">${escapeHtml(emphasis)}</span>${escapeHtml(after)}</p>`;
+    }
     return chapter.text ? `<p>${withBreaks(chapter.text)}</p>` : "";
   };
 
@@ -1187,9 +1342,12 @@ function renderStructuredCase(root, data, options) {
                   ${chapter.title ? `<h2>${withInlineBreaks(chapter.title)}</h2>` : ""}
                   ${renderChapterText(chapter)}
                   ${renderChapterBullets(chapter.bullets)}
-                  ${chapter.mediaPlacement === "underText" ? renderMedia(chapter.media) : ""}
+                  ${chapter.feedbackQuotes ? `<div class="campaign-feedback-quotes">${chapter.feedbackQuotes.map((quote) => `<blockquote>&ldquo;${escapeHtml(quote).replaceAll("\n", "<br>")}&rdquo;</blockquote>`).join("")}</div>` : ""}
+                  ${chapter.underTextMedia ? renderMedia(chapter.underTextMedia) : chapter.mediaPlacement === "underText" ? renderMedia(chapter.media) : ""}
+                  ${chapter.underMediaText ? `<div class="campaign-story-under-media-copy">${chapter.underMediaTitle ? `<h2>${escapeHtml(chapter.underMediaTitle)}</h2>` : ""}<p>${withBreaks(chapter.underMediaText)}</p></div>` : ""}
                 </div>
-                ${chapter.mediaPlacement === "underText" ? "" : chapter.insightItems && chapter.listMode === "bullets" ? renderBulletInsightItems(chapter.insightItems) : chapter.insightItems ? renderInsightItems(chapter.insightItems) : chapter.mediaMode === "mockupPager" ? renderMockupPager(chapter.media) : renderMedia(chapter.media, chapter.afterText)}
+                ${chapter.underTextMedia ? renderMedia(chapter.media, chapter.afterText) : chapter.mediaPlacement === "underText" ? "" : chapter.insightItems && chapter.listMode === "bullets" ? renderBulletInsightItems(chapter.insightItems) : chapter.insightItems ? renderInsightItems(chapter.insightItems) : chapter.mediaMode === "mockupPager" ? renderMockupPager(chapter.media) : renderMedia(chapter.media, chapter.afterText)}
+                ${renderScreenGallery(chapter.screenGallery)}
               </section>
             `
           )
@@ -1292,3 +1450,10 @@ function setupScrollPlayVideos(root = document) {
 }
 
 renderCaseStudy();
+
+const caseBackLink = document.querySelector(".case-back-link--page");
+const caseHeroCopy = document.querySelector(".campaign-case-hero > div");
+
+if (caseBackLink && caseHeroCopy) {
+  caseHeroCopy.prepend(caseBackLink);
+}

@@ -5,37 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Blog | Eshbal Hezroni</title>
     <link rel="icon" href="../favicon.svg?v=white-favicon-v1" type="image/svg+xml">
-    <link rel="stylesheet" href="../styles.css?v=blog-desktop-emoji-nudge-v2">
+    <link rel="stylesheet" href="../styles.css?v=blog-mobile-heading-highlight-v103">
+    <script src="../site-nav.js?v=about-nav-scroll-v28" defer></script>
   </head>
-  <body id="top">
+  <body class="blog-page" id="top">
     <header class="site-header">
-      <a class="logo" href="../" aria-label="Eshbal home">
+      <a class="logo" href="../?intro=1" aria-label="Eshbal home">
         <span class="logo-mark">
           <img class="logo-default" src="../assets/logo.png" alt="Eshbal">
           <img class="logo-hover" src="../assets/logo-gradient.png" alt="" aria-hidden="true">
         </span>
       </a>
       <nav aria-label="Site">
-        <a href="../">Home</a>
+        <a href="../?intro=1">Intro</a>
+        <a href="../#selected-work">Work</a>
         <a class="active" href="../blog/">Blog</a>
         <a href="../about/">About</a>
       </nav>
     </header>
 
     <main>
-      <section class="intro blog-intro">
-        <h1 class="hero-title">
-          <span class="hero-lead">Welcome to my <span class="headline-keep">blog<span class="blog-emoji" aria-hidden="true">✍🏼</span></span></span>
-          <span class="hero-rest" aria-label="The place where I share my thoughts about design, working processes, and more.">
-            <span class="hero-line blog-subtitle-desktop">The place where I share my thoughts about</span>
-            <span class="hero-line blog-subtitle-desktop">design, working processes, and more.</span>
-            <span class="hero-line blog-subtitle-mobile">The place where I</span>
-            <span class="hero-line blog-subtitle-mobile">share my thoughts</span>
-            <span class="hero-line blog-subtitle-mobile">about design, working</span>
-            <span class="hero-line blog-subtitle-mobile">processes, and more.</span>
-          </span>
-        </h1>
-      </section>
+      <div class="content-intro-band">
+        <section class="intro blog-intro">
+          <h1 class="hero-title">
+            <span class="hero-lead"><span class="blog-heading-highlight">Welcome to <span class="blog-my">my <span class="headline-keep">blog</span></span></span></span>
+            <span class="hero-rest">
+              <span class="hero-line blog-subtitle">The place where I share my thoughts about design, working processes, and more.</span>
+            </span>
+          </h1>
+        </section>
+      </div>
+
+      <div class="content-transition" aria-hidden="true"></div>
 
       <section class="blog-list">
         <article class="blog-card">
@@ -137,6 +138,27 @@
       </div>
     </footer>
     <script>
+      document.querySelectorAll(".blog-card").forEach((card) => {
+        const articleLink = card.querySelector(".case-link");
+        if (!articleLink) return;
+
+        card.tabIndex = 0;
+        card.setAttribute("role", "link");
+        card.setAttribute("aria-label", `Open ${articleLink.closest("article")?.querySelector("h2")?.textContent.trim() || "blog article"}`);
+
+        card.addEventListener("click", (event) => {
+          if (!event.target.closest("a")) articleLink.click();
+        });
+
+        card.addEventListener("keydown", (event) => {
+          if (event.target.closest("a")) return;
+          if (event.key === "Enter" || event.key === " ") {
+            event.preventDefault();
+            articleLink.click();
+          }
+        });
+      });
+
       const updateHeroTone = () => {
         const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
         document.body.classList.toggle("is-scrolled", scrollTop > 24);
