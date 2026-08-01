@@ -39,7 +39,18 @@
   });
 
   nav.addEventListener("click", (event) => {
-    if (event.target.closest("a")) closeMenu();
+    const link = event.target.closest("a");
+    if (!link) return;
+
+    closeMenu();
+
+    // On compact screens, complete page-to-page navigation explicitly after
+    // closing the overlay menu. This keeps links such as About responsive.
+    const destination = new URL(link.href, window.location.href);
+    if (mobileMenuQuery.matches && destination.pathname !== window.location.pathname) {
+      event.preventDefault();
+      window.location.assign(destination.href);
+    }
   });
 
   window.addEventListener("keydown", (event) => {

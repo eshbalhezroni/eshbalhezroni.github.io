@@ -6,8 +6,8 @@
     <script>history.scrollRestoration = "manual";</script>
     <title>Home | Eshbal Hezroni</title>
     <link rel="icon" href="favicon.svg?v=white-favicon-v1" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=mobile-selected-work-visibility-v91">
-    <script src="site-nav.js?v=about-nav-scroll-v28" defer></script>
+    <link rel="stylesheet" href="styles.css?v=audience-word-wrap-v121">
+    <script src="site-nav.js?v=mobile-page-links-v29" defer></script>
   </head>
   <body class="home-page">
     <header class="site-header">
@@ -51,6 +51,7 @@
 
       <div class="home-work-area">
       <span class="work-scroll-anchor" id="selected-work" aria-hidden="true"></span>
+      <h2 class="work-heading"><span class="blog-heading-highlight">My Work</span></h2>
       <a class="case-row" href="varonis/" aria-label="Read the Varonis Account Pane case study">
         <div class="case-copy">
           <h2>Reimagining the Account Pane for a complex security platform</h2>
@@ -151,13 +152,13 @@
       const audienceMessages = {
         anyone: "I’m a product designer who gets excited about turning ideas into products that people use.",
         recruiters: "I’m a Senior Product Designer with 7+ years of experience creating meaningful, high\u2011impact digital products.",
-        directors: "I take ownership from concept through execution to post launch iteration. My strength is bringing clarity to complex problems.",
+        directors: "I take ownership from concept through\u00a0execution to post launch iteration. My strength is bringing clarity to complex problems.",
         designers: "I thrive in collaborative teams, where sharing ideas, giving thoughtful feedback, and learning from one another make the work stronger.",
         managers: "I partner closely with PMs to turn ambiguous problems into clear priorities, practical decisions, and products people want to use."
       };
 
       const desktopAudienceMessages = {
-        directors: "I take ownership from\nconcept through execution\nto post launch iteration.\nMy strength is bringing\nclarity to complex problems."
+        directors: "I take ownership from\nconcept through\u00a0execution\nto post launch iteration.\nMy strength is bringing\nclarity to complex problems."
       };
 
       const getAudienceMessage = (audience) =>

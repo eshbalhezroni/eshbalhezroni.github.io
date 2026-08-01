@@ -839,12 +839,40 @@ nav a:not(.active):focus-visible {
 }
 
 .home-page #selected-work {
-  scroll-margin-top: var(--home-menu-top);
+  scroll-margin-top: calc(var(--home-menu-top) - 3px);
 }
 
 .home-page .work-scroll-anchor {
   display: block;
   height: 0;
+}
+
+/* Work section heading follows the same typographic treatment as the Blog heading. */
+.home-page .work-heading {
+  color: #171717;
+  font-family: "Pridi Regular", Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 4.5vw, 64px);
+  font-weight: 400;
+  line-height: 1.04;
+  margin: 0 auto 28px;
+  max-width: var(--container);
+  transform: translateY(-3px);
+}
+
+.home-page .work-heading .blog-heading-highlight {
+  background-image: linear-gradient(#D5E5AB, #D5E5AB);
+}
+
+@media (max-width: 620px) {
+  .home-page .work-heading {
+    font-size: clamp(46px, 13vw, 64px);
+    margin-bottom: 20px;
+  }
+
+  /* Give every mobile audience message a more comfortable reading size. */
+  .home-page .intro h1 {
+    font-size: 60px;
+  }
 }
 
 .home-page .case-row:hover .case-link span,
@@ -4722,6 +4750,25 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   .has-mobile-menu.is-menu-open nav a:nth-child(4) { transition-delay: 245ms; }
 }
 
+/* Final home hero type scale override. */
+@media (min-width: 621px) {
+  .home-page .hero-lead {
+    font-family: "Pridi Regular", Georgia, "Times New Roman", serif;
+    font-size: clamp(52px, 4.5vw, 64px);
+    font-weight: 400;
+    line-height: 1.04;
+  }
+}
+
+@media (max-width: 620px) {
+  .home-page .hero-lead {
+    font-family: "Pridi Regular", Georgia, "Times New Roman", serif;
+    font-size: inherit;
+    font-weight: 400;
+    line-height: 1.04;
+  }
+}
+
 @media (min-width: 1281px) {
   .blog-page nav a:not(.active):hover,
   .blog-page nav a:not(.active):focus-visible,
@@ -5081,6 +5128,7 @@ body.blog-page.is-scrolled .logo {
   .home-page .hero-title.is-audience-selected .hero-rest {
     position: relative;
     top: 21px;
+    transform: translateY(-25px);
   }
 
   html body.home-page .intro {
@@ -5118,6 +5166,96 @@ body.blog-page.is-scrolled .logo {
   .home-page .hero-title.is-audience-selected .hero-rest {
     position: relative;
     top: 8px;
+    transform: translateY(-22px);
+  }
+}
+
+/* Selected audience messages replace the greeting at the same starting position. */
+.home-page .hero-title.is-audience-selected .hero-rest {
+  left: 0;
+  position: absolute !important;
+  top: 0 !important;
+  transform: none !important;
+  width: 100%;
+}
+
+@media (max-width: 620px) {
+  /* Match the selected audience message to the greeting's exact screen position. */
+  .home-page .hero-title.is-audience-selected {
+    transform: translateY(calc(-54px + var(--audience-layout-offset, 0px))) !important;
+  }
+
+  .home-page .hero-title.is-audience-selected .hero-rest {
+    transform: none !important;
+  }
+}
+
+/* Keep the greeting and the introductory message at the same typographic scale. */
+@media (min-width: 621px) {
+  .home-page .hero-lead {
+    font-size: clamp(52px, 4.5vw, 64px);
+    font-weight: 400;
+  }
+}
+
+@media (max-width: 620px) {
+  .home-page .hero-lead {
+    font-size: inherit;
+    font-weight: 400;
+  }
+}
+
+/* Final mobile audience type scale. This appears after the earlier mobile rules. */
+@media (max-width: 620px) {
+  .home-page .intro h1 {
+    font-size: 60px !important;
+    max-width: none;
+    width: 100%;
+  }
+
+  .home-page .hero-lead,
+  .home-page .audience-message,
+  .home-page .hero-rest,
+  .home-page .hero-line {
+    max-width: none;
+    white-space: normal;
+    width: 100%;
+  }
+}
+
+/* Keep mobile menu labels still after the menu opens. */
+@media (max-width: 620px) {
+  .has-mobile-menu.is-menu-open nav a,
+  .has-mobile-menu.is-menu-open body[data-case] nav a,
+  .has-mobile-menu.is-menu-open.home-page nav a {
+    animation: none !important;
+  }
+}
+
+/* Center and enlarge the mobile navigation labels. */
+@media (max-width: 620px) {
+  .has-mobile-menu nav,
+  .has-mobile-menu body[data-case] nav,
+  .has-mobile-menu.home-page nav {
+    align-items: flex-start;
+  }
+
+  .has-mobile-menu nav a,
+  .has-mobile-menu nav a.active,
+  .has-mobile-menu body[data-case] nav a,
+  .has-mobile-menu body[data-case] nav a.active,
+  .has-mobile-menu.home-page nav a,
+  .has-mobile-menu.home-page nav a.active {
+    font-size: 120px;
+    text-align: left;
+    transform: none;
+  }
+
+  .has-mobile-menu nav a:hover,
+  .has-mobile-menu nav a:focus-visible,
+  .has-mobile-menu nav a:active {
+    font-size: 120px !important;
+    transform: none;
   }
 }
 
