@@ -715,6 +715,25 @@ nav a:not(.active):focus-visible {
   transform: translateY(calc(clamp(-72px, -5.5vw, -44px) + var(--audience-layout-offset, 0px)));
 }
 
+/* Preserve a clear visual gap from the side menu on narrower desktop screens. */
+@media (min-width: 1281px) and (max-width: 1500px) {
+  html body.home-page.home-page .intro > * {
+    margin-left: clamp(120px, 10vw, 150px);
+  }
+
+  html body.home-page.home-page .intro > .home-work-link {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Keep the hamburger anchored to one right edge throughout the mobile-menu range. */
+@media (max-width: 1280px) {
+  html body.has-mobile-menu .menu-toggle {
+    right: 24px;
+  }
+}
+
 .home-page .hero-title {
   gap: 2px;
   position: relative;
@@ -4799,6 +4818,40 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   .has-mobile-menu.is-menu-open nav a:nth-child(2) { transition-delay: 135ms; }
   .has-mobile-menu.is-menu-open nav a:nth-child(3) { transition-delay: 190ms; }
   .has-mobile-menu.is-menu-open nav a:nth-child(4) { transition-delay: 245ms; }
+}
+
+/* Use the Intro's clear side-menu offset as the shared narrow-desktop content grid. */
+@media (min-width: 1281px) and (max-width: 1500px) {
+  :root {
+    --narrow-desktop-grid-left: calc(var(--container-edge) + clamp(120px, 10vw, 150px));
+  }
+
+  .home-page .work-heading,
+  .home-page .case-row,
+  .home-page .home-up-section,
+  .blog-page .blog-intro,
+  .blog-page .blog-list,
+  .blog-page .blog-up-section,
+  .about-page-body .about-page,
+  .about-page-body .creative-section,
+  body[data-case] .case-study-page,
+  body[data-case] .campaign-case-study,
+  body[data-case] > .case-back-link--page,
+  .footer-inner {
+    box-sizing: border-box;
+    margin-left: var(--narrow-desktop-grid-left);
+    margin-right: var(--container-edge);
+    max-width: none;
+    width: auto;
+  }
+
+  /* Keep every Work card's image column the same width in this grid. */
+  .home-page .case-row,
+  .home-page .case-row.reverse,
+  .home-page .intent-home-card,
+  .home-page .case-row.reverse.intent-home-card {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* Final mobile-only close state: this comes after tablet rules so it can animate out. */
