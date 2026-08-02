@@ -1,5 +1,39 @@
-/* Loaded after styles.css so the mobile menu hover state cannot be overridden. */
+/* Loaded after styles.css so interactive states cannot be overridden. */
+.up-link:hover,
+.up-link:focus-visible,
+.up-link:active {
+  border-color: #171717 !important;
+}
+
 @media (max-width: 620px) {
+  /* Case studies use the same mobile menu typography as the main site. */
+  body[data-case].has-mobile-menu nav a,
+  body[data-case].has-mobile-menu nav a.active {
+    font-size: 56px !important;
+    font-weight: 600 !important;
+    text-align: left;
+    transform: none !important;
+  }
+
+  body[data-case].has-mobile-menu.is-menu-open nav a {
+    opacity: 0.48;
+  }
+
+  body[data-case].has-mobile-menu.is-menu-open nav a.active {
+    opacity: 1;
+  }
+
+  /* Keep the open menu background flush with the live bottom edge of mobile screens. */
+  .has-mobile-menu.is-menu-open nav,
+  .has-mobile-menu.is-menu-open body[data-case] nav,
+  .has-mobile-menu.is-menu-open.home-page nav {
+    bottom: 0 !important;
+    height: 100dvh !important;
+    min-height: 100dvh !important;
+    position: fixed !important;
+    width: 100vw !important;
+  }
+
   .has-mobile-menu.is-menu-open nav a:hover,
   .has-mobile-menu.is-menu-open nav a:focus-visible,
   .has-mobile-menu.is-menu-open nav a:active {
@@ -11,11 +45,14 @@
 
   .home-page.has-mobile-menu.is-menu-open nav a:hover,
   .home-page.has-mobile-menu.is-menu-open nav a:focus-visible,
-  .home-page.has-mobile-menu.is-menu-open nav a:active,
+  .home-page.has-mobile-menu.is-menu-open nav a:active {
+    color: #193A3C !important;
+  }
+
   .blog-page.has-mobile-menu.is-menu-open nav a:hover,
   .blog-page.has-mobile-menu.is-menu-open nav a:focus-visible,
   .blog-page.has-mobile-menu.is-menu-open nav a:active {
-    color: #193A3C !important;
+    color: #171717 !important;
   }
 
   .about-page-body.has-mobile-menu.is-menu-open nav a:hover,

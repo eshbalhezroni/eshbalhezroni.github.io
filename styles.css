@@ -95,9 +95,9 @@
     background: #D5E5AB;
   }
 
-  .has-mobile-menu nav,
-  .has-mobile-menu body[data-case] nav,
-  .has-mobile-menu.home-page nav {
+  html body.has-mobile-menu nav,
+  html body.has-mobile-menu[data-case] nav,
+  html body.has-mobile-menu.home-page nav {
     opacity: 0;
     pointer-events: none;
     transform: translateY(-12px);
@@ -105,9 +105,9 @@
     visibility: hidden;
   }
 
-  .has-mobile-menu.is-menu-open nav,
-  .has-mobile-menu.is-menu-open body[data-case] nav,
-  .has-mobile-menu.is-menu-open.home-page nav {
+  html body.has-mobile-menu.is-menu-open nav,
+  html body.has-mobile-menu.is-menu-open[data-case] nav,
+  html body.has-mobile-menu.is-menu-open.home-page nav {
     opacity: 1;
     pointer-events: auto;
     transform: none;
@@ -758,6 +758,12 @@ nav a:not(.active):focus-visible {
   background: linear-gradient(#ffe24a, #ffe24a) 0 70% / 100% 22px no-repeat;
 }
 
+@media (max-width: 620px) {
+  .audience-highlight {
+    background-size: 100% 16px;
+  }
+}
+
 .home-audience {
   color: #193A3C;
   display: flex;
@@ -842,10 +848,9 @@ nav a:not(.active):focus-visible {
   scroll-margin-top: calc(var(--home-menu-top) - 3px);
 }
 
-/* On desktop, align the Work anchor with the About creative-work anchor. */
 @media (min-width: 621px) {
-  .home-page #selected-work {
-    scroll-margin-top: 20px;
+  .about-page-body #creative-work {
+    scroll-margin-top: 128px;
   }
 }
 
@@ -1111,7 +1116,7 @@ nav a:not(.active):focus-visible {
 }
 
 .footer-divider {
-  background: var(--line);
+  background: rgba(23, 23, 23, 0.12);
   height: 1px;
   margin: 0 0 24px;
   width: 100%;
@@ -1540,12 +1545,14 @@ nav a:not(.active):focus-visible {
 }
 
 .about-page-body .creative-section h2 {
-  border-bottom: 1px solid rgba(23, 23, 23, 0.35);
+  border-bottom: 0;
   color: #171717;
-  font-family: "Pridi", Georgia, "Times New Roman", serif;
+  font-family: "Pridi Regular", Georgia, "Times New Roman", serif;
+  font-size: clamp(52px, 4.5vw, 64px);
   font-weight: 400;
+  line-height: 1.04;
   margin-bottom: 30px;
-  padding-bottom: 8px;
+  padding-bottom: 0;
 }
 
 .about-page-body .image-gallery img {
@@ -3645,6 +3652,14 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   float: none;
 }
 
+/* Match the Work page's desktop Up spacing to the other pages. */
+@media (min-width: 621px) {
+  .home-page .home-up-section {
+    margin-bottom: 0;
+    margin-top: -64px;
+  }
+}
+
 @media (max-width: 900px) {
   body {
     padding-top: 0;
@@ -4574,6 +4589,7 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
 
   .campaign-case-hero h1 {
     font-size: clamp(30px, 8.6vw, 42px);
+    margin-bottom: 12px;
   }
 
   .campaign-case-hero figure {
@@ -4739,6 +4755,13 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
     font-size: 31px;
   }
 
+  /* Keep each case-study paragraph close to its section heading on mobile. */
+  body[data-case] .campaign-story-copy h2,
+  body[data-case] .campaign-story-heading-block h2,
+  body[data-case] .campaign-story-under-media-copy h2 {
+    margin-bottom: 4px;
+  }
+
   .footer-bottom {
     align-items: flex-start;
     flex-direction: column;
@@ -4776,6 +4799,76 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   .has-mobile-menu.is-menu-open nav a:nth-child(2) { transition-delay: 135ms; }
   .has-mobile-menu.is-menu-open nav a:nth-child(3) { transition-delay: 190ms; }
   .has-mobile-menu.is-menu-open nav a:nth-child(4) { transition-delay: 245ms; }
+}
+
+/* Final mobile-only close state: this comes after tablet rules so it can animate out. */
+@media (max-width: 620px) {
+  html body.has-mobile-menu nav,
+  html body.has-mobile-menu[data-case] nav,
+  html body.has-mobile-menu.home-page nav {
+    transform: translateY(-12px);
+    transition: opacity 240ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 300ms;
+  }
+
+  html body.has-mobile-menu.is-menu-open nav,
+  html body.has-mobile-menu.is-menu-open[data-case] nav,
+  html body.has-mobile-menu.is-menu-open.home-page nav {
+    transform: translateY(0);
+    transition-delay: 0s;
+  }
+}
+
+/* Give the mobile Up control the same breathing room above and below everywhere. */
+@media (max-width: 620px) {
+  .up-link {
+    float: none;
+    margin: 0;
+  }
+
+  .home-up-section,
+  .blog-up-section {
+    display: flex;
+    justify-content: flex-end;
+    margin: 0 auto;
+    padding-block: 20px;
+  }
+
+  .about-page-body .creative-section > .up-link,
+  .case-study-page > .up-link,
+  .campaign-case-study > .up-link {
+    display: flex;
+    margin: 20px 0;
+    margin-left: auto;
+    width: fit-content;
+  }
+
+  /* Case studies have extra end-of-section spacing; balance it around Up. */
+  .campaign-case-story > .campaign-story-section:last-child {
+    padding-bottom: 20px;
+  }
+
+  .campaign-case-study > .more-to-explore,
+  .case-study-page > .more-to-explore {
+    margin-top: 20px;
+  }
+
+  body[data-case] .campaign-case-study > .more-to-explore {
+    margin-top: 35px;
+  }
+
+  body.blog-page .blog-up-section {
+    padding-top: 35px;
+    padding-bottom: 20px;
+  }
+
+  .about-page-body .creative-section > .up-link {
+    margin-top: 25px;
+    margin-bottom: 20px;
+  }
+
+  .about-page-body .creative-section {
+    margin-bottom: 20px;
+  }
 }
 
 /* Final mobile menu hover override: must remain after the faded-link rules above. */
@@ -5402,6 +5495,23 @@ body.blog-page.is-scrolled .logo {
 }
 
 @media (max-width: 620px) {
+  .about-page-body .about-page {
+    padding-bottom: 32px !important;
+  }
+
+  .about-page-body .content-transition {
+    height: 40px;
+  }
+
+  .about-page-body .creative-section h2 {
+    margin-bottom: 30px;
+    transform: none;
+  }
+
+  .about-page-body .creative-section {
+    margin-top: -30px;
+  }
+
   .has-mobile-menu.blog-page nav {
     background: #fff;
   }
@@ -5476,7 +5586,7 @@ body.blog-page.is-scrolled .logo {
 
   .about-page-body .about-media {
     max-width: 320px;
-    transform: none;
+    transform: translateY(-18px);
   }
 
   .about-page-body .creative-section {
@@ -5632,6 +5742,23 @@ body.blog-page.is-scrolled .logo {
     position: absolute;
     top: 12px;
     z-index: 1003;
+  }
+}
+
+/* Final mobile-only close state: this comes after tablet rules so it can animate out. */
+@media (max-width: 620px) {
+  .has-mobile-menu nav,
+  .has-mobile-menu body[data-case] nav,
+  .has-mobile-menu.home-page nav {
+    transform: translateY(-12px);
+    transition: opacity 240ms ease, transform 300ms cubic-bezier(0.22, 1, 0.36, 1), visibility 0s linear 300ms;
+  }
+
+  .has-mobile-menu.is-menu-open nav,
+  .has-mobile-menu.is-menu-open body[data-case] nav,
+  .has-mobile-menu.is-menu-open.home-page nav {
+    transform: translateY(0);
+    transition-delay: 0s;
   }
 }
 
