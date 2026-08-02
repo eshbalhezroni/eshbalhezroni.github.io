@@ -4820,6 +4820,21 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   .has-mobile-menu.is-menu-open nav a:nth-child(4) { transition-delay: 245ms; }
 }
 
+/* Final mobile About adjustments: these must follow the general mobile rules. */
+@media (max-width: 620px) {
+  .about-page-body .about-copy h1 {
+    margin-bottom: 18px;
+  }
+
+  .about-page-body .creative-section h2 {
+    font-size: 40px;
+  }
+
+  .about-page-body .creative-section:not(#creative-work) {
+    margin-top: 50px;
+  }
+}
+
 /* Use the Intro's clear side-menu offset as the shared narrow-desktop content grid. */
 @media (min-width: 1281px) and (max-width: 1500px) {
   :root {
@@ -5629,7 +5644,7 @@ body.blog-page.is-scrolled .logo {
 
   .about-page-body .about-copy h1 {
     font-size: clamp(48px, 13.5vw, 66px);
-    margin-bottom: 10px;
+    margin-bottom: 18px;
   }
 
   .about-page-body .about-copy p {
