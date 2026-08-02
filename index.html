@@ -153,6 +153,7 @@
       const workNavLink = document.querySelector("#work-nav-link");
       const selectedWork = document.querySelector("#selected-work");
       let heroToneTicking = false;
+      let audienceLayoutWidth = window.innerWidth;
 
       introNavLink?.addEventListener("click", (event) => {
         event.preventDefault();
@@ -241,6 +242,8 @@
         const intro = document.querySelector(".home-page .intro");
         if (!intro || !homeAudience || !heroTitle || !audienceMessage) return;
 
+        const usesSelectedLayout = heroTitle.classList.contains("is-audience-selected");
+        heroTitle.classList.remove("is-audience-selected");
         intro.style.removeProperty("--audience-layout-offset");
         heroTitle.style.minHeight = "";
         const startingTop = homeAudience.getBoundingClientRect().top;
@@ -253,6 +256,7 @@
 
         renderAudienceMessage(activeAudience);
         heroTitle.style.minHeight = `${Math.ceil(tallestTitle)}px`;
+        heroTitle.classList.toggle("is-audience-selected", usesSelectedLayout);
         const offset = startingTop - homeAudience.getBoundingClientRect().top;
         intro.style.setProperty("--audience-layout-offset", `${Math.round(offset)}px`);
       };
@@ -291,7 +295,11 @@
       window.addEventListener("scroll", requestHeroToneUpdate, { passive: true });
       homeAudience?.addEventListener("scroll", requestAudienceFadeUpdate, { passive: true });
       window.addEventListener("resize", () => {
-        stabilizeAudienceLayout();
+        const nextLayoutWidth = window.innerWidth;
+        if (Math.abs(nextLayoutWidth - audienceLayoutWidth) > 1) {
+          audienceLayoutWidth = nextLayoutWidth;
+          stabilizeAudienceLayout();
+        }
         requestAudienceFadeUpdate();
       });
       window.addEventListener("load", () => {
