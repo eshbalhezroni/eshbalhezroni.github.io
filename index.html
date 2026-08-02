@@ -6,7 +6,7 @@
     <script>history.scrollRestoration = "manual";</script>
     <title>Home | Eshbal Hezroni</title>
     <link rel="icon" href="favicon.svg?v=white-favicon-v1" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=menu-icon-edge-v198">
+    <link rel="stylesheet" href="styles.css?v=mobile-intro-height-v210">
     <link rel="stylesheet" href="mobile-menu-hover.css?v=4">
     <script src="site-nav.js?v=mobile-about-link-v31" defer></script>
   </head>
@@ -152,8 +152,18 @@
       const introNavLink = document.querySelector("#intro-nav-link");
       const workNavLink = document.querySelector("#work-nav-link");
       const selectedWork = document.querySelector("#selected-work");
+      const introSection = document.querySelector(".home-page .intro");
       let heroToneTicking = false;
       let audienceLayoutWidth = window.innerWidth;
+
+      const updateMobileIntroHeight = () => {
+        if (!introSection) return;
+        if (window.matchMedia("(max-width: 620px)").matches) {
+          introSection.style.setProperty("--mobile-intro-height", `${window.innerHeight}px`);
+        } else {
+          introSection.style.removeProperty("--mobile-intro-height");
+        }
+      };
 
       introNavLink?.addEventListener("click", (event) => {
         event.preventDefault();
@@ -239,7 +249,7 @@
       };
 
       const stabilizeAudienceLayout = () => {
-        const intro = document.querySelector(".home-page .intro");
+        const intro = introSection;
         if (!intro || !homeAudience || !heroTitle || !audienceMessage) return;
 
         const usesSelectedLayout = heroTitle.classList.contains("is-audience-selected");
@@ -286,6 +296,7 @@
         requestAnimationFrame(updateHeroTone);
       };
 
+      updateMobileIntroHeight();
       updateHeroTone();
       requestAnimationFrame(stabilizeAudienceLayout);
       requestAnimationFrame(updateAudienceFades);
@@ -298,6 +309,7 @@
         const nextLayoutWidth = window.innerWidth;
         if (Math.abs(nextLayoutWidth - audienceLayoutWidth) > 1) {
           audienceLayoutWidth = nextLayoutWidth;
+          updateMobileIntroHeight();
           stabilizeAudienceLayout();
         }
         requestAudienceFadeUpdate();

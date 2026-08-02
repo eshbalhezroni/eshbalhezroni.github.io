@@ -4002,7 +4002,7 @@ body[data-case="journey"] .campaign-story-media figure:has(img[src*="map-flow-cl
   }
 
   .home-page .intro {
-    min-height: calc(100svh - 18px);
+    min-height: calc(var(--mobile-intro-height, 100svh) - 18px);
     padding: 92px 0 48px;
     position: relative;
     top: -80px;
