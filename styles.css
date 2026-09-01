@@ -2953,7 +2953,8 @@ body[data-case="activations"] .campaign-case-brief h2 {
 .account-mockup-pager-viewport {
   aspect-ratio: 16 / 9;
   border-radius: 0;
-  overflow: hidden;
+  overflow: clip;
+  overflow-clip-margin: 2px;
 }
 
 .account-mockup-pager-track {
@@ -3233,6 +3234,19 @@ body[data-case="intent"] .campaign-story-section--final-delivery .intent-design-
 
 .intent-design-screen--trigger-modals figcaption {
   white-space: nowrap;
+}
+
+@media (min-width: 701px) {
+  .intent-design-screen--trigger-modals .intent-design-screen-media {
+    grid-template-columns: 1fr;
+  }
+
+  .intent-design-screen--trigger-modals img {
+    justify-self: center;
+    transform: translateX(23px);
+    width: 88%;
+  }
+
 }
 
 .intent-design-screen--integration-stack .intent-design-screen-media {
