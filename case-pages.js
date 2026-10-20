@@ -699,7 +699,7 @@ function renderIntentCase(root, data) {
     {
       className: "intent-first-release-section campaign-story-section--copy-left",
       title: "First Release",
-      text: "The campaign creation flow was built around short, focused steps. Users started by selecting their goal, promotion type, and brand color, then saw all templates in that color, making it easier to imagine each promotion on their own site.\n\nAs we observed users moving back and forth between steps, we realized the flow was not saving as much time as it could. In later iterations, we combined several steps to create a more fluid campaign-building\u00a0experience.\n\nMany users saved campaigns as drafts instead of publishing them. One reason was limited control over the promotion design. In later iterations, we added more customization capabilities, allowing users to adjust colors, sizes, and fonts to create promotions that better matched their brand.",
+      text: "The campaign creation flow was built around short, focused steps. Users started by selecting their goal, promotion type, and brand color, then saw all templates in that color, making it easier to imagine each promotion on their own site.\n\nAs we observed users moving back and forth between steps, we realized the flow was not saving as much time as it could. In later iterations, we combined several steps to create a more fluid campaign-building\u00a0experience.",
       media: [
         { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 11.59.44 AM.png", "First release campaign creation flow"), caption: "First Release" }
       ]
