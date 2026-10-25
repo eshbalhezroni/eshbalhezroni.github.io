@@ -2783,3 +2783,12 @@ body[data-case="varonis"] .campaign-case-hero > div:first-child,body[data-case="
 body[data-case="intent"] .campaign-case-hero figure,body[data-case="campaigns"] .campaign-case-hero figure,body[data-case="journey"] .campaign-case-hero figure{aspect-ratio:auto;height:420px;min-height:420px}
 @media (max-width:900px){body[data-case="intent"] .campaign-case-hero figure,body[data-case="campaigns"] .campaign-case-hero figure,body[data-case="journey"] .campaign-case-hero figure{height:320px;min-height:320px}}
 @media (max-width:620px){body[data-case="intent"] .campaign-case-hero figure,body[data-case="campaigns"] .campaign-case-hero figure,body[data-case="journey"] .campaign-case-hero figure{height:220px;min-height:220px}}
+
+/* impact (desktop): the quotes are centred against the data on the left, not against the title + data together */
+@media (min-width:901px){
+.ibp-impact-section{row-gap:0;align-items:start}
+.ibp-impact-section .campaign-story-copy{display:contents}
+.ibp-impact-section .campaign-story-copy > h2{grid-column:1;grid-row:1}
+.ibp-impact-section .campaign-story-copy > .campaign-story-rich-text{grid-column:1;grid-row:2}
+.ibp-impact-section .campaign-story-media{grid-column:2;grid-row:2;align-self:center;margin-top:24px}
+}
