@@ -161,6 +161,8 @@ nav a,.logo,.word,.film .arw{-webkit-tap-highlight-color:transparent}
 .gd-ht{display:flex;align-items:baseline;gap:8px;flex:1;min-width:0}
 .gd-cnt{font:400 13px var(--body);color:var(--ink2);font-variant-numeric:tabular-nums}
 @media (prefers-reduced-motion:reduce){.gd,.gd-veil{transition:opacity .15s linear,visibility 0s linear .15s!important}.gd-stage img{transition:none!important}.gd{transform:translate(-50%,-50%)!important}}
+/* phones: a quick double tap on the gallery arrows no longer zooms the page (pinch still works) */
+html,.gd,.gd button,.gd-veil{touch-action:manipulation}
 /* phones: the first icon card sits 40px under the page title, the same on Work, Blog and About */
 @media (max-width:600px){.head{margin-bottom:40px}}
 </style>

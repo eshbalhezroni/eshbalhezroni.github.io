@@ -1394,7 +1394,7 @@ function setupIbpPagers(root = document) {
     };
     pager.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", (e) => { e.stopPropagation(); show(Number(pager.dataset.index) + Number(b.dataset.dir)); }));
     dots.forEach((d) => d.addEventListener("click", () => show(Number(d.dataset.go))));
-    pager.querySelector(".ibp-pager-view").addEventListener("click", () => show(Number(pager.dataset.index) + 1));
+    pager.querySelector(".ibp-pager-view").addEventListener("click", () => { if (matchMedia("(max-width:700px)").matches) return; show(Number(pager.dataset.index) + 1); });
   });
 }
 
@@ -1503,4 +1503,54 @@ if (caseBackLink && caseHeroCopy) {
 (function () {
   const hero = document.querySelector("#case-root .campaign-case-hero img");
   if (hero) hero.fetchPriority = "high";
+})();
+
+/* phones: tap a picture to open it on its own, full screen. Tap anywhere, the X or Escape closes it; pinch to zoom works inside. */
+(function () {
+  const root = document.getElementById("case-root");
+  if (!root) return;
+  const phone = matchMedia("(max-width:700px)");
+  let box, view, closeBtn, opener;
+  const build = () => {
+    box = document.createElement("div");
+    box.className = "case-lightbox";
+    box.setAttribute("role", "dialog");
+    box.setAttribute("aria-modal", "true");
+    box.setAttribute("aria-label", "Picture");
+    box.hidden = true;
+    box.innerHTML = '<button type="button" class="case-lightbox-x" aria-label="Close picture"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg></button><img alt="">';
+    document.body.appendChild(box);
+    view = box.querySelector("img");
+    closeBtn = box.querySelector("button");
+    box.addEventListener("click", close);
+  };
+  const open = (img) => {
+    if (!box) build();
+    opener = document.activeElement;
+    view.src = img.currentSrc || img.src;
+    view.alt = img.alt || "";
+    box.setAttribute("aria-label", img.alt || "Picture");
+    box.hidden = false;
+    document.documentElement.classList.add("case-lightbox-open");
+    requestAnimationFrame(() => box.classList.add("on"));
+    closeBtn.focus({ preventScroll: true });
+  };
+  const close = () => {
+    if (!box || box.hidden) return;
+    box.classList.remove("on");
+    box.hidden = true;
+    view.removeAttribute("src");
+    document.documentElement.classList.remove("case-lightbox-open");
+    if (opener && opener.focus) opener.focus({ preventScroll: true });
+  };
+  root.addEventListener("click", (e) => {
+    if (!phone.matches) return;
+    const img = e.target.closest && e.target.closest("img");
+    if (!img || !root.contains(img)) return;
+    if (img.closest("a, button") || img.getAttribute("aria-hidden") === "true" || img.matches(".campaign-brief-icon")) return;
+    if (img.classList.contains("ibp-pager-img") && !img.classList.contains("is-active")) return;
+    open(img);
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") close(); });
+  phone.addEventListener("change", close);
 })();
