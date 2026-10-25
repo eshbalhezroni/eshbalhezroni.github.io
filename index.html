@@ -1,323 +1,230 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script>history.scrollRestoration = "manual";</script>
-    <title>Home | Eshbal Hezroni</title>
-    <link rel="icon" href="favicon.svg?v=white-favicon-v1" type="image/svg+xml">
-    <link rel="stylesheet" href="styles.css?v=mobile-intro-height-v210">
-    <link rel="stylesheet" href="mobile-menu-hover.css?v=4">
-    <script src="site-nav.js?v=mobile-about-link-v31" defer></script>
-  </head>
-  <body class="home-page" id="top">
-    <header class="site-header">
-      <a class="logo" href="./" aria-label="Eshbal home">
-        <span class="logo-mark">
-          <img class="logo-default" src="assets/logo.png" alt="Eshbal">
-          <img class="logo-hover" src="assets/logo-gradient.png" alt="" aria-hidden="true">
-        </span>
-      </a>
-      <nav aria-label="Site">
-        <a class="active" id="intro-nav-link" href="#intro">Intro</a>
-        <a id="work-nav-link" href="#selected-work">Work</a>
-        <a href="blog/">Blog</a>
-        <a href="about/">About</a>
-      </nav>
-    </header>
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<script>document.documentElement.lang="en"</script>
+<link rel="stylesheet" href="menu.css">
+<script src="menu.js"></script>
+<style>
+/* touch: no grey tap flash; the press state below gives the feedback instead */
+nav a,.logo,.cta,.reset{-webkit-tap-highlight-color:transparent}
+</style>
+<title>Eshbal Hezroni | Senior Product Designer</title>
+<meta name="description" content="Eshbal Hezroni is a Senior Product Designer with 7+ years of experience creating complex SaaS platforms.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Eshbal Hezroni | Senior Product Designer">
+<meta property="og:description" content="Eshbal Hezroni is a Senior Product Designer with 7+ years of experience creating complex SaaS platforms.">
+<meta property="og:site_name" content="Eshbal Hezroni">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Eshbal Hezroni | Senior Product Designer">
+<meta name="twitter:description" content="Eshbal Hezroni is a Senior Product Designer with 7+ years of experience creating complex SaaS platforms.">
+<!-- og:image / twitter:image (1200x630, absolute URL) go here once the site has its own address --><script>
+/* page changes: (1) warm the next page: when a link is pointed at, fetch it quietly so the click lands on a page that is already there. (2) if you click or press a key while a page change is running, the animation is skipped, so the page never feels like it is waiting for the fade. */
+(()=>{const seen=new Set(),warm=u=>{if(seen.has(u))return;seen.add(u);const l=document.createElement('link');l.rel='prefetch';l.href=u;document.head.appendChild(l)};
+addEventListener('pointerover',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(a&&a.origin===location.origin&&!a.hash&&a.target!=='_blank'&&a.href!==location.href)warm(a.href)},{passive:true});
+const skipOnInput=e=>{const vt=e.viewTransition;if(!vt)return;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,()=>vt.skipTransition(),{once:true}))};
+addEventListener('pageswap',skipOnInput);addEventListener('pagereveal',skipOnInput)})();
+</script>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap">
+<style>
+/* Layout: one full-screen hero. The pattern fills the screen; the name card sits bottom-left; glass menu pills top-right.
+   Deliberately single-theme: warm paper. */
+:root{--paper:#F9F9F8;--card:#FDFDFC;--ink:#1D1B18;--ink2:#5D584F;
+  --grot:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;--body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+.hero{position:relative;height:100%;min-height:560px;overflow:hidden}
+canvas.k{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:crosshair;touch-action:none}
+nav{position:absolute;top:calc(34px + env(safe-area-inset-top,0px));left:clamp(16px,3vw,40px);z-index:4;display:grid;gap:12px;justify-items:start}
+nav a{font:700 24px/1 var(--grot);letter-spacing:-.015em;color:var(--ink);text-decoration:none;padding:11px 18px 12px;border-radius:99px;background:rgba(249,249,248,.72);transition:color .15s}
+@media (hover:hover){nav a:hover{color:#A85A12}}
+.card{position:absolute;left:clamp(16px,3vw,40px);bottom:clamp(16px,4vh,40px);z-index:3;background:rgba(253,253,252,.38);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:28px 32px 26px;border-radius:6px;box-shadow:0 1px 0 rgba(0,0,0,.05),0 14px 40px rgba(40,25,5,.16);max-width:min(560px,calc(100% - 32px));pointer-events:none}
+.card h1{font:700 clamp(54px,7vw,88px)/.88 var(--grot);letter-spacing:-.035em;margin:0 0 8px}
+.card h1 .hi{display:block;font-size:.42em;font-weight:500;letter-spacing:-.02em;margin-bottom:.12em}
+.card h1 .me{display:block;white-space:nowrap}
+.card p{color:var(--ink2);margin:0 0 20px;font-size:17px;line-height:1.32;max-width:34ch;text-wrap:pretty}
+.cta{pointer-events:auto;min-height:44px;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);font:500 15px var(--body);padding:12px 20px;border-radius:99px;text-decoration:none;transition:background-color .18s ease,transform .18s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover){.cta:hover{background:#A85A12}}
+.cta .arr{display:block;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover){.cta:hover .arr{transform:translateX(3px)}}
+.cta:active{transform:scale(.97)}
+a:focus-visible{outline:2px solid #A85A12;outline-offset:3px}
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){.card h1{font-size:50px}.card{padding:22px 22px 20px}.card p{font-size:16px}nav{top:calc(16px + env(safe-area-inset-top,0px));gap:8px}nav a{font-size:19px;padding:9px 12px 10px}}
+.reset{min-height:44px;position:absolute;right:clamp(16px,3vw,32px);bottom:clamp(16px,4vh,40px);z-index:4;font:500 14px var(--body);color:var(--ink);background:rgba(249,249,248,.32);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:0;padding:9px 16px;border-radius:99px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
+.reset.on{opacity:1;visibility:visible;transition:opacity .25s ease}
+@media (hover:hover){.reset:hover{color:#A85A12}}
+/* one soft pulse in #A85A12 when Reset first appears; never repeats */
+.reset.on::after{content:"";position:absolute;inset:0;border-radius:99px;box-shadow:0 0 0 0 rgba(168,90,18,.55);animation:pulse .9s ease-out .15s 1;pointer-events:none}
+@keyframes pulse{to{box-shadow:0 0 0 14px rgba(168,90,18,0)}}
+@media (prefers-reduced-motion:reduce){.reset.on::after{animation:none}}
+.reset:focus-visible{outline:2px solid #A85A12;outline-offset:3px}
+/* hint: tells visitors the pattern is clickable. Same corner and glass as Reset; it fades out (250ms) once the first ring is added, and Reset fades in in its place. */
+.hint{position:absolute;right:clamp(16px,3vw,32px);bottom:clamp(16px,4vh,40px);z-index:4;font:500 14px var(--body);color:var(--ink);background:rgba(249,249,248,.32);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:9px 16px;border-radius:99px;pointer-events:none;opacity:1;visibility:visible;transition:opacity .25s ease}
+.hint.off{opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
+@media (prefers-reduced-motion:reduce){.cta,.cta .arr,.reset,.hint{transition:none}}
+/* quiet edge: a paper band down the left edge fades into the pattern, so the logo and menu sit on calm ground. The menu words have no pill behind them. */
+.edge{position:absolute;left:0;top:0;bottom:0;width:clamp(180px,17vw,260px);z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(249,249,248,.96) 0,rgba(249,249,248,.88) 50%,rgba(249,249,248,0) 100%)}
+nav a{background:transparent}
+/* logo, top left: smaller, its left edge in line with the menu words (pill padding 18px), the menu a little lower. */
+.logo{position:absolute;top:calc(32px + env(safe-area-inset-top,0px));left:calc(clamp(16px,3vw,40px) + 18px);z-index:5;display:block;line-height:0;border-radius:4px}
+.logo span{height:34px;aspect-ratio:446/448;display:block;background:#35332F;-webkit-mask:url(logo.svg) center/contain no-repeat;mask:url(logo.svg) center/contain no-repeat;transition:background-color .15s}
+.logo:focus-visible span{background:#A85A12}@media (hover:hover){.logo:hover span{background:#A85A12}}
+@media (prefers-reduced-motion:reduce){.logo span{transition:none}}
+nav{top:calc(88px + env(safe-area-inset-top,0px))}
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){.logo{top:calc(14px + env(safe-area-inset-top,0px));left:calc(16px + 12px)}.logo span{height:30px}nav{top:calc(64px + env(safe-area-inset-top,0px))}}
+/* page changes: a quick cross-fade (180ms) so the move registers without holding anything up. Old and new fade on the same curve, so together they stay at full strength (no dip, no flash). Nothing slides; the menu and logo are in the same place on every page, so they stay put. Browsers without cross-document view transitions just change page instantly. With reduced motion there is no fade. */
+@view-transition{navigation:auto}
+::view-transition{background:#F9F9F8}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s;animation-timing-function:ease-out}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+/* the page has the same width with or without a scrollbar, so nothing shifts sideways when you arrive on a longer page */
+html{scrollbar-gutter:stable}
+/* phones: the hint (and Reset, in the same place) sits just above the name card, on the card's left edge; --card-h is the card's real height, set below */
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){.hint,.reset{top:auto;right:auto;left:max(16px,calc(50% - 280px));bottom:calc(clamp(16px,4vh,40px) + var(--card-h,241px) + 12px);font-weight:400}}
+/* phones: the menu is no longer on the left, so the paper fade down the left edge goes, and the name card is centred with equal space on both sides */
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){.edge{display:none}.card{left:50%;right:auto;transform:translateX(-50%);width:calc(100% - 32px);max-width:560px}.card p{max-width:none}}
+/* hint and Reset: a broad band of light, like a reflection on glass, glides across the chip background every few seconds, then rests */
+@keyframes sheen{0%{background-position:130% 0}36%,100%{background-position:-30% 0}}
+.hint,.reset{background-color:rgba(249,249,248,.72);background-image:linear-gradient(110deg,rgba(249,249,248,0) 30%,rgba(255,255,255,1) 50%,rgba(249,249,248,0) 70%);background-size:260% 100%;background-repeat:no-repeat;animation:sheen 4.2s ease-in-out infinite;box-shadow:0 1px 8px rgba(40,25,5,.12),inset 0 0 0 1px rgba(255,255,255,.55)}
+@media (prefers-reduced-motion:reduce){.hint,.reset{animation:none;background-image:none}}
+/* hint and Reset as a "tape": a band that grows out of the screen edge (right edge on desktop, left edge on phones), rounded only on its free end, so it reads as an instruction and not as a button */
+.hint,.reset{right:0;border-radius:99px 0 0 99px;padding:9px 26px 9px 20px}
+.reset.on::after{display:none}
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){.hint,.reset{left:0;right:auto;border-radius:0 99px 99px 0;padding:9px 26px 9px 20px}}
+/* one band for both states: it keeps its height and simply grows or shrinks between the long hint and "Reset" while the words cross-fade */
+.tape{position:absolute;z-index:4;right:0;bottom:clamp(16px,4vh,40px);display:grid;overflow:hidden;border-radius:6px 0 0 6px;pointer-events:none;background-color:#F9F9F8;background-image:linear-gradient(110deg,rgba(255,255,255,0) 24%,rgba(255,255,255,.55) 38%,rgba(255,255,255,1) 50%,rgba(255,255,255,.55) 62%,rgba(255,255,255,0) 76%);background-size:260% 100%;background-repeat:no-repeat;animation:sheen 4.2s ease-in-out infinite;box-shadow:0 1px 8px rgba(40,25,5,.12);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.tape.ready{transition:width .55s cubic-bezier(.23,1,.32,1),opacity .3s ease}
+.tape .hint,.tape .reset{position:static;grid-area:1/1;justify-self:start;white-space:nowrap;background:none;box-shadow:none;animation:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0;padding:9px 26px 9px 20px;min-height:0;font:400 14px/1.3 var(--body);color:var(--ink2);border:0}
+.tape .reset.on{pointer-events:auto}
+@media (hover:hover){.tape .reset:hover{color:#805C00}}
+/* the old words leave first, the new words arrive while the band is already changing width, so they never overlap */
+.tape .hint{transition:opacity .22s ease .2s,visibility 0s}
+.tape .hint.off{transition:opacity .12s ease,visibility 0s linear .12s}
+.tape .reset{transition:opacity .12s ease,visibility 0s linear .12s}
+.tape .reset.on{transition:opacity .22s ease .2s,visibility 0s}
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){.tape{right:0;left:auto;bottom:calc(clamp(16px,4vh,40px) + var(--card-h,241px) + 12px)}.tape .hint,.tape .reset{font:400 14px/1.3 var(--body)}}
+@media (prefers-reduced-motion:reduce){.tape{animation:none;background-image:none}.tape.ready{transition:none}.tape .hint,.tape .reset{transition:none!important}}
+/* phones: the intro sentence fits on two lines (its size follows the screen width) */
+@media (max-width:600px){.card{padding:20px 18px 18px}.card p{font-size:clamp(12px,3.7vw,15px);line-height:1.32;text-wrap:balance}}
+/* phones: Reset is a small box next to the menu box (same glass as the name card), shown once there are rings; the band then only carries the one-time sentence */
+.topreset{display:none}
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){.topreset{display:grid;position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:76px;z-index:51;width:44px;height:44px;padding:0;border:0;border-radius:6px;background:rgba(253,253,252,.38);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.05),0 8px 22px rgba(40,25,5,.14);place-items:center;color:var(--ink);cursor:pointer;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s;-webkit-tap-highlight-color:transparent}.topreset.on{opacity:1;visibility:visible;transition:opacity .25s ease}html.mm-open .topreset{display:none}.topreset:focus-visible{outline:2px solid #A85A12;outline-offset:2px}}
+@media (prefers-reduced-motion:reduce){.topreset{transition:none!important}}
+/* phones held sideways: the screen is short, so the page fits it (no minimum height) and the name card is compact: Hello, and the name on one line, a shorter intro */
+@media (max-height:500px) and (orientation:landscape){.hero{min-height:0}.card{padding:14px 20px 16px}.card h1{font-size:42px;margin-bottom:6px}.card h1 .hi{display:inline;font-size:.55em;margin:0 6px 0 0}.card h1 .me{display:inline}.card p{font-size:14px;margin-bottom:12px}}
+</style>
+<div class="hero" id="hero">
+  <div class="edge" aria-hidden="true"></div>
+  <a class="logo" href="./" aria-label="Eshbal Hezroni, home"><span aria-hidden="true"></span></a>
+<nav aria-label="Main">
+    <a href="work.html">Work</a>
+    <a href="blog.html">Blog</a>
+    <a href="about.html">About</a>
+  </nav>
+  <main class="card">
+    <h1><span class="hi">Hello,</span><span class="me">I’m Eshbal</span></h1>
+    <p>I’m a Senior Product Designer with 7+ years of experience creating complex SaaS platforms</p>
+    <a class="cta" href="work.html">Selected work <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.1969 5.82812L19.1969 11.9996L13.1969 18.171M19.1969 11.9996L4.79688 11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+  </main>
+  <button type="button" class="topreset" id="topreset" aria-label="Reset"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.17962 14.9984C4.43937 18.8312 8.0473 21.5984 12.3016 21.5984C17.6035 21.5984 21.9016 17.3004 21.9016 11.9984C21.9016 6.6965 17.6035 2.39844 12.3016 2.39844C8.74821 2.39844 5.64576 4.32899 3.98587 7.19844M6.90156 8.39844H2.10156V3.59844"/></svg></button>
+  <div class="tape" id="tape"><div class="hint" id="hint" aria-hidden="true">Click anywhere to add a ring</div><button type="button" class="reset" id="reset">Reset</button></div>
+</div>
 
-    <main>
-      <div class="home-intro-band">
-        <section class="intro" id="intro">
-          <div class="home-audience-wrap">
-            <div class="home-audience" aria-label="Choose an audience">
-              <button class="active" type="button" data-audience="anyone" aria-pressed="true">For anyone</button>
-              <button type="button" data-audience="recruiters" aria-pressed="false">Recruiters</button>
-              <button type="button" data-audience="directors" aria-pressed="false">Design Managers</button>
-              <button type="button" data-audience="designers" aria-pressed="false">Product Designers</button>
-              <button type="button" data-audience="managers" aria-pressed="false">Product Managers</button>
-            </div>
-            <span class="home-audience-fade home-audience-fade--left" aria-hidden="true"></span>
-            <span class="home-audience-fade home-audience-fade--right is-visible" aria-hidden="true"></span>
-          </div>
-          <h1 class="hero-title">
-            <span class="hero-lead" id="hero-lead">Hello, I’m <span class="headline-keep"><span class="eshbal-initial">E</span>shbal<span class="headline-period">.</span></span></span>
-            <span class="hero-rest">
-              <span class="hero-line audience-message" id="audience-message">I’m a product designer who gets excited about turning <span class="audience-highlight">ideas into products</span> that people use.</span>
-            </span>
-          </h1>
-          <a class="home-work-link" href="#selected-work">Selected Work <span aria-hidden="true">↓</span></a>
-        </section>
-      </div>
+<script>
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+/* the sentence shows at the start of every visit, until the first ring is added; then only Reset remains for the rest of that visit */
+let hintDone=false;const learned=()=>hintDone;const SEEN_AT_LOAD=false;try{localStorage.removeItem('ringHintSeen')}catch(e){}
+const easeOut=t=>1-Math.pow(1-t,3);
+const clamp01=x=>Math.max(0,Math.min(1,x));
+/* her seven icons, edited and saved in the site icons folder */
+const NAMES=['eshbal-flower','photography','pattern','languages-globe','italy','bezalel-shenkar','complex-systems','ceramics'];
+/* each SVG is rasterised once into a sprite, so the frame loop only copies bitmaps */
+const IMG={},SPR={};const SPX=Math.round(320*Math.min(devicePixelRatio||1,2));
+NAMES.forEach(n=>{const i=new Image();i.onload=()=>{const c=document.createElement('canvas');c.width=c.height=SPX;c.getContext('2d').drawImage(i,0,0,SPX,SPX);SPR[n]=c};i.src='icons/'+n+'.svg';IMG[n]=i});
+const RING=NAMES.slice(1);
+const GOLD=Math.PI*(3-Math.sqrt(5));
+/* each ring of icons gets its own size, so the rings do not all feel the same; 8 sizes against 7 icons means every icon shows up large and small */
+const SIZES=[.8,.95,1.1,.85,1.3,1,.9,1.2];
+/* each icon has its own size, so no two rings look alike: icons that sit small in their square (italy, pattern, systems, camera) are drawn bigger, the ones that fill it (globe, Bezalel) a little smaller */
+const GROW={'photography':1.25,'complex-systems':1.25,'pattern':1.15,'italy':1.3,'ceramics':1.35,'languages-globe':.85,'bezalel-shenkar':.85};
 
-      <div class="home-work-area">
-      <span class="work-scroll-anchor" id="selected-work" aria-hidden="true"></span>
-      <h2 class="work-heading"><span class="blog-heading-highlight">My Work</span></h2>
-      <a class="case-row" href="varonis/" aria-label="Read the Varonis Account Pane case study">
-        <div class="case-copy">
-          <h2>Reimagining the Account Pane for a complex security platform</h2>
-          <p>I redesigned the Account Pane to turn complex data into a clearer, easier to scan experience for deeper investigation.</p>
-          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
-        </div>
-        <div class="case-image">
-          <img src="assets/Home page/optimized/Home_page_Image_5_varonis.png" width="1800" height="989" decoding="async" alt="Account Pane interface mockup">
-        </div>
-      </a>
+/* Each mark is one icon: angle a at radius r, size s, turning with direction dir. */
+function Pattern(host,o={}){
+  const cv=document.createElement('canvas');cv.className='k';cv.tabIndex=0;cv.setAttribute('aria-label','Pattern of icons about Eshbal. Click, tap or press Space to add a ring of icons.');host.prepend(cv);
+  const KS=[.75,1,1.4,2,2.8,3.6];const pickK=()=>KS[Math.floor(Math.random()*KS.length)];let nextK=1,marks=[],user=[],rot=0,on=true,down=false,hover=null,next=0,prevT=performance.now(),lastW=0,lastH=0,clicks=0;
+  const W=()=>cv.clientWidth,H=()=>cv.clientHeight;
+  const cx=()=>W()*(o.cx??.6),cy=()=>H()*(o.cy??(W()<=600?.36:.45));
+  const st=()=>Math.max(24,Math.min(W(),H())/12.5);
+  const far=()=>Math.hypot(Math.max(cx(),W()-cx()),Math.max(cy(),H()-cy()))+st();
+  const sizeAt=r=>o.layout==='depth'?st()*(.2+.36*Math.min(1.6,r/(Math.min(W(),H())*.5))):st()*.36;
+  const ringCount=(r,s,gap=2.5)=>Math.max(6,Math.round((2*Math.PI*r)/(s*gap)));
+  /* ---- layouts ---- */
+  function seed(t0){const S=st(),out=[];const R=far();
+    const push=(n,r,a,s,ring,dir=1)=>out.push({n,r,a,s,dir:o.altDir?(ring%2?-1:1):dir,t0:t0+(reduce?0:ring*70)});
+    if(o.layout==='spiral'){const c=S*.5;for(let i=1;;i++){const r=c*Math.sqrt(i)+S*.25;if(r>R)break;const s=S*(.3+.12*Math.min(1,r/(S*6)));push(i<=13?'eshbal-flower':RING[(i%13)%RING.length],r,i*GOLD,s,Math.floor(Math.sqrt(i)/1.4))}return out}
+    const ph=W()<=600;/* phones: the centre flowers are drawn a little bigger */
+    for(let k=0;k<8;k++)push('eshbal-flower',S*(ph?.68:.62),k*Math.PI/4+Math.PI/8,S*(ph?.74:.6),0);
+    let r=S*1.6,j=1;/* equal air between rings: each ring sits a fixed gap beyond the outer edge of the one before it, whatever the icon sizes */const edge0=S*(W()<=600?1.42:1.22),GAP=S*.2;let edge=edge0;
+    while(r<R){const nm=RING[(j-1)%RING.length];let s=Math.min(S*.5,sizeAt(r)*(o.layout==='depth'?1:SIZES[(j-1)%SIZES.length]*(GROW[nm]||1)));if(nm==='complex-systems'&&j===6&&W()>600)s=S*.58;/* desktop: the systems icons of the first systems ring are drawn bigger */if(nm==='italy'&&j===4)s*=.8;/* the first Italy ring is drawn smaller */if(o.layout==='rings'){r=edge+GAP+s;if(r>=R)break}let m=ringCount(r,s);let off=0,dir=1;
+      if(o.layout==='spokes'){m=16*Math.pow(2,Math.floor(Math.log2(Math.max(1,r/(S*3)))))}
+      if(o.layout==='woven'){m+=m%2;off=(j%2)*Math.PI/m;dir=j%2?-1:1}
+      if(o.zig)m+=m%2;
+      for(let i=0;i<m;i++){const n=o.layout==='woven'?RING[((j-1)*2+(i%2))%RING.length]:RING[(j-1)%RING.length];push(n,o.zig?r+(i%2?1:-1)*S*.24:r,off+i*2*Math.PI/m,s,j,dir)}
+      if(o.layout==='rings'){edge=r+s}else r+=o.layout==='depth'?S*(.75+.55*(r/(Math.min(W(),H())*.5))):S;j++}
+    return out}
+  function ringAt(p,t0){const r=Math.max(st()*.9,Math.hypot(p.x,p.y));const s=st()*.4*nextK;let m=ringCount(r,s,3.4);const a0=Math.atan2(p.y,p.x)-rot;const n=NAMES[next%NAMES.length];
+    const dir=o.altDir?(next%2?-1:1):1,mode=o.add||'ring',A=st()*.26,out=[];
+    if(mode==='ring'){for(let i=0;i<m;i++)out.push({n,r,a:a0+i*2*Math.PI/m,s,dir,t0,op:n==='italy'?.68:.78});return out}
+    if(mode==='zig'){m+=m%2;for(let i=0;i<m;i++)out.push({n,r:r+(i%2?A:-A),a:a0+i*2*Math.PI/m,s,dir,t0});return out}
+    /* mirror: pairs reflected across evenly spaced axes, like a kaleidoscope */
+    const N=Math.max(3,Math.round(m/2.6)),seg=2*Math.PI/N,axis0=Math.round(a0/seg)*seg,d=Math.max(s*1.25,Math.min(seg*.32*r,Math.abs(a0-axis0)*r||s*1.25))/r;
+    for(let k=0;k<N;k++){const ax=axis0+k*seg;const rr=mode==='both'?r+(k%2?A:-A):r;out.push({n,r:rr,a:ax-d,s,dir,t0},{n,r:rr,a:ax+d,s,dir,t0})}
+    return out}
+  function addRing(p){user=user.concat(ringAt(p,-1e9));next++;nextK=pickK();clicks++;o.onCount&&o.onCount(clicks);if(user.length>1600)user.splice(0,user.length-1600)}
+  function local(e){const b=cv.getBoundingClientRect();return{x:e.clientX-b.left-cx(),y:e.clientY-b.top-cy()}}
+  /* mouse: a click adds a ring. Touch and pen: the ring appears under the finger, follows it, and is placed where the finger lifts (cancelled touches drop it) */
+  let drag=null;
+  cv.addEventListener('pointerdown',e=>{down=true;if(e.pointerType==='mouse'){addRing(local(e));return}drag=local(e);hover=null;try{cv.setPointerCapture(e.pointerId)}catch(_){}});
+  cv.addEventListener('pointermove',e=>{if(e.pointerType==='mouse')hover=local(e);else if(drag)drag=local(e)});
+  cv.addEventListener('pointerleave',()=>hover=null);
+  cv.addEventListener('pointerup',()=>{down=false;if(drag){const p=drag;drag=null;addRing(p)}});
+  cv.addEventListener('pointercancel',()=>{down=false;drag=null});
+  cv.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();addRing(randomPoint())}});
+  function randomPoint(){const a=Math.random()*Math.PI*2,d=st()*(1.5+Math.random()*5);return{x:Math.cos(a)*d,y:Math.sin(a)*d}}
+  let D=1,CX=0,CY=0,VW=0,VH=0;
+  function draw(ctx,m,now,alpha=1){const img=SPR[m.n];if(!img)return;let e=1;if(!reduce&&now<m.t0+500){const k=clamp01((now-m.t0)/500);if(k<=0)return;e=easeOut(k)}
+    const a=m.a+rot*m.dir,c=Math.cos(a),sn=Math.sin(a),x=CX+c*m.r,y=CY+sn*m.r,sz=m.s*(e<1?.92+.08*e:1);
+    if(x<-sz||y<-sz||x>VW+sz||y>VH+sz)return;
+    /* rotate so the icon's top points outward (angle a + 90deg) */
+    ctx.setTransform(-sn*D,c*D,-c*D,-sn*D,x*D,y*D);ctx.globalAlpha=alpha*e*(m.op||1);ctx.drawImage(img,-sz,-sz,sz*2,sz*2)}
+  function frame(now){const dt=Math.min(64,now-prevT);prevT=now;
+    if(on&&!document.hidden){const d=Math.min(devicePixelRatio||1,2),w=W(),h=H();
+      if(w&&(w!==lastW||h!==lastH)){const first=!lastW;lastW=w;lastH=h;cv.width=Math.round(w*d);cv.height=Math.round(h*d);marks=seed(first?now+250:-1e9)}
+      if(!reduce&&!down)rot+=dt*0.000016;
+      D=d;CX=cx();CY=cy();VW=w;VH=h;
+      const ctx=cv.getContext('2d');ctx.setTransform(1,0,0,1,0,0);ctx.globalAlpha=1;ctx.fillStyle='#F9F9F8';ctx.fillRect(0,0,cv.width,cv.height);
+      for(let i=0;i<marks.length;i++)draw(ctx,marks[i],now);for(let i=0;i<user.length;i++)draw(ctx,user[i],now);
+      if(hover&&!down){const g=ringAt(hover,-1e9);for(let i=0;i<g.length;i++)draw(ctx,g[i],now,.3)}
+      if(drag){const g=ringAt(drag,-1e9);for(let i=0;i<g.length;i++)draw(ctx,g[i],now,.9)}
+      ctx.globalAlpha=1}
+    requestAnimationFrame(frame)}
+  new IntersectionObserver(es=>es.forEach(e=>on=e.isIntersecting)).observe(cv);
+  requestAnimationFrame(frame);
+  return{replay(){marks=seed(performance.now()+100)},reset(){user=[];clicks=0;next=0;nextK=1;o.onCount&&o.onCount(0);marks=seed(-1e9)},addOne(){addRing(randomPoint())}};
+}
+const resetBtn=document.getElementById('reset');
+const hint=document.getElementById('hint');const tapMQ=matchMedia('(hover: none), (pointer: coarse), (max-width: 600px)');const hintText=()=>{hint.textContent=tapMQ.matches?'Tap anywhere to add a ring':'Click anywhere to add a ring';sizeTape()};hintText();tapMQ.addEventListener?tapMQ.addEventListener('change',hintText):tapMQ.addListener(hintText);
+/* once the first ring is added, the band keeps only Reset, and only while there are rings to reset */
+function sizeTape(){const t=document.getElementById('tape'),a=document.getElementById('reset'),b=document.getElementById('hint');if(!t||!a||!b)return;const on=a.classList.contains('on');b.hidden=SEEN_AT_LOAD;const act=on?a:b;const phone=matchMedia('(max-width:600px),(max-height:500px) and (orientation:landscape)').matches;if((learned()&&!on)||(phone&&on)){t.style.width='0px';t.style.opacity='0'}else{t.style.width=act.offsetWidth+'px';t.style.opacity=''}if(!t.classList.contains('ready'))requestAnimationFrame(()=>t.classList.add('ready'))}
+sizeTape();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(sizeTape);addEventListener('resize',sizeTape);
+const pat=Pattern(document.getElementById('hero'),{layout:'rings',onCount:n=>{if(n>0)hintDone=true;document.getElementById('topreset').classList.toggle('on',n>0);resetBtn.classList.toggle('on',n>0);hint.classList.toggle('off',n>0);sizeTape()}});
+resetBtn.onclick=()=>pat.reset();document.getElementById('topreset').onclick=()=>pat.reset();
+const heroCard=document.querySelector('.card'),setCardH=()=>document.documentElement.style.setProperty('--card-h',heroCard.offsetHeight+'px');setCardH();if(window.ResizeObserver)new ResizeObserver(setCardH).observe(heroCard);addEventListener('resize',setCardH);
+/* the Work page is next: while the pattern plays, quietly fetch its first two pictures so they are already there when the page arrives */
+const warmWork=()=>['assets/Home page/optimized/Home_page_Image_5_varonis_v5.jpg','assets/Home page/optimized/Home_page_Image_2_intent_v4.jpg'].forEach(u=>{const i=new Image();i.src=u});
+typeof requestIdleCallback==='function'?requestIdleCallback(warmWork,{timeout:2500}):setTimeout(warmWork,1500);
+</script>
 
-      <a class="case-row reverse intent-home-card" href="intent-based-promotions/" aria-label="Read the Intent-Based Promotions case study">
-        <div class="case-image">
-          <img src="assets/Home page/optimized/Home_page_Image_2_intent.png" width="1800" height="989" decoding="async" alt="Intent-Based Promotions interface mockup">
-        </div>
-        <div class="case-copy">
-          <h2>Creating a product from scratch: Intent-Based Promotions</h2>
-          <p class="intent-home-description">I designed a whole new product that offers<br>individualized promotions to eCommerce site<br>visitors based on real-time buying intent.</p>
-          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a class="case-row" href="campaigns-board/" aria-label="Read the Campaign Board case study">
-        <div class="case-copy">
-          <h2>The design process of a new feature: Campaign Board</h2>
-          <p>A fun and intuitive way to build a campaign calendar board for eCommerce website managers.</p>
-          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
-        </div>
-        <div class="case-image tilted">
-          <img src="assets/Home page/optimized/Home_page_Image_1_campaign_board.jpg" width="1800" height="1355" decoding="async" alt="Campaign Board feature design process">
-        </div>
-      </a>
-
-      <a class="case-row reverse" href="journey-flow/" aria-label="Read the Journey Flow case study">
-        <div class="case-image">
-          <img src="assets/Home page/optimized/Home_page_Image_3_flow.png" width="1800" height="989" decoding="async" alt="Journey Flow data visualization mockup">
-        </div>
-        <div class="case-copy">
-          <h2>Building a data visualization tool: Journey Flow</h2>
-          <p>My inspiration for designing this visualization tool came from an unexpected source: roads in navigation apps.</p>
-          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
-        </div>
-      </a>
-
-      <a class="case-row final-case" href="activations/" aria-label="Read the Activations case study">
-        <div class="case-copy">
-          <h2>Simple management of data: Activations</h2>
-          <p>I created a page that allows website managers to easily control data about their users and send it to different sources.</p>
-          <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
-        </div>
-        <div class="case-image">
-          <img src="assets/Home page/optimized/Home_page_Image_4_activation.jpg" width="1800" height="989" decoding="async" alt="Activations data management interface">
-        </div>
-      </a>
-      </div>
-
-      <section class="home-up-section">
-        <a class="up-link" href="#top">Up</a>
-      </section>
-    </main>
-
-    <footer class="site-footer">
-      <div class="footer-inner">
-        <div class="footer-divider"></div>
-        <div class="footer-bottom">
-          <p>© 2026 Eshbal Hezroni</p>
-        </div>
-      </div>
-    </footer>
-    <script>
-      if ("scrollRestoration" in history) history.scrollRestoration = "manual";
-      const returnToIntro = new URLSearchParams(window.location.search).has("intro");
-      if (!window.location.hash || returnToIntro) {
-        window.scrollTo(0, 0);
-        requestAnimationFrame(() => window.scrollTo(0, 0));
-      }
-      if (returnToIntro) history.replaceState(null, "", window.location.pathname);
-      window.addEventListener("pageshow", () => {
-        if (!window.location.hash) window.scrollTo(0, 0);
-        if (window.matchMedia("(max-width: 620px)").matches) {
-          requestAnimationFrame(() => {
-            const restoredCaseLink = document.activeElement?.closest(".home-work-area .case-row");
-            restoredCaseLink?.blur();
-          });
-        }
-      });
-
-      const heroLines = document.querySelectorAll(".hero-line");
-      const homeAudience = document.querySelector(".home-audience");
-      const audienceFadeLeft = document.querySelector(".home-audience-fade--left");
-      const audienceFadeRight = document.querySelector(".home-audience-fade--right");
-      const homeIntroBand = document.querySelector(".home-intro-band");
-      const audienceMessage = document.querySelector("#audience-message");
-      const heroLead = document.querySelector("#hero-lead");
-      const heroTitle = document.querySelector(".hero-title");
-      const audienceButtons = document.querySelectorAll("[data-audience]");
-      const introNavLink = document.querySelector("#intro-nav-link");
-      const workNavLink = document.querySelector("#work-nav-link");
-      const selectedWork = document.querySelector("#selected-work");
-      const introSection = document.querySelector(".home-page .intro");
-      let heroToneTicking = false;
-      let audienceLayoutWidth = window.innerWidth;
-
-      const updateMobileIntroHeight = () => {
-        if (!introSection) return;
-        if (window.matchMedia("(max-width: 620px)").matches) {
-          introSection.style.setProperty("--mobile-intro-height", `${window.innerHeight}px`);
-        } else {
-          introSection.style.removeProperty("--mobile-intro-height");
-        }
-      };
-
-      introNavLink?.addEventListener("click", (event) => {
-        event.preventDefault();
-        history.replaceState(null, "", "#intro");
-        window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
-      });
-
-      const audienceMessages = {
-        anyone: "I’m a product designer who gets excited about turning ideas into products that people use.",
-        recruiters: "I’m a Senior Product Designer with 7+ years of experience creating meaningful, high\u2011impact digital products.",
-        directors: "I take ownership from concept through execution to post launch iteration. My strength is bringing clarity to complex problems.",
-        designers: "I thrive in collaborative teams, where sharing ideas, giving thoughtful feedback, and learning from one another make the work stronger.",
-        managers: "I partner closely with PMs to turn ambiguous problems into clear priorities, practical decisions, and products people want to use."
-      };
-
-      const desktopAudienceMessages = {
-        directors: "I take ownership from\nconcept through\u00a0execution\nto post launch iteration.\nMy strength is bringing\nclarity to complex problems."
-      };
-
-      const getAudienceMessage = (audience) =>
-        window.matchMedia("(min-width: 621px)").matches && desktopAudienceMessages[audience]
-          ? desktopAudienceMessages[audience]
-          : audienceMessages[audience];
-
-      const audienceHighlights = {
-        anyone: ["ideas into products"],
-        recruiters: ["7+ years"],
-        directors: ["ownership", "concept", "execution", "bringing clarity"],
-        designers: ["collaborative", "learning", "work stronger"],
-        managers: ["clear priorities", "products people want to use"]
-      };
-      let activeAudience = "anyone";
-      let audienceScrollTicking = false;
-
-      const updateAudienceFades = () => {
-        if (!homeAudience || !audienceFadeLeft || !audienceFadeRight) return;
-        const maxScrollLeft = Math.max(0, homeAudience.scrollWidth - homeAudience.clientWidth);
-        audienceFadeLeft.classList.toggle("is-visible", homeAudience.scrollLeft > 2);
-        audienceFadeRight.classList.toggle("is-visible", homeAudience.scrollLeft < maxScrollLeft - 2);
-        audienceScrollTicking = false;
-      };
-
-      const requestAudienceFadeUpdate = () => {
-        if (audienceScrollTicking) return;
-        audienceScrollTicking = true;
-        requestAnimationFrame(updateAudienceFades);
-      };
-
-      const escapeHtml = (value) => value.replace(/[&<>'"]/g, (character) => ({
-        "&": "&amp;",
-        "<": "&lt;",
-        ">": "&gt;",
-        "'": "&#039;",
-        "\"": "&quot;"
-      })[character]);
-
-      const escapeRegExp = (value) => value.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-
-      const renderAudienceMessage = (audience) => {
-        if (!audienceMessage || !audienceMessages[audience]) return;
-        let message = escapeHtml(getAudienceMessage(audience));
-        (audienceHighlights[audience] || []).forEach((phrase) => {
-          message = message.replace(
-            new RegExp(`(${escapeRegExp(phrase)})`, "gi"),
-            '<span class="audience-highlight">$1</span>'
-          );
-        });
-        audienceMessage.innerHTML = message;
-      };
-
-      const setAudienceMessage = (audience) => {
-        if (!audienceMessage || !audienceMessages[audience]) return;
-        activeAudience = audience;
-        renderAudienceMessage(audience);
-        heroLead?.classList.toggle("is-hidden", audience !== "anyone");
-        heroLead?.setAttribute("aria-hidden", String(audience !== "anyone"));
-        heroTitle?.classList.toggle("is-audience-selected", audience !== "anyone");
-        audienceButtons.forEach((button) => {
-          const isActive = button.dataset.audience === audience;
-          button.classList.toggle("active", isActive);
-          button.setAttribute("aria-pressed", String(isActive));
-        });
-      };
-
-      const stabilizeAudienceLayout = () => {
-        const intro = introSection;
-        if (!intro || !homeAudience || !heroTitle || !audienceMessage) return;
-
-        const usesSelectedLayout = heroTitle.classList.contains("is-audience-selected");
-        heroTitle.classList.remove("is-audience-selected");
-        intro.style.removeProperty("--audience-layout-offset");
-        heroTitle.style.minHeight = "";
-        const startingTop = homeAudience.getBoundingClientRect().top;
-        let tallestTitle = heroTitle.getBoundingClientRect().height;
-
-        Object.keys(audienceMessages).forEach((audience) => {
-          audienceMessage.textContent = getAudienceMessage(audience);
-          tallestTitle = Math.max(tallestTitle, heroTitle.getBoundingClientRect().height);
-        });
-
-        renderAudienceMessage(activeAudience);
-        heroTitle.style.minHeight = `${Math.ceil(tallestTitle)}px`;
-        heroTitle.classList.toggle("is-audience-selected", usesSelectedLayout);
-        const offset = startingTop - homeAudience.getBoundingClientRect().top;
-        intro.style.setProperty("--audience-layout-offset", `${Math.round(offset)}px`);
-      };
-
-      const updateHeroTone = () => {
-        const scrollTop = window.scrollY || document.documentElement.scrollTop || document.body.scrollTop || 0;
-        const visibleHeroLines = [...heroLines].filter((line) => line.getClientRects().length > 0);
-        const isCompactHero = window.matchMedia("(max-width: 1100px)").matches;
-        const thresholdStep = isCompactHero ? 58 : 90;
-        document.body.classList.toggle("is-scrolled", scrollTop > 24);
-        heroLines.forEach((line) => line.classList.remove("is-dark"));
-        visibleHeroLines.forEach((line, index) => {
-          const threshold = 40 + index * thresholdStep;
-          if (scrollTop >= threshold) line.classList.add("is-dark");
-        });
-        const isViewingWork = selectedWork && selectedWork.getBoundingClientRect().top <= window.innerHeight * 0.88;
-        introNavLink?.classList.toggle("active", !isViewingWork);
-        workNavLink?.classList.toggle("active", isViewingWork);
-        document.body.classList.toggle("is-work-entering", Boolean(selectedWork && selectedWork.getBoundingClientRect().top <= window.innerHeight));
-        document.body.classList.toggle("is-past-intro", Boolean(homeIntroBand && homeIntroBand.getBoundingClientRect().bottom <= 0));
-        heroToneTicking = false;
-      };
-
-      const requestHeroToneUpdate = () => {
-        if (heroToneTicking) return;
-        heroToneTicking = true;
-        requestAnimationFrame(updateHeroTone);
-      };
-
-      updateMobileIntroHeight();
-      updateHeroTone();
-      requestAnimationFrame(stabilizeAudienceLayout);
-      requestAnimationFrame(updateAudienceFades);
-      audienceButtons.forEach((button) => {
-        button.addEventListener("click", () => setAudienceMessage(button.dataset.audience));
-      });
-      window.addEventListener("scroll", requestHeroToneUpdate, { passive: true });
-      homeAudience?.addEventListener("scroll", requestAudienceFadeUpdate, { passive: true });
-      window.addEventListener("resize", () => {
-        const nextLayoutWidth = window.innerWidth;
-        if (Math.abs(nextLayoutWidth - audienceLayoutWidth) > 1) {
-          audienceLayoutWidth = nextLayoutWidth;
-          updateMobileIntroHeight();
-          stabilizeAudienceLayout();
-        }
-        requestAudienceFadeUpdate();
-      });
-      window.addEventListener("load", () => {
-        stabilizeAudienceLayout();
-        requestAudienceFadeUpdate();
-      });
-    </script>
-  </body>
-</html>
+</body></html>

@@ -1,12 +1,112 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url=blog/">
-    <link rel="canonical" href="blog/">
-    <title>Redirecting to Blog</title>
-  </head>
-  <body>
-    <p><a href="blog/">Continue to Blog</a></p>
-  </body>
-</html>
+<meta charset="utf-8"><script>
+/* page changes: (1) warm the next page: when a link is pointed at, fetch it quietly so the click lands on a page that is already there. (2) if you click or press a key while a page change is running, the animation is skipped, so the page never feels like it is waiting for the fade. */
+(()=>{const seen=new Set(),warm=u=>{if(seen.has(u))return;seen.add(u);const l=document.createElement('link');l.rel='prefetch';l.href=u;document.head.appendChild(l)};
+addEventListener('pointerover',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(a&&a.origin===location.origin&&!a.hash&&a.target!=='_blank'&&a.href!==location.href)warm(a.href)},{passive:true});
+const skipOnInput=e=>{const vt=e.viewTransition;if(!vt)return;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,()=>vt.skipTransition(),{once:true}))};
+addEventListener('pageswap',skipOnInput);addEventListener('pagereveal',skipOnInput)})();
+</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Blog | Eshbal Hezroni</title>
+<meta name="description" content="Posts by Eshbal Hezroni on product design projects, speculative concepts and designing spaces.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Blog | Eshbal Hezroni">
+<meta property="og:description" content="Posts by Eshbal Hezroni on product design projects, speculative concepts and designing spaces.">
+<meta property="og:site_name" content="Eshbal Hezroni">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Blog | Eshbal Hezroni">
+<meta name="twitter:description" content="Posts by Eshbal Hezroni on product design projects, speculative concepts and designing spaces.">
+<!-- og:image / twitter:image (1200x630, absolute URL) go here once the site has its own address -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,500..700&display=swap">
+<link rel="stylesheet" href="menu.css">
+<style>
+/* Blog: an index. Photo on the left, title and excerpt on the right, hairlines between posts. Same paper, type and menu as the rest of the site. */
+:root{--paper:#F9F9F8;--back:#EDEDEA;--line:#E3E3E0;--ink:#1D1B18;--ink2:#5D584F;--ink3:#716B60;--hl:#A85A12;
+  --grot:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;--body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+nav{position:fixed;top:calc(34px + env(safe-area-inset-top,0px));left:clamp(16px,3vw,40px);z-index:4;display:grid;gap:12px;justify-items:start}
+nav a{font:700 24px/1 var(--grot);letter-spacing:-.015em;color:var(--ink);text-decoration:none;padding:11px 18px 12px;border-radius:99px;background:rgba(249,249,248,.72);transition:color .15s}
+@media (hover:hover){nav a:hover{color:var(--hl)}}
+nav a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:focus-visible{outline:2px solid var(--hl);outline-offset:4px}
+main{max-width:900px;margin:0 auto;padding:clamp(64px,9vh,100px) clamp(16px,4vw,48px) 96px}
+.head{text-align:center;margin-bottom:clamp(36px,6vh,64px)}
+.head h1{font:700 clamp(28px,3.2vw,40px)/1.05 var(--grot);letter-spacing:-.02em;margin:0 0 10px}
+.head p{color:var(--ink2);font-size:17px;line-height:1.45;margin:0 auto;max-width:44ch;text-wrap:pretty}
+.list{list-style:none;margin:0;padding:0}
+.post{position:relative;display:grid;grid-template-columns:clamp(150px,26%,230px) 1fr;gap:28px;align-items:center;padding:24px 4px;border-bottom:1px solid var(--line)}
+.pic{aspect-ratio:4/3;overflow:hidden;border-radius:4px;background:var(--back)}
+.pic img{width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .3s ease-out,transform .5s cubic-bezier(.2,.8,.2,1)}
+.pic img.ready{opacity:1}
+@media (hover:hover){.post:hover .pic img{transform:scale(1.03)}}
+.txt{display:grid;gap:8px}
+.txt h2{font:600 clamp(21px,2.3vw,28px)/1.12 var(--grot);letter-spacing:-.02em;margin:0;text-wrap:balance;transition:color .15s}
+@media (hover:hover){.post:hover h2{color:var(--hl)}}
+.txt p{margin:0;color:var(--ink2);font-size:16px;line-height:1.5;max-width:56ch;text-wrap:pretty}
+/* one link per post, stretched over the whole row: one tab stop, one announcement */
+.post a{color:inherit;text-decoration:none}
+.post a::after{content:"";position:absolute;inset:0}
+.post:focus-within{outline:2px solid var(--hl);outline-offset:-2px;border-radius:6px}
+.post a:focus-visible{outline:none}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media (max-width:560px){.post{grid-template-columns:104px 1fr;gap:16px;padding:18px 0}.txt p{display:none}.txt h2{font-size:19px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+/* logo, top left: smaller, its left edge in line with the menu words (pill padding 18px), the menu a little lower. */
+.logo{position:fixed;top:calc(32px + env(safe-area-inset-top,0px));left:calc(clamp(16px,3vw,40px) + 18px);z-index:5;display:block;line-height:0;border-radius:4px}
+.logo span{height:34px;aspect-ratio:446/448;display:block;background:#35332F;-webkit-mask:url(logo.svg) center/contain no-repeat;mask:url(logo.svg) center/contain no-repeat;transition:background-color .15s}
+.logo:focus-visible span{background:#A85A12}@media (hover:hover){.logo:hover span{background:#A85A12}}
+@media (prefers-reduced-motion:reduce){.logo span{transition:none}}
+nav{top:calc(88px + env(safe-area-inset-top,0px))}
+/* the page title sits on the same line as the menu word "Work": its baseline is placed to match the menu's, whatever the window height */
+@media (min-width:1281px){main{padding-top:calc(119px + env(safe-area-inset-top,0px) - .85*clamp(28px,3.2vw,40px))}}
+/* narrower than 1280px: the menu becomes one row beside the logo, like Work and the case pages, so it never sits on the content */
+@media (max-width:1280px){.logo{top:calc(14px + env(safe-area-inset-top,0px));left:clamp(16px,3vw,40px)}.logo span{height:32px}nav{display:flex;flex-wrap:wrap;gap:8px;top:calc(18px + env(safe-area-inset-top,0px));left:calc(clamp(16px,3vw,40px) + 48px)}nav a{font-size:19px;padding:9px 14px 10px}}
+@media (max-width:600px){.logo span{height:30px}nav{top:calc(14px + env(safe-area-inset-top,0px));left:calc(16px + 42px)}}
+/* page changes: a quick cross-fade (180ms) so the move registers without holding anything up. Old and new fade on the same curve, so together they stay at full strength (no dip, no flash). Nothing slides; the menu and logo are in the same place on every page, so they stay put. Browsers without cross-document view transitions just change page instantly. With reduced motion there is no fade. */
+@view-transition{navigation:auto}
+::view-transition{background:#F9F9F8}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s;animation-timing-function:ease-out}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+/* the page has the same width with or without a scrollbar, so nothing shifts sideways when you arrive on a longer page */
+html{scrollbar-gutter:stable}
+/* touch: no grey tap flash; the press state below gives the feedback instead */
+.post a,nav a,.logo{-webkit-tap-highlight-color:transparent}
+/* press: the picture settles in a little while the finger or button is down */
+.post:active .pic{transform:scale(.985);transition:transform .12s ease-out}
+.pic{transition:transform .12s ease-out}
+@media (prefers-reduced-motion:reduce){.post:active .pic{transform:none}}
+/* phones: the first project / post / icon sits 40px under the page title, the same on Work, Blog and About */
+@media (max-width:600px){.head{margin-bottom:40px}.post:first-child{padding-top:0}}
+</style>
+<body>
+<script src="menu.js"></script>
+<a class="logo" href="./" aria-label="Eshbal Hezroni, home"><span aria-hidden="true"></span></a>
+<nav aria-label="Main">
+  <a href="work.html">Work</a>
+  <a href="blog.html" aria-current="page">Blog</a>
+  <a href="about.html">About</a>
+</nav>
+<main>
+  <header class="head"><h1>My Blog</h1></header>
+  <ul class="list" id="list"></ul>
+</main>
+<script>
+/* the seven posts as published; each opens where it lives, in a new tab */
+const POSTS=[
+ ["How Much Is Your Name Worth? Discover in the Israshem Platform","The project presents a speculative name pricing scenario. In 2026, the state will publish the Israshem initiative.","israshem","https://eshbal-hezroni.medium.com/how-much-is-your-name-worth-f1a600080035"],
+ ["Namogoo’s New Meeting Rooms Design Hot from the Oven","I designed Namogoo’s new meeting rooms around the concept of journeys, turning each space into a unique story-inspired environment.","rooms-new","https://eshbal-hezroni.medium.com/its-happening-again-namogoo-s-new-meeting-rooms-design-hot-from-the-oven-974f3a6afe80"],
+ ["The Role of Design in Giving Birth to a New Exciting Product","Designing a product that offers individualized promotions to site visitors based on real-time buying intent.","birth","https://bootcamp.uxdesign.cc/the-role-of-design-in-giving-birth-to-a-new-exciting-product-12a704eb2233"],
+ ["Tired of Killing Your Plants? Love Them with Plantobe","A project where I created and designed an app for people who are not really good in taking care their plants.","plantobe","https://bootcamp.uxdesign.cc/tired-of-killing-your-plants-love-them-with-plantobe-5dadf62810e8"],
+ ["How Much Can You Know About Rags? You’ll Be Surprised!","I designed a dashboard with data on the textile waste that is thrown away by home consumers, especially rags.","rags","https://bootcamp.uxdesign.cc/how-much-can-you-know-about-rags-youll-be-surprised-b571146d8a40"],
+ ["It’s Never Been So Easy to Ask for Money","The process of designing a physical object that is connected to an app that allows the user to perform an action.","money","https://bootcamp.uxdesign.cc/its-never-been-so-easy-to-ask-for-money-6d0f46210a2b"],
+ ["Making Meeting Rooms Memorable: A Behind-the-scenes Look","I was very excited to take part in designing the meeting rooms in Namogoo’s new office space! Here’s a behind-the-scenes tour of the rooms!","rooms","https://eshbal-hezroni.medium.com/making-meeting-rooms-memorable-a-behind-the-scenes-look-283a77f0ca84"]];
+document.getElementById('list').innerHTML=POSTS.map(([t,e,img,u])=>`<li class="post"><div class="pic"><img src="img/blog/${img}.jpg" alt=""></div><div class="txt"><h2><a href="${u}" target="_blank" rel="noopener">${t}<span class="sr"> (opens in a new tab)</span></a></h2><p>${e}</p></div></li>`).join('');
+/* pictures fade in once they have loaded */
+document.querySelectorAll('.pic img').forEach(i=>{const r=()=>i.classList.add('ready');i.complete&&i.naturalWidth?r():(i.addEventListener('load',r),i.addEventListener('error',r))});
+</script>
+</body>

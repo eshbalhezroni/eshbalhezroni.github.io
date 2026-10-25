@@ -1,0 +1,138 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><script>
+/* page changes: (1) warm the next page: when a link is pointed at, fetch it quietly so the click lands on a page that is already there. (2) if you click or press a key while a page change is running, the animation is skipped, so the page never feels like it is waiting for the fade. */
+(()=>{const seen=new Set(),warm=u=>{if(seen.has(u))return;seen.add(u);const l=document.createElement('link');l.rel='prefetch';l.href=u;document.head.appendChild(l)};
+addEventListener('pointerover',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(a&&a.origin===location.origin&&!a.hash&&a.target!=='_blank'&&a.href!==location.href)warm(a.href)},{passive:true});
+const skipOnInput=e=>{const vt=e.viewTransition;if(!vt)return;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,()=>vt.skipTransition(),{once:true}))};
+addEventListener('pageswap',skipOnInput);addEventListener('pagereveal',skipOnInput)})();
+</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Work | Eshbal Hezroni</title>
+<meta name="description" content="Selected case studies by Eshbal Hezroni, Senior Product Designer: complex SaaS, security and eCommerce products.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Work | Eshbal Hezroni">
+<meta property="og:description" content="Selected case studies by Eshbal Hezroni, Senior Product Designer: complex SaaS, security and eCommerce products.">
+<meta property="og:site_name" content="Eshbal Hezroni">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Work | Eshbal Hezroni">
+<meta name="twitter:description" content="Selected case studies by Eshbal Hezroni, Senior Product Designer: complex SaaS, security and eCommerce products.">
+<!-- og:image / twitter:image (1200x630, absolute URL) go here once the site has its own address -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,500..700&display=swap">
+<style>
+/* Work: the five case studies as large cards, image and text alternating sides, in the site's paper, type and menu. */
+:root{--paper:#F9F9F8;--back:#EDEDEA;--line:#E3E3E0;--ink:#1D1B18;--ink2:#5D584F;--ink3:#716B60;--hl:#A85A12;
+  --grot:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;--body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+nav{position:fixed;top:calc(34px + env(safe-area-inset-top,0px));left:clamp(16px,3vw,40px);z-index:4;display:grid;gap:12px;justify-items:start}
+nav a{font:700 24px/1 var(--grot);letter-spacing:-.015em;color:var(--ink);text-decoration:none;padding:11px 18px 12px;border-radius:99px;background:rgba(249,249,248,.72);transition:color .15s}
+@media (hover:hover){nav a:hover{color:var(--hl)}}
+nav a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+@media (max-width:1280px){nav{display:flex;flex-wrap:wrap;gap:8px;top:calc(18px + env(safe-area-inset-top,0px));right:16px}nav a{font-size:19px;padding:9px 14px 10px}}
+@media (max-width:600px){nav{top:calc(16px + env(safe-area-inset-top,0px));gap:8px}nav a{font-size:19px;padding:9px 14px 10px}}
+a:focus-visible{outline:2px solid var(--hl);outline-offset:4px}
+main{max-width:1060px;margin:0 auto;padding:clamp(64px,9vh,100px) clamp(16px,4vw,48px) 96px}
+.head{text-align:center;margin-bottom:clamp(36px,6vh,64px)}
+.head h1{font:700 clamp(28px,3.2vw,40px)/1.05 var(--grot);letter-spacing:-.02em;margin:0}
+/* Every project is the same size: two equal halves (image left, text right), every image the same 16:10 frame. No card, no fill; a hairline only between projects. */
+main{max-width:1060px}
+.list{display:grid}
+.case-row{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,64px);align-items:center;padding:32px 4px;border-bottom:1px solid var(--line);color:inherit;text-decoration:none}
+.case-image{position:relative;aspect-ratio:16/10;overflow:hidden;border-radius:16px;background:#e9e2d2}
+.case-image img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block;opacity:0;transition:opacity .3s ease-out,transform .6s cubic-bezier(.2,.8,.2,1)}
+.case-image img.ready{opacity:1}
+@media (hover:hover){.case-row:hover .case-image img{transform:scale(1.025)}}
+.case-copy{display:grid;align-content:center;gap:14px}
+.case-copy h2{font:600 clamp(24px,2.8vw,34px)/1.12 var(--grot);letter-spacing:-.02em;margin:0;text-wrap:balance;transition:color .15s}
+.case-copy p{margin:0;color:var(--ink2);font-size:17px;line-height:1.5;text-wrap:pretty}
+.case-link{display:inline-flex;gap:8px;align-items:center;font:500 15px var(--body);color:var(--ink);margin-top:6px}
+.case-link span{display:inline-block;transition:transform .25s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover){.case-row:hover h2,.case-row:hover .case-link{color:var(--hl)}}
+@media (hover:hover){.case-row:hover .case-link span{transform:translateX(4px)}}
+.case-row:focus-visible{outline-offset:6px;border-radius:16px}
+@media (max-width:760px){.case-row{grid-template-columns:1fr;gap:20px;padding:24px 0}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}html{scroll-behavior:auto}}
+/* logo, top left: smaller, in line with the menu words. Wide: the menu sits under it. Narrower: the menu row sits to its right. */
+.logo{position:fixed;top:calc(32px + env(safe-area-inset-top,0px));left:calc(clamp(16px,3vw,40px) + 18px);z-index:21;display:block;line-height:0;border-radius:4px}
+.logo span{height:34px;aspect-ratio:446/448;display:block;background:#35332F;-webkit-mask:url(logo.svg) center/contain no-repeat;mask:url(logo.svg) center/contain no-repeat;transition:background-color .15s}
+.logo:focus-visible span{background:#A85A12}@media (hover:hover){.logo:hover span{background:#A85A12}}
+@media (prefers-reduced-motion:reduce){.logo span{transition:none}}
+nav{top:calc(88px + env(safe-area-inset-top,0px))}
+@media (max-width:1280px){.logo{top:calc(14px + env(safe-area-inset-top,0px));left:clamp(16px,3vw,40px)}.logo span{height:32px}nav{top:calc(18px + env(safe-area-inset-top,0px));left:calc(clamp(16px,3vw,40px) + 48px)}}
+@media (max-width:600px){.logo span{height:30px}nav{top:calc(14px + env(safe-area-inset-top,0px));left:calc(16px + 42px)}}
+/* the page title sits on the same line as the menu word "Work" (wide screens, where the menu is a column on the left) */
+@media (min-width:1281px){main{padding-top:calc(119px + env(safe-area-inset-top,0px) - .85*clamp(28px,3.2vw,40px))}}
+/* page changes: a quick cross-fade (180ms) so the move registers without holding anything up. Old and new fade on the same curve, so together they stay at full strength (no dip, no flash). Nothing slides; the menu and logo are in the same place on every page, so they stay put. Browsers without cross-document view transitions just change page instantly. With reduced motion there is no fade. */
+@view-transition{navigation:auto}
+::view-transition{background:#F9F9F8}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s;animation-timing-function:ease-out}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+/* the page has the same width with or without a scrollbar, so nothing shifts sideways when you arrive on a longer page */
+html{scrollbar-gutter:stable}
+/* touch: no grey tap flash; the press state below gives the feedback instead */
+.case-row,nav a,.logo{-webkit-tap-highlight-color:transparent}
+/* press: the picture settles in a little while the finger or button is down */
+.case-row:active .case-image{transform:scale(.985);transition:transform .12s ease-out}
+.case-image{transition:transform .12s ease-out}
+@media (prefers-reduced-motion:reduce){.case-row:active .case-image{transform:none}}
+/* phones: the first project / post / icon sits 40px under the page title, the same on Work, Blog and About */
+@media (max-width:600px){.head{margin-bottom:40px}.case-row:first-child{padding-top:0}}
+</style>
+<link rel="stylesheet" href="menu.css">
+</head>
+<body id="top">
+<script src="menu.js"></script>
+<a class="logo" href="./" aria-label="Eshbal Hezroni, home"><span aria-hidden="true"></span></a>
+<nav aria-label="Main">
+  <a href="work.html" aria-current="page">Work</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+</nav>
+<main>
+  <header class="head"><h1>My Work</h1></header>
+  <div class="list">
+    <a class="case-row" href="varonis.html" aria-label="Read the Varonis Account Pane case study">
+      <div class="case-image" style="background:#F0E9C9"><img src="assets/Home page/optimized/Home_page_Image_5_varonis_v5.jpg" width="1200" height="659" decoding="async" fetchpriority="high" alt="Account Pane interface mockup"></div>
+      <div class="case-copy">
+        <h2>Reimagining the Account Pane for a complex security platform</h2>
+        <p>I redesigned the Account Pane to turn complex data into a clearer, easier to scan experience for deeper investigation.</p>
+        <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+    <a class="case-row" href="intent-based-promotions.html" aria-label="Read the Intent-Based Promotions case study">
+      <div class="case-image" style="background:#E8E8E5"><img src="assets/Home page/optimized/Home_page_Image_2_intent_v4.jpg" width="1200" height="659" decoding="async" fetchpriority="high" alt="Intent-Based Promotions interface mockup"></div>
+      <div class="case-copy">
+        <h2>Creating a product from scratch: Intent-Based Promotions</h2>
+        <p>I designed a whole new product that offers individualized promotions to eCommerce site visitors based on real-time buying intent.</p>
+        <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+    <a class="case-row" href="campaigns-board.html" aria-label="Read the Campaign Board case study">
+      <div class="case-image" style="background:#E4EBDF"><img src="assets/Home page/optimized/Home_page_Image_1_campaign_board_v9.jpg" width="1200" height="750" decoding="async" alt="Campaign Board feature design process"></div>
+      <div class="case-copy">
+        <h2>The design process of a new feature: Campaign Board</h2>
+        <p>A fun and intuitive way to build a campaign calendar board for eCommerce website managers.</p>
+        <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+    <a class="case-row" href="journey-flow.html" aria-label="Read the Journey Flow case study">
+      <div class="case-image" style="background:#E5E6F3"><img src="assets/Home page/optimized/Home_page_Image_3_flow_v3.jpg" width="1200" height="659" decoding="async" alt="Journey Flow data visualization mockup"></div>
+      <div class="case-copy">
+        <h2>Building a data visualization tool: Journey Flow</h2>
+        <p>My inspiration for designing this visualization tool came from an unexpected source: roads in navigation apps.</p>
+        <span class="case-link">Read Case Study <span aria-hidden="true">→</span></span>
+      </div>
+    </a>
+  </div>
+</main>
+<script>
+/* pictures fade in once they have loaded, instead of popping in over the beige frame */
+document.querySelectorAll('.case-image img').forEach(i=>{const r=()=>i.classList.add('ready');i.complete&&i.naturalWidth?r():(i.addEventListener('load',r),i.addEventListener('error',r))});
+</script>
+</body>
+</html>

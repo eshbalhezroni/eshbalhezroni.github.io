@@ -1,12 +1,312 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url=about/">
-    <link rel="canonical" href="about/">
-    <title>Redirecting to About</title>
-  </head>
-  <body>
-    <p><a href="about/">Continue to About</a></p>
-  </body>
+<head>
+<meta charset="utf-8"><script>
+/* page changes: (1) warm the next page: when a link is pointed at, fetch it quietly so the click lands on a page that is already there. (2) if you click or press a key while a page change is running, the animation is skipped, so the page never feels like it is waiting for the fade. */
+(()=>{const seen=new Set(),warm=u=>{if(seen.has(u))return;seen.add(u);const l=document.createElement('link');l.rel='prefetch';l.href=u;document.head.appendChild(l)};
+addEventListener('pointerover',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(a&&a.origin===location.origin&&!a.hash&&a.target!=='_blank'&&a.href!==location.href)warm(a.href)},{passive:true});
+const skipOnInput=e=>{const vt=e.viewTransition;if(!vt)return;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,()=>vt.skipTransition(),{once:true}))};
+addEventListener('pageswap',skipOnInput);addEventListener('pagereveal',skipOnInput)})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>About | Eshbal Hezroni</title>
+<meta name="description" content="About Eshbal Hezroni, a Senior Product Designer with 7+ years of experience creating complex SaaS platforms.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="About | Eshbal Hezroni">
+<meta property="og:description" content="About Eshbal Hezroni, a Senior Product Designer with 7+ years of experience creating complex SaaS platforms.">
+<meta property="og:site_name" content="Eshbal Hezroni">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="About | Eshbal Hezroni">
+<meta name="twitter:description" content="About Eshbal Hezroni, a Senior Product Designer with 7+ years of experience creating complex SaaS platforms.">
+<!-- og:image / twitter:image (1200x630, absolute URL) go here once the site has its own address -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500&family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&display=swap">
+<style>
+/* Layout: the homepage's paper and menu; a small centred title; the seven icons laid out like a specimen board.
+   Hover (or tap / keyboard focus) turns a card over to show what the icon stands for.
+   Deliberately single-theme: warm paper, same as the homepage. */
+:root{--paper:#F9F9F8;--back:#ECECE9;--ink:#1D1B18;--ink2:#5D584F;--ink3:#716B60;--hl:#A85A12;
+  --grot:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;--body:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;color-scheme:light}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body)}
+nav{position:fixed;top:calc(34px + env(safe-area-inset-top,0px));left:clamp(16px,3vw,40px);z-index:4;display:grid;gap:12px;justify-items:start}
+nav a{font:700 24px/1 var(--grot);letter-spacing:-.015em;color:var(--ink);text-decoration:none;padding:11px 18px 12px;border-radius:99px;background:rgba(249,249,248,.72);transition:color .15s}
+@media (hover:hover){nav a:hover{color:#A85A12}}
+nav a[aria-current="page"]{text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:2px}
+a:focus-visible,.tile:has(.flip:focus-visible){outline:2px solid var(--hl);outline-offset:4px}
+/* the front icon is a real button that turns the card; it fills the whole front face */
+.front .flip{all:unset;position:absolute;inset:0;display:grid;place-items:center;border-radius:16px;cursor:pointer}
+/* the underlined words are real buttons; they keep the look of inline text */
+button.word{font:inherit;line-height:inherit;letter-spacing:inherit;background:none;border:0;padding:0;margin:0;text-align:inherit}
+main{max-width:1180px;margin:0 auto;padding:clamp(64px,9vh,100px) clamp(16px,4vw,48px) 96px}
+.head{text-align:center;margin-bottom:clamp(40px,7vh,72px)}
+.head h1{font:700 clamp(28px,3.2vw,40px)/1.05 var(--grot);letter-spacing:-.02em;margin:0 0 10px}
+.head p{color:var(--ink2);font-size:17px;line-height:1.45;margin:0 auto;max-width:42ch;text-wrap:pretty}
+/* the board: 4 across, the last row of three centred */
+.grid{display:flex;flex-wrap:wrap;justify-content:center;gap:clamp(12px,2vw,24px)}
+.tile{position:relative;width:clamp(190px,23%,280px);aspect-ratio:1.12/1;perspective:900px;cursor:default;border-radius:16px;min-height:var(--need,0px);-webkit-tap-highlight-color:transparent}
+.inner{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .42s cubic-bezier(.2,.8,.2,1)}
+.tile.flip .inner,.tile.hold .inner{transform:rotateY(180deg)}@media (hover:hover){.tile:hover .inner{transform:rotateY(180deg)}}
+.face{position:absolute;inset:0;border-radius:16px;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:grid;place-items:center;text-align:center;padding:22px}
+.front img{width:64%;height:auto;display:block;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.front .name{position:absolute;left:0;right:0;bottom:16px;font:500 13px var(--body);color:var(--ink3)}
+.back{background:var(--back);transform:rotateY(180deg);align-content:center;gap:10px;padding:18px 14px;box-shadow:0 1px 1px 0 rgba(29,29,27,.04),0 4px 8px -2px rgba(29,29,27,.06),0 12px 24px -8px rgba(29,29,27,.08)}
+.back img{width:52px;height:52px}
+/* these two fill their square more than the others, so they are drawn a little smaller to look the same size */
+.front img.i-languages-globe,.front img.i-photography{width:55%}
+.front img.i-complex-systems{width:54%}
+.back img.i-languages-globe,.back img.i-photography{width:45px;height:45px}
+.back b{font:700 20px/1.1 var(--grot);letter-spacing:-.01em}
+.back p{margin:0;color:var(--ink2);font-size:15px;line-height:1.4;max-width:none;width:100%}
+.tile.flip,.tile.hold{z-index:5}@media (hover:hover){.tile:hover{z-index:5}}
+/* the word "flower": a small heart, and on hover a photo of the real plant from Wikipedia */
+.flower{color:var(--ink);white-space:nowrap}
+.flower .word{cursor:default;color:#823661;text-decoration:underline dashed rgba(130,54,97,.6);text-decoration-thickness:1px;text-underline-offset:2px;outline:none}
+.flower .word:focus-visible{outline:2px solid var(--hl);outline-offset:2px;border-radius:2px}
+.flower .heart{width:11px;height:11px;color:#AA498F;vertical-align:super;margin-left:2px}
+.peek{position:absolute;left:62%;top:-14%;width:78%;transform:scale(.96);transform-origin:0 50%;opacity:0;visibility:hidden;pointer-events:none;background:#fff;padding:8px 8px 10px;border-radius:3px;box-shadow:0 14px 30px rgba(40,25,5,.22);transition:opacity .08s ease-out,transform 0s linear .08s,visibility 0s linear .08s;z-index:10}
+.back .peek img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;border-radius:0}
+.peek em{display:block;font:400 12px/1.3 var(--body);font-style:normal;color:var(--ink3);margin-top:8px;text-align:center;white-space:normal}
+.peek small{display:block;font:11px/1.3 var(--body);color:var(--ink3);margin-top:2px;white-space:normal;text-align:left}
+/* the word "furniture": a filmstrip of her painted furniture; it stays open while the pointer moves into it */
+.flower.gal{white-space:normal}
+.film{pointer-events:auto;left:80%}
+.film .stage{display:block;position:relative;aspect-ratio:1/1;overflow:hidden;background:#eee}
+.back .film .stage img{position:absolute;inset:0;opacity:0;transition:opacity .3s ease}
+.back .film .stage img.on{opacity:1}
+.film .soon{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:12px;font:500 13px/1.3 var(--body);color:var(--ink3);background:var(--back)}
+.film .arw{all:unset;position:absolute;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;background:rgba(255,255,255,.88);color:var(--ink);display:grid;place-items:center;cursor:pointer;font:500 17px/1 var(--body);box-shadow:0 2px 6px rgba(0,0,0,.15);z-index:1}
+@media (hover:hover){.film .arw:hover{color:var(--hl)}}
+.film .arw:focus-visible{outline:2px solid var(--hl)}
+.film .arw.l{left:6px}.film .arw.r{right:6px}
+.film .dots{display:flex;justify-content:center;gap:5px;margin-top:8px}
+.film .dots i{width:5px;height:5px;border-radius:50%;background:#D3D3CF;transition:background .2s,transform .2s}
+.film .dots i.on{background:#823661;transform:scale(1.25)}
+/* the tooltip opens in 150ms (ease-out, from 96% size, growing out of the word) and closes in 80ms with a fade only. It opens instantly for keyboard focus and when another tooltip has only just closed (class nt). */
+.flower.open .peek,.flower.show .peek{opacity:1;visibility:visible;transform:none;transition:opacity .15s ease-out,transform .15s cubic-bezier(.2,.8,.2,1)}
+.peek.nt,.peek.nt *{transition:none!important}
+@media (prefers-reduced-motion:reduce){.peek{transform:none!important}.flower.open .peek{transition:opacity .15s ease-out}}
+.back{overflow:visible}
+@media (max-width:700px){.tile{width:calc(50% - 8px);aspect-ratio:1/1.3}.back p{font-size:15px;line-height:1.38}.back b{font-size:19px}}
+/* phones: a slightly taller card, a smaller icon and text, so what is written on the back stays inside the card */
+@media (max-width:700px){.back{padding:14px 12px;gap:7px}.back img,.back img.i-languages-globe,.back img.i-photography{width:46px;height:46px}}
+/* phones: one card per row, near-square, so the lines of text are longer */
+@media (max-width:600px){.grid{gap:28px}.tile{width:min(100%,320px);aspect-ratio:1.45/1}.back{border:1px solid transparent;box-shadow:0 0 0 1px #E6E6E3}.back{padding:16px 20px;gap:8px}.back p{font-size:15px;line-height:1.4}.back b{font-size:20px}.back img,.back img.i-languages-globe,.back img.i-photography{width:46px;height:46px}}
+@media (prefers-reduced-motion:reduce){
+  .inner{transition:none;transform:none!important}
+  .back{transform:none;opacity:0;transition:opacity .2s ease}
+  .tile.flip .back{opacity:1}@media (hover:hover){.tile:hover .back{opacity:1}}
+}
+/* tooltip arrows: a header row above the photo (name, count, previous / next), so nothing covers the picture. The tooltip is a little wider for it. */
+.film .chev{display:block;width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.v-header{width:max(78%,232px)}
+.v-header .stage{display:block;position:relative;aspect-ratio:1/1;overflow:hidden;background:#eee}
+.v-header .film-head .t small{white-space:nowrap}
+.v-header .film-head{display:flex;align-items:center;justify-content:space-between;padding:0 0 8px 2px;gap:8px}
+.v-header .film-head .t{font:600 13px var(--grot);color:var(--ink);white-space:nowrap}
+.v-header .film-head .t small{display:inline;margin:0 0 0 6px;font:400 12px var(--body);color:var(--ink3);text-align:left;font-variant-numeric:tabular-nums}
+.v-header .ctl{display:flex;gap:8px}
+.v-header .arw{position:relative;top:auto;left:auto;right:auto;transform:none;width:28px;height:28px;background:transparent;box-shadow:none;color:var(--ink);transition:color .15s ease,background-color .15s ease}
+.v-header .arw.l,.v-header .arw.r{left:auto;right:auto}
+.v-header .arw::after{content:"";position:absolute;inset:-4px}
+.v-header .arw:active{transform:scale(.96)}
+@media (hover:hover){.v-header .arw:hover{background:var(--back);color:var(--hl)}}
+/* logo, top left: smaller, its left edge in line with the menu words (pill padding 18px), the menu a little lower. */
+.logo{position:fixed;top:calc(32px + env(safe-area-inset-top,0px));left:calc(clamp(16px,3vw,40px) + 18px);z-index:5;display:block;line-height:0;border-radius:4px}
+.logo span{height:34px;aspect-ratio:446/448;display:block;background:#35332F;-webkit-mask:url(logo.svg) center/contain no-repeat;mask:url(logo.svg) center/contain no-repeat;transition:background-color .15s}
+.logo:focus-visible span{background:#A85A12}@media (hover:hover){.logo:hover span{background:#A85A12}}
+@media (prefers-reduced-motion:reduce){.logo span{transition:none}}
+nav{top:calc(88px + env(safe-area-inset-top,0px))}
+/* the page title sits on the same line as the menu word "Work": its baseline is placed to match the menu's, whatever the window height */
+@media (min-width:1281px){main{padding-top:calc(119px + env(safe-area-inset-top,0px) - .85*clamp(28px,3.2vw,40px))}}
+/* narrower than 1280px: the menu becomes one row beside the logo, like Work and the case pages, so it never sits on the content */
+@media (max-width:1280px){.logo{top:calc(14px + env(safe-area-inset-top,0px));left:clamp(16px,3vw,40px)}.logo span{height:32px}nav{display:flex;flex-wrap:wrap;gap:8px;top:calc(18px + env(safe-area-inset-top,0px));left:calc(clamp(16px,3vw,40px) + 48px)}nav a{font-size:19px;padding:9px 14px 10px}}
+@media (max-width:600px){.logo span{height:30px}nav{top:calc(14px + env(safe-area-inset-top,0px));left:calc(16px + 42px)}}
+/* page changes: a quick cross-fade (180ms) so the move registers without holding anything up. Old and new fade on the same curve, so together they stay at full strength (no dip, no flash). Nothing slides; the menu and logo are in the same place on every page, so they stay put. Browsers without cross-document view transitions just change page instantly. With reduced motion there is no fade. */
+@view-transition{navigation:auto}
+::view-transition{background:#F9F9F8}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.18s;animation-timing-function:ease-out}
+@media (prefers-reduced-motion:reduce){::view-transition-old(root),::view-transition-new(root){animation:none}}
+/* the page has the same width with or without a scrollbar, so nothing shifts sideways when you arrive on a longer page */
+html{scrollbar-gutter:stable}
+/* touch: no grey tap flash; the press state below gives the feedback instead */
+nav a,.logo,.word,.film .arw{-webkit-tap-highlight-color:transparent}
+
+/* phones (narrow or no hover): a gallery opens as a centred card over a dimmed page, instead of a tooltip beside the word */
+@media (max-width:600px),(hover:none){.peek{display:none!important}}
+.gd-veil{position:fixed;inset:0;z-index:90;background:rgba(29,27,24,.62);opacity:0;visibility:hidden;transition:opacity .12s ease-out,visibility 0s linear .12s}
+.gd-veil.open{opacity:1;visibility:visible;transition:opacity .2s ease-out}
+.gd{position:fixed;z-index:91;left:50%;top:50%;width:min(338px,calc(100vw - 32px));max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;background:#fff;border-radius:6px;padding:2px 12px 4px;box-shadow:0 20px 50px rgba(40,25,5,.3);transform:translate(-50%,-50%) scale(.97);opacity:0;visibility:hidden;transition:opacity .12s ease-out,transform .12s ease-out,visibility 0s linear .12s}
+.gd.open{opacity:1;visibility:visible;transform:translate(-50%,-50%);transition:opacity .18s ease-out,transform .2s cubic-bezier(.23,1,.32,1)}
+.gd-h{display:flex;align-items:center;justify-content:space-between;min-height:44px;padding:0 0 2px 6px}
+.gd-h b{font:600 16px var(--grot);letter-spacing:-.01em}
+.gd-x,.gd-arw{width:44px;height:44px;border-radius:50%;border:0;padding:0;display:grid;place-items:center;cursor:pointer;color:var(--ink);-webkit-tap-highlight-color:transparent}
+.gd-x{background:transparent;margin-right:-4px}
+.gd-arw{background:transparent}
+.gd-x svg,.gd-arw svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.gd-x:active,.gd-arw:active{transform:scale(.95)}
+.gd-x:focus-visible,.gd-arw:focus-visible{outline:2px solid var(--hl);outline-offset:2px}
+.gd-stage{position:relative;aspect-ratio:1/1;overflow:hidden;border-radius:3px;background:#eee;touch-action:pan-y}
+.gd-stage img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .25s ease}
+.gd-stage img.on{opacity:1}
+.gd-cap{margin:8px 6px 0;font:400 12px/1.35 var(--body);color:var(--ink3);overflow-wrap:anywhere}
+.gd-cap:empty{display:none}
+.gd-f{display:flex;align-items:center;justify-content:center;padding-top:2px}
+.gd-f[hidden]{display:none}
+.gd-ctl{display:flex;gap:8px}
+.gd-ht{display:flex;align-items:baseline;gap:8px;flex:1;min-width:0}
+.gd-cnt{font:400 13px var(--body);color:var(--ink2);font-variant-numeric:tabular-nums}
+@media (prefers-reduced-motion:reduce){.gd,.gd-veil{transition:opacity .15s linear,visibility 0s linear .15s!important}.gd-stage img{transition:none!important}.gd{transform:translate(-50%,-50%)!important}}
+/* phones: the first icon card sits 40px under the page title, the same on Work, Blog and About */
+@media (max-width:600px){.head{margin-bottom:40px}}
+</style>
+<link rel="stylesheet" href="menu.css">
+</head>
+<body>
+<script src="menu.js"></script>
+
+
+<a class="logo" href="./" aria-label="Eshbal Hezroni, home"><span aria-hidden="true"></span></a>
+<nav aria-label="Main">
+  <a href="work.html">Work</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html" aria-current="page">About</a>
+</nav>
+
+<main>
+  <header class="head">
+    <h1>About me</h1>
+  </header>
+  <section class="grid" id="grid" aria-label="Icons and what they mean"></section>
+</main>
+
+<script>
+/* the seven icons from the homepage pattern, and what each one stands for */
+const FURN=['p11','p05','p13','p04','p10','p12','p07','p09','p02'].map(n=>`img/furniture/${n}.jpg`);
+/* my photos, cropped on the board, in the order I chose */
+const SHOTS=Array.from({length:11},(_,i)=>'img/photography/s'+String(i+1).padStart(2,'0')+'.jpg');
+/* my ceramics, cropped on the board, in the order I chose */
+const CERAMICS=Array.from({length:14},(_,i)=>'img/ceramics/c'+String(i+1).padStart(2,'0')+'.jpg');
+const CH_L='<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',CH_R='<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+const film=(list,label)=>list.length?`<span class="peek film v-header" role="group" aria-label="${label}"><span class="film-head"><span class="t">${label}<small class="cnt">1 / ${list.length}</small></span><span class="ctl"><button type="button" class="arw l" aria-label="Previous photo">${CH_L}</button><button type="button" class="arw r" aria-label="Next photo">${CH_R}</button></span></span><span class="stage">${list.map((f,i)=>`<img src="${f}" alt="" loading="lazy" class="${i?'':'on'}">`).join('')}</span></span>`:`<span class="peek film" role="group" aria-label="${label}"><span class="stage"><span class="soon">Photos coming soon</span></span></span>`;
+const ITEMS=[
+ ['eshbal-flower','My name','Eshbal is the name of a rare, pink Israeli <span class="flower"><button type="button" class="word">flower</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg><span class="peek v-header" role="img" aria-label="Photo of an eshbal flower"><span class="stage"><img src="img/eshbal-wikipedia.jpg" alt="" loading="lazy" title="Photo: Kurt St\u00fcber, CC BY-SA 3.0, Wikimedia Commons"></span><em>A photo of the flower</em></span></span>. The genus has 373 species!'],
+ ['complex-systems','Complex systems','I design complex SaaS platforms: understanding the data, and finding the best way for people to use it.'],
+ ['pattern','Pattern',`Colorful patterns are one of my favorite things. I paint <span class="flower gal"><button type="button" class="word">my own patterns</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>${film(FURN,'My art')}</span> on old furniture and ceramics I make.`],
+ ['bezalel-shenkar','Bezalel + Shenkar','I hold a bachelor’s in design from Bezalel and a master’s in design from Shenkar.'],
+ ['italy','Italy','I was born in Italy and lived there until I was five. The Italian culture still has a special place in my heart.'],
+ ['ceramics','Ceramics',`Ceramics is a fairly new hobby of mine. It might look easy to make <span class="flower gal"><button type="button" class="word">vessels</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>${film(CERAMICS,'My ceramics')}</span>, but it is really hard and takes a lot of practice.`],
+ ['languages-globe','Languages','Hebrew, English, Italian, a bit of Spanish, and some Arabic. I’m always up for knowing more!'],
+ ['photography','Photography',`I love taking photos and looking for interesting compositions. To me, a photo is good when I feel I truly caught the <span class="flower gal"><button type="button" class="word">moment</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>${film(SHOTS,'My photography')}</span>.`]];
+
+/* phones: the gallery opens as a centred card (dialog) over a dimmed page. Escape or the X closes it and focus goes back to the word; the arrow keys, the arrow buttons and a swipe step through the photos; the page behind is inert while it is open. */
+const phoneMode=()=>matchMedia('(max-width:600px),(hover:none)').matches;
+/* phones: the photos sit inside a hidden tooltip, so the browser never fetches them until a card opens. warm() fetches and decodes one early. */
+const warmed=new Set(),warm=src=>{if(!src||warmed.has(src))return;warmed.add(src);const n=new Image();n.src=src;n.decode&&n.decode().catch(()=>{})};
+const GD={};
+function buildGD(){
+  const X='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>',L='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',R='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+  document.body.insertAdjacentHTML('beforeend','<div class="gd-veil" id="gd-veil"></div><div class="gd" id="gd" role="dialog" aria-modal="true" aria-labelledby="gd-title"><div class="gd-h"><span class="gd-ht"><b id="gd-title"></b><span class="gd-cnt" aria-live="polite"></span></span><button type="button" class="gd-x" aria-label="Close">'+X+'</button></div><div class="gd-stage"><img alt=""></div><p class="gd-cap"></p><div class="gd-f"><span class="gd-ctl"><button type="button" class="gd-arw" data-d="-1" aria-label="Previous photo">'+L+'</button><button type="button" class="gd-arw" data-d="1" aria-label="Next photo">'+R+'</button></span></div></div>');
+  GD.veil=document.getElementById('gd-veil');GD.el=document.getElementById('gd');GD.img=GD.el.querySelector('.gd-stage img');GD.cap=GD.el.querySelector('.gd-cap');GD.cnt=GD.el.querySelector('.gd-cnt');GD.f=GD.el.querySelector('.gd-f');GD.title=document.getElementById('gd-title');GD.x=GD.el.querySelector('.gd-x');
+  GD.k=0;GD.list=[];GD.caps=[];
+  GD.x.addEventListener('click',closeGD);GD.veil.addEventListener('click',closeGD);
+  GD.el.querySelectorAll('.gd-arw').forEach(b=>b.addEventListener('click',()=>goGD(GD.k+(+b.dataset.d))));
+  let sx=null;const st=GD.el.querySelector('.gd-stage');st.addEventListener('pointerdown',e=>{sx=e.clientX});st.addEventListener('pointerup',e=>{if(sx!=null&&GD.list.length>1&&Math.abs(e.clientX-sx)>30)goGD(GD.k+(e.clientX<sx?1:-1));sx=null});
+  document.addEventListener('keydown',e=>{if(!GD.open)return;
+    if(e.key==='Escape'){e.preventDefault();closeGD();return}
+    if(e.key==='ArrowRight'&&GD.list.length>1){e.preventDefault();goGD(GD.k+1);return}
+    if(e.key==='ArrowLeft'&&GD.list.length>1){e.preventDefault();goGD(GD.k-1);return}
+    if(e.key==='Tab'){const f=[...GD.el.querySelectorAll('button')].filter(b=>b.offsetParent!==null);if(!f.length)return;const a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
+}
+function showGD(){const src=GD.list[GD.k];GD.img.classList.remove('on');GD.img.onload=()=>GD.img.classList.add('on');GD.img.src=src;if(GD.img.complete&&GD.img.naturalWidth)GD.img.classList.add('on');
+  GD.cap.textContent=GD.caps[GD.k]||'';GD.cnt.textContent=GD.list.length>1?(GD.k+1)+' / '+GD.list.length:'';
+  [-1,1].forEach(d=>{if(GD.list.length>1)warm(GD.list[(GD.k+d+GD.list.length)%GD.list.length])});
+  const rest=GD.list.slice();const idle=window.requestIdleCallback||(f=>setTimeout(f,300));const step=()=>{const u=rest.shift();if(u===undefined)return;warm(u);idle(step)};idle(step)}
+function goGD(n){GD.k=(n+GD.list.length)%GD.list.length;showGD()}
+function openGD(word,pk){
+  if(!GD.el)buildGD();
+  const imgs=[...pk.querySelectorAll('.stage img')];if(!imgs.length)return;
+  GD.list=imgs.map(i=>i.getAttribute('src'));
+  const credit=imgs.map(i=>i.getAttribute('title')||'');const em=pk.querySelector('em');const one=imgs.length===1;
+  GD.caps=imgs.map((i,n)=>one&&em?em.textContent.trim():credit[n]);
+  {const lb=pk.getAttribute('aria-label')||'Photos';GD.title.textContent=one?'':lb;if(one){GD.el.removeAttribute('aria-labelledby');GD.el.setAttribute('aria-label',lb)}else{GD.el.removeAttribute('aria-label');GD.el.setAttribute('aria-labelledby','gd-title')}}GD.k=0;GD.f.hidden=one;GD.cap.style.cssText=one?'margin:2px 6px 0;min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center':'';
+  GD.el.querySelectorAll('.gd-arw').forEach(b=>b.hidden=one);
+  GD.from=word;GD.open=true;showGD();
+  [...document.body.children].forEach(el=>{if(el!==GD.el&&el!==GD.veil&&el.tagName!=='SCRIPT'&&el.tagName!=='STYLE'&&el.tagName!=='LINK')el.setAttribute('inert','')});
+  document.documentElement.style.overflow='hidden';
+  GD.veil.classList.add('open');GD.el.classList.add('open');
+  setTimeout(()=>GD.x.focus(),30)}
+function closeGD(){if(!GD.open)return;GD.open=false;GD.el.classList.remove('open');GD.veil.classList.remove('open');
+  [...document.body.children].forEach(el=>el.removeAttribute('inert'));document.documentElement.style.overflow='';
+  if(GD.from)GD.from.focus()}
+const grid=document.getElementById('grid');
+const closers=[],syncs=[];
+/* phones: every card is always shown open (its details face), nothing to tap to find out what an icon means */
+const syncAll=()=>syncs.forEach(f=>f());addEventListener('resize',syncAll);
+/* one card open at a time: opening one turns the others back; a tap outside every card (not in the photo dialog) turns the open one back */
+
+ITEMS.forEach(([icon,title,text])=>{
+  const t=document.createElement('div');t.className='tile';t.setAttribute('role','group');t.setAttribute('aria-labelledby','tt-'+icon);
+  t.innerHTML=`<div class="inner"><div class="face front"><button type="button" class="flip" aria-expanded="false" aria-label="Show details: ${title}"><img class="i-${icon}" src="icons/${icon}.svg" alt=""></button></div><div class="face back"><img class="i-${icon}" src="icons/${icon}.svg" alt=""><b id="tt-${icon}">${title}</b><p>${text}</p></div></div>`;
+  /* the back's buttons (words, photo arrows) join the tab order only while the card is turned, so keyboard users never land on a hidden side. Mouse hover still works on them. */
+  const fb=t.querySelector('.flip'),backBtns=[...t.querySelectorAll('.back button')];
+  const setFlip=on=>{if(on&&!phoneMode())closers.forEach(c=>{if(c!==closeMe)c()});t.classList.toggle('flip',on);fb.setAttribute('aria-expanded',on);fb.setAttribute('aria-label',(on?'Hide details: ':'Show details: ')+title);backBtns.forEach(b=>b.tabIndex=on?0:-1)};
+  const closeMe=()=>{if(t.classList.contains('flip'))setFlip(false)};closers.push(closeMe);
+  const sync=()=>{const a=phoneMode();fb.tabIndex=a?-1:0;if(a!==t.classList.contains('flip'))setFlip(a)};syncs.push(sync);
+  setFlip(false);sync();
+  fb.addEventListener('click',e=>{e.stopPropagation();setFlip(!t.classList.contains('flip'))});
+  /* touch screens have no hover: a tap turns the card, a second tap turns it back */
+  t.addEventListener('click',e=>{if(e.target.closest('.film'))return;const f=e.target.closest('.flower');if(f){e.stopPropagation();if(phoneMode()){const fw=f.querySelector('.word'),fp=f.querySelector('.peek');if(fw&&fp)openGD(fw,fp)}else f.classList.toggle('show');return}if(!phoneMode()&&matchMedia('(hover: none)').matches)setFlip(!t.classList.contains('flip'))});
+  /* Escape: first closes an open tooltip, a second Escape turns the card back and returns focus to its icon */
+  t.addEventListener('keydown',e=>{if(e.key!=='Escape')return;const o=t.querySelector('.flower.open');if(o){o.classList.remove('open');window.__ttClosed=Date.now();t.classList.remove('hold');return}if(t.classList.contains('flip')&&!phoneMode()){setFlip(false);fb.focus()}});
+  /* the furniture slider: opens on the word, stays open while the pointer is inside it; arrows (or arrow keys) step through the photos */
+  t.querySelectorAll('.flower').forEach(g=>{
+    const w=g.querySelector('.word'),pk=g.querySelector('.peek'),big=[...pk.querySelectorAll('.stage img')],th=[...pk.querySelectorAll('.dots i')];let tm,ht,k=0;
+    /* where the tooltip opens: by default at 80% of the card, but never on top of its own link. If the link reaches past that point the tooltip opens just right of it; if there is no room on the right it opens to the left of the link; if there is no room on either side it opens under the link. Measured from the card's flat layout, so it also works right after the card flips. */
+    const place=()=>{const back=t.querySelector('.back'),br=back.getBoundingClientRect();if(!br.width||!back.offsetWidth)return;
+      const sx=br.width/back.offsetWidth,sy=br.height/back.offsetHeight;pk.style.left='';pk.style.top='';
+      const rs=[...w.getClientRects()].map(r=>({l:(r.left-br.left)/sx,r:(r.right-br.left)/sx,t:(r.top-br.top)/sy,b:(r.bottom-br.top)/sy}));if(!rs.length)return;
+      const wl=Math.min(...rs.map(r=>r.l)),wr=Math.max(...rs.map(r=>r.r)),wb=Math.max(...rs.map(r=>r.b)),pw=pk.offsetWidth,vw=innerWidth-12,vx=X=>br.left+X*sx;
+      const wm=(Math.min(...rs.map(r=>r.t))+wb)/2,origin=(ox,wy)=>{pk.style.transformOrigin=ox+' '+Math.max(0,Math.min(pk.offsetHeight,wy-pk.offsetTop))+'px'};
+      const right=Math.max(back.offsetWidth*.8,wr+14);
+      if(vx(right)+pw*sx<=vw){pk.style.left=right+'px';origin('0',wm);return}
+      const left=wl-14-pw;
+      if(vx(left)>=12){pk.style.left=left+'px';origin('100%',wm);return}
+      const x=Math.max((12-br.left)/sx,Math.min(wl,(vw-br.left)/sx-pw));pk.style.left=x+'px';pk.style.top=(wb+10)+'px';pk.style.transformOrigin=((wl+wr)/2-x)+'px 0'};
+    t.querySelector('.inner').addEventListener('transitionend',e=>{if(e.target.classList.contains('inner')&&g.classList.contains('open'))place()});
+    const closed=()=>{window.__ttClosed=Date.now()};
+    /* motion budget: a tooltip is seen many times in one visit, so it stays small and fast. No motion for keyboard focus, and none when another tooltip has just closed. */
+    const show=via=>{clearTimeout(tm);clearTimeout(ht);if(g.classList.contains('open'))return;
+      const instant=via==='key'||Date.now()-(window.__ttClosed||0)<300;
+      pk.classList.toggle('nt',instant);place();t.classList.add('hold');g.classList.add('open');
+      if(instant)requestAnimationFrame(()=>requestAnimationFrame(()=>pk.classList.remove('nt')))};
+    /* leaving in two steps: first the tooltip fades away (120ms grace, then the 80ms fade), and only then does the card turn back over. Without the hold the card would start flipping while the tooltip is still on it. */
+    const dropHold=()=>setTimeout(()=>{if(!g.classList.contains('open'))t.classList.remove('hold')},90);
+    const hide=()=>{clearTimeout(ht);tm=setTimeout(()=>{if(g.classList.contains('open')){g.classList.remove('open');closed();dropHold()}},120)};
+    const go=n=>{if(!big.length)return;k=(n+big.length)%big.length;big.forEach((m,j)=>m.classList.toggle('on',j===k));th.forEach((b,j)=>b.classList.toggle('on',j===k));pk.querySelectorAll('.cnt').forEach(c=>c.textContent=`${k+1} / ${big.length}`)};
+    /* a short pause (100ms) before the first one opens, so crossing a word on the way somewhere else does not flash a tooltip */
+    w.addEventListener('pointerenter',()=>{if(phoneMode())return;clearTimeout(tm);if(g.classList.contains('open'))return;clearTimeout(ht);if(Date.now()-(window.__ttClosed||0)<300)show('hover');else ht=setTimeout(()=>show('hover'),100)});
+    w.addEventListener('pointerleave',hide);pk.addEventListener('pointerenter',()=>clearTimeout(tm));pk.addEventListener('pointerleave',hide);
+    w.addEventListener('focus',()=>{if(phoneMode())return;show(w.matches(':focus-visible')?'key':'hover')});g.addEventListener('focusout',e=>{if(!g.contains(e.relatedTarget))hide()});pk.addEventListener('focusin',()=>clearTimeout(tm));
+    w.addEventListener('click',e=>{e.stopPropagation();if(phoneMode()){openGD(w,pk);return}if(g.classList.contains('open')){g.classList.remove('open');closed();dropHold()}else show('tap')});addEventListener('resize',()=>{if(g.classList.contains('open'))place()});
+    pk.querySelectorAll('.arw.l,.zone.l').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();go(k-1)}));pk.querySelectorAll('.arw.r,.zone.r').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();go(k+1)}));
+    g.addEventListener('keydown',e=>{if(!g.classList.contains('open'))return;if(e.key==='ArrowRight'){e.preventDefault();go(k+1)}if(e.key==='ArrowLeft'){e.preventDefault();go(k-1)}});
+  });
+  grid.appendChild(t)});
+/* phones: once the page is idle, quietly fetch the first photo of every gallery, so the first tap opens onto a photo that is already there */
+if(phoneMode()){const first=()=>document.querySelectorAll('.peek .stage img:first-child').forEach(i=>warm(i.getAttribute('src')));typeof requestIdleCallback==='function'?requestIdleCallback(first,{timeout:3000}):setTimeout(first,1500)}
+/* every card is at least as tall as the longest text on any back at the current width, so nothing runs out of a card at any screen size, zoom or text size */
+(function(){const tiles=()=>[...grid.children];
+  function fit(){const ts=tiles();if(!ts.length)return;const w=ts[0].getBoundingClientRect().width;if(!w)return;let need=0;
+    ts.forEach(t=>{const c=t.querySelector('.back').cloneNode(true);c.querySelectorAll('.peek').forEach(n=>n.remove());c.removeAttribute('aria-hidden');c.style.cssText='position:absolute;left:-9999px;top:0;inset:auto;width:'+w+'px;height:auto;transform:none;visibility:hidden';document.body.appendChild(c);need=Math.max(need,c.offsetHeight);c.remove()});
+    grid.style.setProperty('--need',(Math.ceil(need)+10)+'px')}
+  fit();if(document.fonts&&document.fonts.ready)document.fonts.ready.then(fit);
+  if(window.ResizeObserver){let last=0;new ResizeObserver(()=>{const w=grid.clientWidth;if(w!==last){last=w;fit()}}).observe(grid)}else addEventListener('resize',fit)})();
+</script>
+
+</body>
 </html>

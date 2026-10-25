@@ -1,0 +1,43 @@
+/* Phone menu, 600px and narrower (and phones held sideways). A fixed header holds the mark and one button. The button opens a full-screen ink panel with the pages; the header turns the same colour so the two read as one surface. Wider screens keep the existing menu. */
+.mm-head,.mm-panel{display:none}
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){
+html.mm{scroll-padding-top:calc(72px + env(safe-area-inset-top,0px))}
+html.mm .logo,html.mm nav[aria-label="Main"]{display:none!important}
+html.mm .mm-head,html.mm .mm-panel{display:block}
+html.mm.mm-open,html.mm.mm-open body{overflow:hidden}
+.mm-head{position:fixed;top:0;left:0;right:0;z-index:50;height:calc(64px + env(safe-area-inset-top,0px));padding:env(safe-area-inset-top,0px) 16px 0 20px;background:transparent;color:#1D1B18;border-bottom:1px solid transparent;transition:background-color .3s cubic-bezier(.16,1,.3,1),color .3s cubic-bezier(.16,1,.3,1),border-color .3s cubic-bezier(.16,1,.3,1);-webkit-tap-highlight-color:transparent}
+html.mm .mm-head{display:flex;align-items:center;justify-content:space-between}
+.mm-head.mm-scrolled{background:rgba(249,249,248,.94);-webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);border-bottom-color:rgba(29,27,24,.08)}
+html.mm-open .mm-head{background:#2D2B28;color:#F9F9F8;border-bottom-color:transparent;-webkit-backdrop-filter:none;backdrop-filter:none}
+.mm-logo{position:relative;display:block;line-height:0;border-radius:4px}
+.mm-logo::after{content:"";position:absolute;inset:-7px}
+.mm-logo span{display:block;width:30px;height:30px;background:#35332F;-webkit-mask:url(logo.svg) center/contain no-repeat;mask:url(logo.svg) center/contain no-repeat;transition:background-color .3s cubic-bezier(.16,1,.3,1)}
+html.mm-open .mm-logo span{background:#F9F9F8}
+.mm-title{position:absolute;left:64px;right:64px;top:env(safe-area-inset-top,0px);height:64px;margin:0;padding:0;border:0;background:none;color:inherit;cursor:pointer;line-height:64px;text-align:center;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font:700 19px/64px "Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;letter-spacing:-.015em;opacity:0;visibility:hidden;pointer-events:none;transition:opacity .2s ease-out,visibility 0s linear .2s;-webkit-tap-highlight-color:transparent}
+.mm-title:focus-visible{outline:2px solid #A85A12;outline-offset:-4px;border-radius:8px}
+.mm-head.mm-titled .mm-title{opacity:1;visibility:visible;pointer-events:auto;transition:opacity .2s ease-out}
+.mm-head.mm-titled .mm-title.mm-out{opacity:0;transform:translateY(-6px);transition:opacity .11s ease-out,transform .11s ease-out}
+.mm-title{transition:opacity .2s ease-out,visibility 0s linear .2s,transform .25s cubic-bezier(.23,1,.32,1)}
+.mm-prog{position:absolute;left:0;bottom:-1px;width:100%;height:2px;background:#A85A12;transform:scaleX(0);transform-origin:left;pointer-events:none;will-change:transform}
+html.mm-open .mm-prog{opacity:0}
+html.mm-open .mm-head .mm-title{opacity:0;visibility:hidden;pointer-events:none}
+.mm-btn{position:relative;width:48px;height:48px;margin-right:-8px;padding:0;border:0;border-radius:50%;background:transparent;color:inherit;cursor:pointer;display:grid;place-items:center;transition:transform .15s ease-out,background-color .3s cubic-bezier(.16,1,.3,1);-webkit-tap-highlight-color:transparent}
+.mm-btn:active{transform:scale(.95)}
+.mm-btn:focus-visible{outline:2px solid #A85A12;outline-offset:2px}
+html.mm-open .mm-btn:focus-visible{outline-color:#E39A52}
+.mm-btn svg{grid-area:1/1;width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.67;stroke-linecap:round;stroke-linejoin:round;transition:opacity .2s ease-out,transform .2s ease-out}
+.mm-btn .mm-x{opacity:0;transform:rotate(-45deg) scale(.8)}
+html.mm-open .mm-btn .mm-bars{opacity:0;transform:rotate(45deg) scale(.8)}
+html.mm-open .mm-btn .mm-x{opacity:1;transform:none}
+/* over the home pattern the button gets a little glass so it stays readable */
+html.mm-home .mm-btn{width:44px;height:44px;margin-right:0;border-radius:6px;background:rgba(253,253,252,.38);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.05),0 8px 22px rgba(40,25,5,.14)}
+html.mm-home.mm-open .mm-btn{background:transparent;box-shadow:none;-webkit-backdrop-filter:none;backdrop-filter:none}
+.mm-panel{position:fixed;inset:0;z-index:40;background:#2D2B28;color:#F9F9F8;opacity:0;visibility:hidden;overscroll-behavior:contain;transition:opacity .3s cubic-bezier(.4,0,.2,1),visibility 0s linear .3s}
+html.mm-open .mm-panel{opacity:1;visibility:visible;transition:opacity .3s cubic-bezier(.4,0,.2,1)}
+.mm-list{position:absolute;left:0;right:0;top:calc(64px + env(safe-area-inset-top,0px) + 16px);padding:0 24px}
+.mm-list a{display:flex;align-items:center;justify-content:space-between;height:68px;color:#F9F9F8;text-decoration:none;font:500 28px/1 "Bricolage Grotesque","Instrument Sans",system-ui,sans-serif;letter-spacing:-.02em;border-bottom:1px solid #000;transition:color .2s ease-out;-webkit-tap-highlight-color:transparent}
+.mm-list a[aria-current="page"]{color:#E39A52}
+.mm-list a:active{color:#E39A52}
+.mm-list a:focus-visible{outline:2px solid #E39A52;outline-offset:-2px;border-radius:6px}
+@media (prefers-reduced-motion:reduce){.mm-head,.mm-title,.mm-prog,.mm-logo span,.mm-btn,.mm-btn svg,.mm-panel,.mm-list a{transition:none!important}}
+}

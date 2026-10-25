@@ -1,12 +1,41 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="refresh" content="0; url=campaigns-board/">
-    <link rel="canonical" href="campaigns-board/">
-    <title>Redirecting to Campaign Board</title>
-  </head>
-  <body>
-    <p><a href="campaigns-board/">Continue to Campaign Board</a></p>
-  </body>
+<head>
+<meta charset="utf-8"><script>
+/* page changes: (1) warm the next page: when a link is pointed at, fetch it quietly so the click lands on a page that is already there. (2) if you click or press a key while a page change is running, the animation is skipped, so the page never feels like it is waiting for the fade. */
+(()=>{const seen=new Set(),warm=u=>{if(seen.has(u))return;seen.add(u);const l=document.createElement('link');l.rel='prefetch';l.href=u;document.head.appendChild(l)};
+addEventListener('pointerover',e=>{const a=e.target.closest&&e.target.closest('a[href]');if(a&&a.origin===location.origin&&!a.hash&&a.target!=='_blank'&&a.href!==location.href)warm(a.href)},{passive:true});
+const skipOnInput=e=>{const vt=e.viewTransition;if(!vt)return;['pointerdown','keydown'].forEach(t=>document.addEventListener(t,()=>vt.skipTransition(),{once:true}))};
+addEventListener('pageswap',skipOnInput);addEventListener('pagereveal',skipOnInput)})();
+</script><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The design process of a new feature: Campaign Board | Eshbal Hezroni</title>
+<meta name="description" content="A fun and intuitive way to build a campaign calendar board for eCommerce website managers.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="The design process of a new feature: Campaign Board | Eshbal Hezroni">
+<meta property="og:description" content="A fun and intuitive way to build a campaign calendar board for eCommerce website managers.">
+<meta property="og:site_name" content="Eshbal Hezroni">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The design process of a new feature: Campaign Board | Eshbal Hezroni">
+<meta name="twitter:description" content="A fun and intuitive way to build a campaign calendar board for eCommerce website managers.">
+<!-- og:image / twitter:image (1200x630, absolute URL) go here once the site has its own address -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon-48.png" type="image/png" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Bricolage+Grotesque:opsz,wght@12..96,500..800&display=swap">
+<link rel="stylesheet" href="case.css?v=213">
+<script src="case-pages.js?v=213" defer></script>
+<link rel="stylesheet" href="menu.css">
+</head>
+<body id="top" data-root="" data-case="campaigns">
+<script src="menu.js"></script>
+<a class="logo" href="./" aria-label="Eshbal Hezroni, home"><span aria-hidden="true"></span></a>
+<nav aria-label="Main">
+  <a href="work.html" aria-current="page">Work</a>
+  <a href="blog.html">Blog</a>
+  <a href="about.html">About</a>
+</nav>
+<a class="case-back-link case-back-link--page" href="work.html" aria-label="Back to selected work"><span aria-hidden="true">←</span> Back</a>
+<main id="case-root"></main>
+</body>
 </html>

@@ -1,4 +1,4 @@
-const img = (src, alt = "") => ({ type: "image", src, alt });
+const img = (src, alt = "", width, height) => ({ type: "image", src, alt, width, height });
 const video = (src, label = "", mime = "video/mp4") => ({ type: "video", src, label, mime });
 const h = (text) => ({ type: "heading", text });
 const p = (text) => ({ type: "paragraph", text });
@@ -33,68 +33,35 @@ const caseStudies = {
       p("I gathered information about competitors to define what exists in the market today and to understand which features should be part of the core experience. I analyzed the platforms and understood what was essential and what was missing. As you can see in the table below, part of the research compares each competitor’s ability."),
       img("assets/wix/034-Group-143417083_1539_c.jpg", "Group-143417083_1539_c.jpg"),
       h("Insights"),
-      p("Campagins are a collabarative effort (digital marketing, content writers, designers)\n\nCustomers need “Siba-Lemesiba”, after 10 years, the idea bank is done\n\nPain-points:\n\nno centralized place to see the big picture\nconsidering needs of different departments\npredicting trends over the year\nmeasuring success and failure\n\nNo standard tools:\nGoogle Calendar & Analytics, spreadsheets + docs\n\nCurrent campaign creation practices: past experience, competitive analysis, guessing\n\nCampaign timeline depends on its type. Can be planned ahead (e.g. Black Friday) or dynamic"),
+      p("Campaigns are a collaborative effort (digital marketing, content writers, designers).\n\nCustomers need “Siba-Lemesiba”, after 10 years, the idea bank is done.\n\nPain points:\n• No centralized place to see the big picture\n• Considering the needs of different departments\n• Predicting trends over the year\n• Measuring success and failure\n\nNo standard tools:\nGoogle Calendar & Analytics, spreadsheets + docs.\n\nCurrent campaign creation practices: past experience, competitive analysis, guessing.\n\nCampaign timeline depends on its type. Can be planned ahead (e.g. Black Friday) or dynamic."),
       h("Wireframes"),
       p("During the research, I realized that the project is actually divided into two parts. The first part is the area where the user builds his board, and the second part is the board itself and its use."),
       img("assets/wix/035-Frame-143417697.jpg", "Frame 143417697.jpg"),
       p("The calendar-building concept is to simulate a cart page in an eCommerce website since this is our customer's world. The user chooses the types of campaigns he wants to see on his board and chooses with whom he wants to share the board. Everything is shown in a summary on the side. Finally, he reached the board and saw all his choices that were made earlier."),
       img("assets/wix/036-Group-143417714-1-.png", "Group 143417714 (1).png"),
       h("Final Delivery"),
-      p("Once the wireframe phase was done, I moved on to design the final screens. My goal was to create a visual identity that’s aligned with the brand’s values and message. Also, I’ve took a deep dive into my catalog of references for inspiration. Here’s a short video of the feature:"),
+      p("Once the wireframe phase was done, I moved on to design the final screens. My goal was to create a visual identity that’s aligned with the brand’s values and message. Also, I took a deep dive into my catalog of references for inspiration. Here’s a short video of the feature:"),
       img("assets/wix/037-fa557c_087e3fdf9ab748139465d49d589a4080f001.jpg"),
       h("What I Learned"),
       p("This process has taught me a lot. I gained a better understanding of how to reach out to customers and how to ask questions in a way that I'll get an honest answer, an answer that will help me in the next steps. I also became better at planning and working on complex flows."),
       img("assets/wix/038-Group-143417713.png", "Group 143417713.png")
     ],
-    next: { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions/", image: "assets/Home page/Home_page_Image_2_intent.png" },
+    next: { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions.html", image: "assets/Home page/optimized/Home_page_Image_2_intent_v4.jpg" },
     explore: [
-      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions/", image: "assets/Home page/Home_page_Image_2_intent.png" },
-      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" }
+      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions.html", image: "assets/Home page/optimized/Home_page_Image_2_intent_v4.jpg" },
+      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/Home page/optimized/Home_page_Image_3_flow_v3.jpg" }
     ]
   },
   intent: {
     title: "Creating a product from scratch: Intent-Based Promotions",
     blocks: [
       h("Summary"),
-      p("Intent-Based Promotions is a platform that offers individualized discounts for users based on their real-time buying intent. I led the product's design from conception to its adoption by over a hundred customers."),
-      h("Background"),
-      p("At Namogoo, I worked on a product that offers individualized promotions to eCommerce site visitors based on real-time buying intent. Promotions are defined using campaigns, which determine the type of offers and their duration."),
-      h("The Problem"),
-      p("Allocating budgets for promotions is a difficult task for eCommerce website managers, leading to a waste of money. They often offer the same discount to all customers on the site, which is strategically incorrect."),
-      h("The Solution"),
-      p("Develop a platform that can present the appropriate promotion at the right time based on a user's intent to purchase."),
-      h("My Role"),
-      p("Intent-Based Promotions (IBP) is a product that I led at Namogoo. I was responsible for the UI/UX of IBP since its conception. From initial efforts, including research on existing solutions, prototyping, and building wireframes, to finalizing a design that maximizes user experience and appeal. The effort required close collaboration with product managers and developers."),
-      h("Speaking to Users"),
-      p("I went out and interviewed 6 users who create and manage eCommerce promotion campaigns.\n\nHearing their perspectives was important because it gave me a deeper understanding of their workflows, decision-making, and the challenges they face when creating\u00a0promotions."),
-      img("assets/Intent-Based Promotions/Kickoff.png?v=20260513", "Kickoff"),
-      h("What Did I Find Out?"),
-      p("The flow of creating a campaign should be very quick, intuitive, simple, and easy. The user should be able to create a campaign in a few minutes.\n\nA first impression is a matter of seconds — and if the user does not have a positive impression, they will abandon the product and look elsewhere.\n\nThe flow should be divided into steps. This will help us create a user-friendly product that doesn’t overwhelm our users with options — each step will be focused on one main task.\n\nNo matter how many prepared templates we will offer, we need the ability to customize each template to the user’s needs\n\nThe flow should be quick, intuitive, simple, and easy\n\nThe flow should be divided into steps\n\nA first impression is a matter of seconds\n\nAbility to customize each template to the user’s needs"),
-      h("Competitor Analysis"),
-      p("I gathered information about the competitors in order to define what exists today in the market and also understand which features should be part of the core experience. I analyzed the platforms, understood what is essential or what was missing. As you can see in the table below, part of the research compares each competitor’s ability."),
-      img("assets/Intent-Based Promotions/Competitor Analysis.jpg", "Competitor Analysis"),
-      h("User Stories"),
-      p("It was important to understand what exactly users would want to accomplish when using the 'Create Campaign'. I created user stories which gave me a clear vision of what our goals for this design must accomplish. They were organized from high, medium to low priority."),
-      img("assets/Intent-Based Promotions/User Stories.png?v=20260513-2", "User Stories"),
-      h("Sketches"),
-      p("My next step was to summarize the information I gathered from users, competitors, product, marketing, and sales.\n\nI had a lot of questions: How should I split the campaign creation flow into steps? What should the order of those steps be? How many decisions should users make in each step? Should they first see our templates, or start by defining their campaign goal or incentive type?\n\nFollowing a conversation with the PM, I started putting everything I knew on the page. It helped me focus and better understand the product capabilities:"),
-      img("assets/Intent-Based Promotions/Sketches.png", "Sketches"),
-      h("Update the User Flow"),
-      p("After the first release, I mapped the user flow to understand where users were slowing down.\n\nWe found that choosing a campaign goal, promotion type, and brand color as separate steps added decisions without enough value. Instead, we combined them into the templates step.\n\nThis reduced unnecessary steps and made the flow faster and more intuitive."),
-      img("assets/Intent-Based Promotions/User Journey.png?v=20260513-1359", "User Journey"),
-      h("Refining the Creation Flow"),
-      p("With the insights from the first release, I revisited the structure of the campaign creation experience. I reduced it to three clear steps: Templates, Settings, and Studio.\n\nI chose a layout that makes better use of the available space. We also expanded template customization, giving users more control to create promotions that matched their brand."),
-      img("assets/Intent-Based Promotions/Wireframes.png", "Wireframes"),
-      h("Finalizing Design"),
-      p("With the flow and structure defined, I moved forward and refined the whole experience. The final flow is organized into three steps: Templates, Settings, and Studio.\n\nUsers have more freedom to customize each template, including control over every color, unrestricted text, the promotion's background on their website, and more.\n\nThe video below shows the final Campaign Creation, the core of the Intent-Based Promotions product."),
-      video("assets/Intent-Based Promotions/Create a campaign.mp4?v=lossless-vfr-remux-20260727", "Create Campaign walkthrough"),
-      h("Impact"),
-      p("After the second release, we saw a reduction in the time it took to create a campaign and an increase in the number of active campaigns. We also received positive feedback from users, some of which you can find below.")
+      p("Intent-Based Promotions is a platform that offers individualized discounts for users based on their real-time buying intent. I led the product’s design from conception to its adoption by over a hundred customers.")
     ],
-    next: { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" },
+    next: { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/Home page/optimized/Home_page_Image_3_flow_v3.jpg" },
     explore: [
-      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board/", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
-      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" }
+      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/optimized/Home_page_Image_1_campaign_board_v9.jpg" },
+      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/Home page/optimized/Home_page_Image_3_flow_v3.jpg" }
     ]
   },
   journey: {
@@ -143,10 +110,10 @@ const caseStudies = {
       h("Possible Improvements"),
       p("I believe there are still ways to improve the current UI/UX. For example, simplifying the navigation between the main flow and the secondary flow.")
     ],
-    next: { title: "Simple management of data: Activations", href: "activations/", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" },
+    next: { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions.html", image: "assets/Home page/optimized/Home_page_Image_2_intent_v4.jpg" },
     explore: [
-      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions/", image: "assets/Home page/Home_page_Image_2_intent.png" },
-      { title: "Simple management of data: Activations", href: "activations/", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" }
+      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions.html", image: "assets/Home page/optimized/Home_page_Image_2_intent_v4.jpg" },
+      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/optimized/Home_page_Image_1_campaign_board_v9.jpg" }
     ]
   },
   activations: {
@@ -184,10 +151,10 @@ const caseStudies = {
       h("Self-Reflection"),
       p("This project was a good reminder of the importance of mapping all the flows. It was challenging work collecting and extracting objectives from management.\nThere is always a tendency to start with the solutions after hearing the challenges, which leads to faulty design outcomes. I learned to guess less and focus more on the user, and business aspects.")
     ],
-    next: { title: "The design process of a new feature: Campaign Board", href: "campaigns-board/", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
+    next: { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/optimized/Home_page_Image_1_campaign_board_v9.jpg" },
     explore: [
-      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" },
-      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board/", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" }
+      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/Home page/optimized/Home_page_Image_3_flow_v3.jpg" },
+      { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/optimized/Home_page_Image_1_campaign_board_v9.jpg" }
     ]
   },
   varonis: {
@@ -215,10 +182,10 @@ const caseStudies = {
       h("Finalizing Design"),
       p("The next step was to take everything I had learned and apply it to the existing pane. The general information tab became an overview tab with more relevant data, including the option to see all related accounts, since one user can have multiple accounts. I also added clearer sections for statistics, recent activities organized by priority, and membership information related to the account.")
     ],
-    next: { title: "The design process of a new feature: Campaign Board", href: "campaigns-board/", image: "assets/Home page/Home_page_Image_1_campaign_board.jpg" },
+    next: { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/optimized/Home_page_Image_1_campaign_board_v9.jpg" },
     explore: [
-      { title: "Simple management of data: Activations", href: "activations/", image: "assets/Home page/Home_page_Image_4_activation.jpg?v=20260522-1053" },
-      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow/", image: "assets/flow/more_to_explore.jpg" }
+      { title: "Creating a product from scratch: Intent-Based Promotions", href: "intent-based-promotions.html", image: "assets/Home page/optimized/Home_page_Image_2_intent_v4.jpg" },
+      { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/Home page/optimized/Home_page_Image_3_flow_v3.jpg" }
     ]
   }
 };
@@ -230,11 +197,11 @@ const withBreaks = (value) =>
   escapeHtml(value)
     .replace("manage eCommerce promotion\u00a0campaigns.", '<span class="text-keep">manage&nbsp;eCommerce&nbsp;promotion&nbsp;campaigns.</span>')
     .split("\n\n")
-    .map((part) => part.replaceAll("\n", "<br>"))
+    .map((part) => part.replaceAll("\n", " <br>"))
     .join("</p><p>");
 
 const withInlineBreaks = (value) =>
-  escapeHtml(value).replaceAll("\n", "<br>");
+  escapeHtml(value).replaceAll("\n", " <br>");
 
 const withJourneyConclusionUnderlines = (value) =>
   `<p>${withBreaks(value)}</p>`
@@ -262,7 +229,7 @@ function renderMoreToExplore(data) {
           .map(
             (project) => `
               <a class="explore-card explore-card--${projectClassName(project.href)}" href="${localUrl(project.href)}">
-                <img src="${localUrl(project.image)}" alt="${escapeHtml(project.title)}">
+                <div class="explore-image"><img src="${localUrl(project.image)}" alt="${escapeHtml(project.title)}"></div>
                 <span>${withExploreTitleKeeps(project.title)}</span>
               </a>
             `
@@ -309,7 +276,7 @@ function renderCaseStudy() {
       if (block.type === "heading") return `<h2>${escapeHtml(block.text)}</h2>`;
       if (block.type === "paragraph") return `<p>${withBreaks(block.text)}</p>`;
       if (block.type === "image") {
-        return `<figure><img src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}"></figure>`;
+        return `<figure><img loading="eager" decoding="async" src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}"></figure>`;
       }
       return "";
     })
@@ -411,7 +378,7 @@ function renderCampaignCase(root, data) {
   const renderFigure = (block) => {
     if (!block || block.type !== "image") return "";
     const classAttribute = block.className ? ` class="${escapeHtml(block.className)}"` : "";
-    return `<figure${classAttribute}><img src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}"></figure>`;
+    return `<figure${classAttribute}><img loading="eager" decoding="async" src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}"></figure>`;
   };
 
   const renderVideo = (block) => {
@@ -428,6 +395,23 @@ function renderCampaignCase(root, data) {
 
   const renderMediaItem = (block) => {
     if (block?.type === "video") return renderVideo(block);
+    if (block?.type === "pager") {
+      const slides = block.slides;
+      const arrow = (dir, label, d) => `<button type="button" class="ibp-pager-btn ibp-pager-side ibp-pager-side--${dir > 0 ? "next" : "prev"}" data-dir="${dir}" aria-label="${label}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg></button>`;
+      const prevD = "M15 5l-7 7 7 7", nextD = "M9 5l7 7-7 7";
+      return `<figure class="ibp-pager${block.side ? " ibp-pager--side" : ""}" data-index="0" aria-roledescription="carousel" aria-label="${escapeHtml(block.label || "")}">
+        <p class="ibp-pager-caption" aria-live="polite">${escapeHtml(slides[0].caption)}</p>
+        <div class="ibp-pager-view"${block.ratio ? ` style="aspect-ratio:${block.ratio}"` : ""}>
+          ${slides.map((s, i) => `<img class="ibp-pager-img${i ? "" : " is-active"}" loading="eager" decoding="async" src="${localUrl(s.src)}" alt="${escapeHtml(s.alt || s.caption)}" data-caption="${escapeHtml(s.caption)}">`).join("")}
+          ${block.side ? arrow(-1, "Previous", prevD) + arrow(1, "Next", nextD) : ""}
+        </div>
+        <div class="ibp-pager-nav">
+          ${block.side ? "" : `<button type="button" class="ibp-pager-btn" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${prevD}"/></svg></button>`}
+          <span class="ibp-pager-dots">${slides.map((s, i) => `<button type="button" class="ibp-pager-dot" data-go="${i}" aria-label="Show ${i + 1} of ${slides.length}"${i ? "" : ' aria-current="true"'}></button>`).join("")}</span>
+          ${block.side ? "" : `<button type="button" class="ibp-pager-btn" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${nextD}"/></svg></button>`}
+        </div>
+      </figure>`;
+    }
     return renderFigure(block);
   };
 
@@ -519,7 +503,7 @@ function renderCampaignCase(root, data) {
           <p>${withBreaks(data.blocks[1].text)}</p>
         </div>
         <figure>
-          <img src="${localUrl("assets/campaign board/header_image.jpg")}" alt="Campaign Board calendar interface">
+          <img loading="eager" decoding="async" src="${localUrl("assets/campaign board/header_image_v6.jpg")}" alt="Campaign Board calendar interface" width="2000" height="1660">
         </figure>
       </section>
 
@@ -611,122 +595,166 @@ function renderCampaignCase(root, data) {
 }
 
 function renderIntentCase(root, data) {
+  /* New story, taken from the Google Slides deck "Intent-Based Promotions" (32 slides). */
   const briefItems = [
     {
       icon: "background",
-      title: data.blocks[2].text,
-      text: data.blocks[3].text
+      title: "Background",
+      text: "IBP: Product that offers individualized promotions to eCommerce site visitors based on real-time buying intent (B2B2C)."
     },
     {
       icon: "problem",
-      title: data.blocks[4].text,
-      text: data.blocks[5].text
+      title: "The Problem",
+      text: "eCommerce managers often offer the same discount to all visitors, so money isn’t spent strategically."
     },
     {
       icon: "goal",
-      title: data.blocks[6].text,
-      text: data.blocks[7].text
+      title: "The Solution",
+      text: "A platform that can present the appropriate promotion at the right time based on a user’s intent to purchase."
     },
     {
       icon: "myRole",
-      title: data.blocks[8].text,
-      text: data.blocks[9].text
+      title: "My Role",
+      text: "From 0 → 1\nProduct designer of IBP, from the first sketch to launch."
     }
   ];
 
+  const stat = (value, label, detail) =>
+    `<div class="ibp-stat"><span class="ibp-stat-label">${label}</span><strong class="ibp-stat-value">${value}</strong><span class="ibp-stat-detail">${detail}</span></div>`;
+
   const chapters = [
     {
-      className: "intent-speaking-users-section",
-      title: data.blocks[10].text,
-      text: data.blocks[11].text,
-    media: [
-      { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 10.03.46 AM.png", "User research findings"), caption: "Affinity mapping" }
-    ],
-    underTextMedia: [
-      { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 9.52.08 AM.png", "Interview protocol"), caption: "Interview Protocol" }
-    ]
+      /* slide 3: the persona image comes from the Desktop folder (487.png) */
+      className: "ibp-persona-section",
+      title: "Who Are the Users?",
+      text: "",
+      media: [img("img/ibp/persona.png", "Persona: Emma, eCommerce Promotions Manager / Digital Marketing Manager")]
     },
     {
-      title: data.blocks[13].text,
-      bullets: [
-        "The flow of creating a campaign should be very quick, intuitive, simple, and easy. The user should be able to create a campaign in a few minutes.",
-        "A first impression is a matter of seconds. If the user doesn’t have a positive impression, they will abandon the product and look elsewhere.",
-        "The flow should be divided into steps. This will help us create a user-friendly product that doesn’t overwhelm our users with options, each step will be focused on one main task.",
-        "No matter how many prepared templates we will offer, we need the ability to customize each template to the user’s needs."
+      /* slides 4-5: same structure and images as the live page, new text only */
+      className: "intent-speaking-users-section",
+      title: "Speaking to Users",
+      text: "I went out and interviewed 6 users who create and manage eCommerce promotion campaigns.\n\nHearing their perspectives was important because it gave me a deeper understanding of their workflows, decision-making, and the challenges they face when creating promotions.",
+      media: [
+        { ...img("assets/Intent-Based Promotions/Screenshot_10-03-46-AM.png", "User research findings"), caption: "Affinity mapping" }
       ],
-      insightItems: [
-        {
-          icon: "speed",
-          title: "The flow should be quick, intuitive, simple, and easy."
-        },
-        {
-          icon: "impression",
-          title: "A first impression is a matter of seconds."
-        },
-        {
-          icon: "steps",
-          title: "The flow should be divided into steps."
-        },
-        {
-          icon: "customize",
-          title: "Ability to customize each template to the user’s needs."
-        }
+      underTextMedia: [
+        { ...img("assets/Intent-Based Promotions/Screenshot_9-52-08-AM.png", "Interview protocol"), caption: "Interview Protocol" }
       ]
     },
     {
-      className: "campaign-story-section--competitor-analysis",
-      title: data.blocks[15].text,
-      text: data.blocks[16].text,
-      media: [data.blocks[17]]
+      /* slide 6 */
+      className: "campaign-story-section--copy-left ibp-competitors",
+      title: "Competitor Analysis",
+      text: "I compared five platforms: Poptin, OptiMonk, Justuno, Claspo and ProveSource.\n\nNone of them decides on a promotion based on the visitor’s intent. Promotions are rule based, and OptiMonk uses AI only to help build one.\n\nMost of them also made it hard to go back from designing the promotion to the template step.",
+      media: [img("img/ibp/competitor.png?v=3", "Competitor analysis: Poptin, OptiMonk, Justuno, Claspo, ProveSource")]
     },
     {
-      className: "campaign-story-section--copy-left intent-user-stories-section",
-      title: data.blocks[18].text,
-      text: data.blocks[19].text,
-      media: [data.blocks[20]]
+      /* slide 7: four findings in a row, title above the icon */
+      className: "campaign-story-section--sketches-stack ibp-findings",
+      title: "Research Findings",
+      textHtml: `<ul class="ibp-findings-grid"><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><path d="M24 14v10.5l6 3.5"/></svg></span><h3>Time Consuming</h3><p>Today, building a campaign takes time. We need to allow building a campaign quickly and easily.</p></li><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 40C11 31 6 24 6 17.5 6 12.5 10 9 14.5 9c3.700 0 7 2.200 9.500 6C26.500 11.200 29.800 9 33.500 9 38 9 42 12.500 42 17.500 42 24 37 31 24 40Z"/></svg></span><h3>User Connection</h3><p>Our users need to feel connected to the promotions. This will help them adapt quickly to the workflow.</p></li><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M24 7l14.500 8.500v17L24 41 9.500 32.500v-17Z"/><path d="M17.500 24.500l4.500 4.500 8.500-9"/><circle cx="24" cy="6.500" r="2.500"/><circle cx="39" cy="15.500" r="2.500"/><circle cx="39" cy="32.500" r="2.500"/><circle cx="24" cy="41.500" r="2.500"/><circle cx="9" cy="32.500" r="2.500"/><circle cx="9" cy="15.500" r="2.500"/></svg></span><h3>Consistent Flow</h3><p>Jumping between steps should feel like moving through one workspace (same flow).</p></li><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M30 8h10v10M40 8L27 21M18 40H8V30M8 40l13-13"/></svg></span><h3>Customization</h3><p>Need the ability to customize each template to the user’s needs.</p></li></ul>`
     },
     {
-      className: "campaign-story-section--sketches-stack intent-sketches-section",
-      title: data.blocks[21].text,
-      text: data.blocks[22].text,
+      /* slides 8-10: where does the flow live */
+      className: "campaign-story-section--copy-left ibp-context",
+      title: "From Ideas to Action",
+      textHtml: `<h3 class="ibp-sub">Where does this flow live?<br>What is the surrounding context?</h3><p>These questions occupied me. The product was still being built and the other areas didn’t exist yet, so I had to take that into account.</p><p>I explored several options to understand where the campaign creation area should live. In the end I chose to give the flow a world of its own. It’s a short flow, but a complex one, and the user needs to stay focused on the task.</p>`,
+      media: [{
+        type: "pager",
+        ratio: "1079 / 720",
+        label: "Three options for where the flow lives",
+        slides: [
+          { src: "img/ibp/context-1.png", caption: "Is it one of the platform’s pages?", alt: "The flow as a page inside the platform" },
+          { src: "img/ibp/context-2.png", caption: "A part of a page I still don’t have?", alt: "The flow as a part of a page that doesn’t exist yet" },
+          { src: "img/ibp/context-3.png", caption: "Or a world of its own?", alt: "The flow as a world of its own, opened on top of the platform" }
+        ]
+      }]
+    },
+    {
+      /* slides 12-15: the order of the steps, part of From Ideas to Action (no section title of its own) */
+      className: "campaign-story-section--copy-left ibp-continue",
+      textHtml: `<h3 class="ibp-sub">What is the order of the steps, and how is each step organized?</h3><p>The order was set logically. Color affects the templates, so it comes first. The template comes before Settings and Studio, because that is where it is seen. Settings come before Studio, because they also affect how the promotion looks.</p><p>Settings and Studio are the widest steps, so I decided how to build each one. Settings go from the core elements, like the start and end date and the discount range, to the specific ones, like audience and targeting. Studio follows the look of the promotion: content, images, then its position on the page.</p>`,
+      media: [img("img/ibp/steps-order.png", "The steps in order, with hand drawn arrows. Settings hold the campaign rules, Studio holds the content and design")]
+    },
+    {
+      /* slide 16: text on the left, the smaller picture on the right, both centred vertically */
+      className: "campaign-story-section--copy-left ibp-wireframes-note ibp-no-top-line",
+      text: "My thinking, laid out on paper: working notes, rules for each step, and the first sketches of how the platform could look. This is where the flow started to take shape.",
+      media: [img("img/ibp/ideas-sketches.png", "Notes, sketches and early wireframes of the creation flow")]
+    },
+    {
+      /* slides 17-21: text on the left, the four screens as a slow gif on the right */
+      className: "campaign-story-section--copy-left ibp-release",
+      title: "First Release",
+      text: "The campaign creation flow was built around short, focused steps. Users started by selecting their goal, promotion type, and brand color, then saw all templates in that color, making it easier to imagine each promotion on their own site.",
+      media: [{
+        type: "pager",
+        ratio: "1400 / 855",
+        label: "The four steps of the first release",
+        slides: [
+          { src: "img/ibp/release-goal.png", caption: "Step 1: Set a Campaign Goal", alt: "First release: Set a Campaign Goal" },
+          { src: "img/ibp/release-color.png", caption: "Step 2: Set the Main Color", alt: "First release: Set the Main Color" },
+          { src: "img/ibp/release-template.png", caption: "Step 3: Choose a Template", alt: "First release: Choose a Template" },
+          { src: "img/ibp/release-studio.png", caption: "Step 4: Promotion Studio", alt: "First release: Promotion Studio" }
+        ]
+      }]
+    },
+    {
+      /* slide 22 */
+      className: "campaign-story-section--sketches-stack ibp-issues",
+      title: "Issues to Address",
+      textHtml: `<p>After a release, things are rarely perfect, and problems start to surface. <br>Two of them stood out, and we wanted to fix them.</p><ul class="ibp-findings-grid ibp-issues-grid"><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><path d="M24 14v10.5l6 3.5"/></svg></span><h3>Time to Create a Campaign</h3><p>Breaking the workflow into shorter steps didn’t necessarily help users complete the task faster, as they frequently moved back and forth between steps.</p></li><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 40 40" aria-hidden="true" style="fill:currentColor;stroke:#F9F9F8;stroke-width:.9;stroke-linejoin:round"><path d="M34.3903 18.9239L30.8667 15.4016C30.8243 15.3272 30.8012 15.2433 30.7994 15.1576L32.6384 9.6367C32.7732 9.31887 32.81 8.96804 32.7441 8.62917C32.6782 8.29029 32.5126 7.9788 32.2686 7.73462C32.0246 7.49045 31.7132 7.32469 31.3743 7.25861C31.0355 7.19253 30.6846 7.22913 30.3667 7.36371L24.8656 9.20004C24.7798 9.2037 24.6944 9.18697 24.6163 9.15123L21.0795 5.61312C20.855 5.32614 20.5391 5.12455 20.1842 5.04177C19.8294 4.95899 19.4569 5.00001 19.1286 5.15802C18.8002 5.31603 18.5358 5.58153 18.3791 5.9105C18.2223 6.23946 18.1828 6.61211 18.267 6.96663L18.8699 12.3661C18.8573 12.417 18.8378 12.4658 18.8118 12.5113L13.1498 15.6576C12.8184 15.7969 12.5425 16.0421 12.3651 16.3547C12.1877 16.6674 12.1187 17.03 12.169 17.386C12.2194 17.7419 12.3861 18.0712 12.6432 18.3224C12.9003 18.5737 13.2334 18.7328 13.5904 18.7748L17.3237 19.635C17.3813 19.6478 17.4344 19.6759 17.4773 19.7163C17.5203 19.7567 17.5516 19.808 17.5679 19.8646C17.5843 19.9213 17.585 19.9814 17.5701 20.0384C17.5553 20.0955 17.5253 20.1475 17.4834 20.189L3.81508 33.856C3.66193 34.0091 3.54045 34.191 3.45757 34.391C3.37469 34.5911 3.33203 34.8056 3.33203 35.0222C3.33203 35.2388 3.37469 35.4532 3.45757 35.6533C3.54045 35.8534 3.66193 36.0352 3.81508 36.1884C3.96822 36.3415 4.15003 36.463 4.35012 36.5459C4.55022 36.6287 4.76468 36.6714 4.98126 36.6714C5.19783 36.6714 5.41229 36.6287 5.61239 36.5459C5.81248 36.463 5.99429 36.3415 6.14743 36.1884L19.8144 22.5214C19.8561 22.4799 19.9081 22.4503 19.9651 22.4357C20.022 22.421 20.0819 22.4219 20.1384 22.4382C20.1949 22.4545 20.2461 22.4856 20.2865 22.5283C20.327 22.571 20.3553 22.6237 20.3685 22.681L21.2299 26.4157C21.272 26.7727 21.4311 27.1058 21.6823 27.3629C21.9335 27.62 22.2628 27.7867 22.6188 27.837C22.9747 27.8873 23.3373 27.8184 23.65 27.641C23.9627 27.4636 24.2078 27.1877 24.3472 26.8563L27.4737 21.2193C27.5131 21.1849 27.5576 21.1569 27.6056 21.1362L33.0381 21.7378C33.3925 21.8206 33.7645 21.7801 34.0927 21.623C34.4209 21.4658 34.6857 21.2014 34.8433 20.8734C35.0009 20.5454 35.0419 20.1735 34.9596 19.819C34.8772 19.4646 34.6764 19.1488 34.3903 18.9239V18.9239ZM27.8959 18.5136C27.3576 18.4665 26.817 18.5734 26.3372 18.8219C25.8574 19.0705 25.4582 19.4504 25.1862 19.9173L23.6612 22.6612C23.6288 22.7194 23.5796 22.7665 23.5199 22.7962C23.4603 22.8258 23.393 22.8368 23.327 22.8275C23.2611 22.8182 23.1995 22.7892 23.1503 22.7442C23.1012 22.6992 23.0668 22.6404 23.0517 22.5755L22.3921 19.7431C22.2581 19.2298 21.9897 18.7614 21.6145 18.3862C21.2394 18.0111 20.771 17.7427 20.2577 17.6087L17.4266 16.957C17.3618 16.9416 17.3032 16.907 17.2583 16.8577C17.2135 16.8085 17.1845 16.7468 17.1753 16.6809C17.166 16.6149 17.1768 16.5476 17.2064 16.4879C17.2359 16.4282 17.2828 16.3788 17.3409 16.3462L20.0862 14.8212C20.5518 14.5477 20.9304 14.1479 21.1781 13.6681C21.4258 13.1883 21.5325 12.6482 21.4858 12.1102L21.2959 10.4032C21.2887 10.3352 21.3027 10.2668 21.3359 10.2071C21.3692 10.1474 21.42 10.0995 21.4816 10.0699C21.5431 10.0403 21.6123 10.0304 21.6797 10.0417C21.747 10.0529 21.8093 10.0847 21.8579 10.1327L22.7444 11.0205C23.1289 11.3836 23.6025 11.6386 24.1172 11.7598C24.6319 11.8809 25.1696 11.8639 25.6756 11.7105L28.9736 10.6129C29.0317 10.5937 29.094 10.5909 29.1535 10.605C29.213 10.6191 29.2674 10.6495 29.3107 10.6927C29.3539 10.736 29.3843 10.7904 29.3984 10.8499C29.4125 10.9095 29.4098 10.9717 29.3905 11.0298L28.2916 14.3278C28.1396 14.834 28.1235 15.3713 28.2451 15.8856C28.3667 16.4 28.6216 16.8732 28.9842 17.2578L29.8733 18.1456C29.9207 18.1938 29.9522 18.2554 29.9635 18.322C29.9749 18.3886 29.9656 18.4571 29.9368 18.5183C29.9081 18.5795 29.8614 18.6304 29.8028 18.6643C29.7443 18.6981 29.6769 18.7132 29.6095 18.7076L27.8959 18.5136Z"/></svg></span><h3>Template Adjustment</h3><p>The promotions weren’t customizable enough, so tickets were opened with the support team to resolve it.</p></li></ul>`
+    },
+    {
+      /* slides 23-25 */
+      className: "campaign-story-section--sketches-stack intent-user-flow-section ibp-stack",
+      title: "Update the User Flow",
+      text: "I went back to the user flow and mapped it again to understand where users were slowing down.\n\nI decided to remove the color step completely. The goal moved into Settings, and the promotion type moved into the Template step. This reduced unnecessary steps and made the flow faster and more intuitive.",
       media: [
-        img("assets/Intent-Based Promotions/Sketches_1.png", "Sketches 1"),
-        img("assets/Intent-Based Promotions/Sketches_2.png", "Sketches 2"),
-        { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 11.00.13 AM.png", "First release campaign creation flow"), caption: "More sketches" }
+        { ...img("img/ibp/flow-before.png", "User flow of the first release"), caption: "Before" },
+        { ...img("img/ibp/flow-after.png", "Updated user flow without the color step"), caption: "After" }
       ],
       mediaPlacement: "underText"
     },
     {
-      className: "intent-first-release-section campaign-story-section--copy-left",
-      title: "First Release",
-      text: "The campaign creation flow was built around short, focused steps. Users started by selecting their goal, promotion type, and brand color, then saw all templates in that color, making it easier to imagine each promotion on their own site.\n\nAs we observed users moving back and forth between steps, we realized the flow was not saving as much time as it could. In later iterations, we combined several steps to create a more fluid campaign-building\u00a0experience.",
-      media: [
-        { ...img("assets/Intent-Based Promotions/Screenshot 2026-07-29 at 11.59.44 AM.png", "First release campaign creation flow"), caption: "First Release" }
-      ]
-    },
-    {
-      className: "campaign-story-section--sketches-stack intent-user-flow-section",
-      title: data.blocks[24].text,
-      text: data.blocks[25].text,
-      media: [
-        img("assets/Intent-Based Promotions/screens/Frame 143417726.png?v=20260729-1208", "Updated campaign creation user flow")
-      ]
-    },
-    {
+      /* slide 26 */
       className: "campaign-story-section--sketches-stack intent-wireframes-section",
-      title: data.blocks[27].text,
-      text: data.blocks[28].text,
+      title: "Refining the Creation Flow",
+      text: "With the insights from the first release, I revisited the structure of the campaign creation experience. I reduced it to three clear steps: Templates, Settings, and Studio.\n\nI chose a layout that makes better use of the available space. We also expanded template customization, giving users more control to create promotions that matched their brand.",
       media: [
-        img("assets/Intent-Based Promotions/screens/image_1.png", "Templates step wireframe"),
-        img("assets/Intent-Based Promotions/screens/image_2.png", "Studio step wireframe")
+        img("img/ibp/wire-templates.jpg", "Templates step wireframe"),
+        img("img/ibp/wire-studio.jpg", "Studio step wireframe")
       ],
       mediaPlacement: "underText"
     },
     {
       className: "campaign-story-section--sketches-stack campaign-story-section--final-delivery",
-      title: data.blocks[30].text,
-      text: data.blocks[31].text,
-      media: [data.blocks[32]],
+      title: "Finalizing Design",
+      text: "With the flow and structure defined, I moved forward and refined the whole experience. The final flow is organized into three steps: Templates, Settings, and Studio.\n\nUsers have more freedom to customize each template, including control over every color, unrestricted text, the promotion’s background on their website, and more.\n\nThe video below shows the final Campaign Creation, the core of the Intent-Based Promotions product.",
+      media: [video("assets/Intent-Based Promotions/Create a campaign.mp4?v=lossless-vfr-remux-20260727", "Create Campaign walkthrough")]
+    },
+    {
+      /* slide 28: data on the left, one under the other; the users' words on the right, one above the other */
+      className: "campaign-story-section--copy-left ibp-impact-section",
+      title: "Impact",
+      textHtml: `
+        <div class="ibp-stats">
+          ${stat("−16.5%", "Time to create a campaign", "Dropped from 10.3 to 8.6 minutes after the redesign")}
+          ${stat("−71%", "Open support tickets", "Dropped from 76 to 22 tickets over 4 months after the redesign")}
+        </div>`,
+      media: [{
+        type: "quotes",
+        quotes: [
+          "I love this! It looks great and it’s so much easier to\u00a0navigate.",
+          "It is pretty much everything I could ask for when creating a campaign.",
+          "Creating a promotion feels much easier now. I can really create what I have in mind."
+        ]
+      }]
+    },
+    {
+      className: "campaign-story-section--sketches-stack campaign-story-section--final-delivery ibp-more-work",
+      title: "More of My Work on IBP",
       screenGallery: [
         {
           src: "assets/Intent-Based Promotions/screens/Group 143418246.png?v=3",
@@ -821,28 +849,13 @@ function renderIntentCase(root, data) {
           layout: "pair"
         }
       ]
-    },
-    {
-      className: "campaign-story-section--sketches-stack",
-      title: data.blocks[33].text,
-      textWithEmphasis: {
-        before: "A month after the redesign launched, we saw\u00a0a\u00a0",
-        emphasis: "decrease in the time it took to create a campaign and an increase in the number of active campaigns",
-        after: ". We also received positive feedback from users, some of which you can find\u00a0below."
-      },
-      feedbackQuotes: [
-        "I love this! It looks great and it’s so much easier to\u00a0navigate.",
-        "It is pretty much everything I could ask for when creating a campaign.",
-        "Creating a promotion feels much easier now. I can really create what I have in mind.",
-        "I have much more control over my promotions,\nwithout making the process complicated."
-      ]
     }
   ];
 
   renderStructuredCase(root, data, {
     briefItems,
     chapters,
-    heroImage: img("assets/Intent-Based Promotions/header_image.jpg", "Intent-Based Promotions interface mockup"),
+    heroImage: img("img/ibp/header.jpg", "Intent-Based Promotions: choosing a template", 1800, 989),
     heroClassName: "campaign-case-hero--plain"
   });
 }
@@ -927,7 +940,7 @@ function renderJourneyCase(root, data) {
     {
       className: "campaign-story-section--sketches-stack campaign-story-section--final-delivery campaign-story-section--design-followup",
       text: data.blocks[35].text,
-      media: [video("assets/flow/record.mov?v=20260521", "Journey Flow final interaction recording", "video/mp4")]
+      media: [video("assets/flow/record.mp4?v=20260521", "Journey Flow final interaction recording", "video/mp4")]
     },
     {
       className: "campaign-story-section--conclusion-icons",
@@ -957,7 +970,7 @@ function renderJourneyCase(root, data) {
   renderStructuredCase(root, data, {
     briefItems,
     chapters,
-    heroImage: img("assets/flow/header_image.jpg", "Journey Flow data visualization mockup"),
+    heroImage: img("assets/flow/header_image_v3.jpg", "Journey Flow data visualization mockup", 1505, 1250),
     heroClassName: "campaign-case-hero--plain"
   });
 }
@@ -1101,7 +1114,7 @@ function renderVaronisCase(root, data) {
       className: "campaign-story-section--static-copy campaign-story-section--copy-left varonis-competitor-section",
       title: data.blocks[15].text,
       text: data.blocks[16].text,
-      media: [img("assets/Account Pane/Competitor Analysis.png?v=20260527-competitor-analysis", "Competitor analysis examples")]
+      media: [img("assets/Account Pane/Competitor Analysis_v2.png", "Competitor analysis examples")]
     },
     {
       className: "campaign-story-section--wireframes account-first-mockups-slider",
@@ -1125,7 +1138,7 @@ function renderVaronisCase(root, data) {
   renderStructuredCase(root, data, {
     briefItems,
     chapters,
-    heroImage: img("assets/Account Pane/header_image.jpg?v=account-pane-header-v4", "Account Pane interface mockup"),
+    heroImage: img("assets/Account Pane/header_image_v3.jpg", "Account Pane interface mockup", 1600, 1329),
     heroClassName: "campaign-case-hero--plain"
   });
 }
@@ -1148,7 +1161,7 @@ function renderStructuredCase(root, data, options) {
 
   const renderFigure = (block) => {
     if (!block || block.type !== "image") return "";
-    return `<figure><img src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ""}</figure>`;
+    return `<figure><img loading="eager" decoding="async" src="${localUrl(block.src)}" alt="${escapeHtml(block.alt)}">${block.caption ? `<figcaption>${escapeHtml(block.caption)}</figcaption>` : ""}</figure>`;
   };
 
   const renderVideo = (block) => {
@@ -1165,6 +1178,24 @@ function renderStructuredCase(root, data, options) {
 
   const renderMediaItem = (block) => {
     if (block?.type === "video") return renderVideo(block);
+    if (block?.type === "quotes") return `<div class="campaign-feedback-quotes ibp-quotes-stack">${block.quotes.map((q) => `<blockquote>&ldquo;${escapeHtml(q).replaceAll("\n", "<br>")}&rdquo;</blockquote>`).join("")}</div>`;
+    if (block?.type === "pager") {
+      const slides = block.slides;
+      const arrow = (dir, label, d) => `<button type="button" class="ibp-pager-btn ibp-pager-side ibp-pager-side--${dir > 0 ? "next" : "prev"}" data-dir="${dir}" aria-label="${label}"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg></button>`;
+      const prevD = "M15 5l-7 7 7 7", nextD = "M9 5l7 7-7 7";
+      return `<figure class="ibp-pager${block.side ? " ibp-pager--side" : ""}" data-index="0" aria-roledescription="carousel" aria-label="${escapeHtml(block.label || "")}">
+        <p class="ibp-pager-caption" aria-live="polite">${escapeHtml(slides[0].caption)}</p>
+        <div class="ibp-pager-view"${block.ratio ? ` style="aspect-ratio:${block.ratio}"` : ""}>
+          ${slides.map((s, i) => `<img class="ibp-pager-img${i ? "" : " is-active"}" loading="eager" decoding="async" src="${localUrl(s.src)}" alt="${escapeHtml(s.alt || s.caption)}" data-caption="${escapeHtml(s.caption)}">`).join("")}
+          ${block.side ? arrow(-1, "Previous", prevD) + arrow(1, "Next", nextD) : ""}
+        </div>
+        <div class="ibp-pager-nav">
+          ${block.side ? "" : `<button type="button" class="ibp-pager-btn" data-dir="-1" aria-label="Previous"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${prevD}"/></svg></button>`}
+          <span class="ibp-pager-dots">${slides.map((s, i) => `<button type="button" class="ibp-pager-dot" data-go="${i}" aria-label="Show ${i + 1} of ${slides.length}"${i ? "" : ' aria-current="true"'}></button>`).join("")}</span>
+          ${block.side ? "" : `<button type="button" class="ibp-pager-btn" data-dir="1" aria-label="Next"><svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${nextD}"/></svg></button>`}
+        </div>
+      </figure>`;
+    }
     return renderFigure(block);
   };
 
@@ -1186,7 +1217,7 @@ function renderStructuredCase(root, data, options) {
                 <figcaption>${escapeHtml(screen.headline || "Placeholder headline")}</figcaption>
                 <div class="intent-design-screen-media">
                   ${(screen.images || [screen])
-                    .map((image) => `<img src="${localUrl(image.src)}" alt="${escapeHtml(image.alt)}">`)
+                    .map((image) => `<img loading="eager" decoding="async" src="${localUrl(image.src)}" alt="${escapeHtml(image.alt)}">`)
                     .join("")}
                 </div>
               </figure>
@@ -1201,35 +1232,20 @@ function renderStructuredCase(root, data, options) {
     const [firstMockup, secondMockup] = media;
     if (!firstMockup || firstMockup.type !== "image" || !secondMockup || secondMockup.type !== "image") return "";
 
+    const ar = (d) => `<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"/></svg>`;
+    const slides = [firstMockup, secondMockup];
     return `
-      <div class="campaign-story-media account-mockup-pager" data-page="1">
-        <figure class="account-mockup-pager-frame">
-          <div class="account-mockup-pager-viewport">
-            <div class="account-mockup-pager-track">
-              <img class="account-mockup-pager-image" src="${localUrl(firstMockup.src)}" alt="${escapeHtml(firstMockup.alt)}">
-              <img class="account-mockup-pager-image" src="${localUrl(secondMockup.src)}" alt="${escapeHtml(secondMockup.alt)}">
-              <img class="account-mockup-pager-image" src="${localUrl(firstMockup.src)}" alt="">
-            </div>
-          </div>
-          <button class="account-mockup-pager-arrow account-mockup-pager-arrow--next" type="button" aria-label="Show next mockup">
-            <svg viewBox="0 0 12 22" aria-hidden="true">
-              <defs>
-                <linearGradient id="account-arrow-gradient" x1="0" x2="12" y1="0" y2="22" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ff6b4a"/>
-                  <stop offset="0.44" stop-color="#f65ca8"/>
-                  <stop offset="0.78" stop-color="#1f6fff"/>
-                  <stop offset="1" stop-color="#0f43b5"/>
-                </linearGradient>
-              </defs>
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M0.499999 1.16599L10.1878 11L0.5 20.834L1.15609 21.5L11.5 11L1.15609 0.5L0.499999 1.16599Z" stroke-width="0.3"/>
-            </svg>
-          </button>
-        </figure>
-        <div class="account-mockup-pager-dots" aria-label="Choose mockup image">
-          <button class="account-mockup-pager-dot account-mockup-pager-dot--first" type="button" data-target-page="1" aria-label="Show first mockup"></button>
-          <button class="account-mockup-pager-dot account-mockup-pager-dot--second" type="button" data-target-page="2" aria-label="Show second mockup"></button>
+      <figure class="ibp-pager ibp-mockup-pager" data-index="0" aria-roledescription="carousel" aria-label="Account Pane mockups">
+        <p class="ibp-pager-caption" aria-live="polite">${escapeHtml(firstMockup.alt)}</p>
+        <div class="ibp-pager-view" style="aspect-ratio:16 / 9">
+          ${slides.map((s, i) => `<img class="ibp-pager-img${i ? "" : " is-active"}" loading="eager" decoding="async" src="${localUrl(s.src)}" alt="${escapeHtml(s.alt)}" data-caption="${escapeHtml(s.alt)}">`).join("")}
         </div>
-      </div>
+        <div class="ibp-pager-nav">
+          <button type="button" class="ibp-pager-btn" data-dir="-1" aria-label="Previous">${ar("M15 5l-7 7 7 7")}</button>
+          <span class="ibp-pager-dots">${slides.map((s, i) => `<button type="button" class="ibp-pager-dot" data-go="${i}" aria-label="Show ${i + 1} of 2"${i ? "" : ' aria-current="true"'}></button>`).join("")}</span>
+          <button type="button" class="ibp-pager-btn" data-dir="1" aria-label="Next">${ar("M9 5l7 7-7 7")}</button>
+        </div>
+      </figure>
     `;
   };
 
@@ -1315,7 +1331,7 @@ function renderStructuredCase(root, data, options) {
           <p>${withBreaks(data.blocks[1].text)}</p>
         </div>
         <figure>
-          <img src="${localUrl(options.heroImage.src)}" alt="${escapeHtml(options.heroImage.alt)}">
+          <img src="${localUrl(options.heroImage.src)}" alt="${escapeHtml(options.heroImage.alt)}"${options.heroImage.width ? ` width="${options.heroImage.width}" height="${options.heroImage.height}"` : ""}>
         </figure>
       </section>
 
@@ -1361,6 +1377,25 @@ function renderStructuredCase(root, data, options) {
 
   setupScrollPlayVideos(root);
   setupMockupPagers(root);
+  setupIbpPagers(root);
+}
+
+function setupIbpPagers(root = document) {
+  root.querySelectorAll(".ibp-pager").forEach((pager) => {
+    const imgs = [...pager.querySelectorAll(".ibp-pager-img")];
+    const dots = [...pager.querySelectorAll(".ibp-pager-dot")];
+    const caption = pager.querySelector(".ibp-pager-caption");
+    const show = (i) => {
+      const n = (i + imgs.length) % imgs.length;
+      imgs.forEach((im, k) => { im.style.setProperty("--x", (k < n ? -28 : 28) + "px"); im.classList.toggle("is-active", k === n); im.setAttribute("aria-hidden", k === n ? "false" : "true"); });
+      dots.forEach((d, k) => { if (k === n) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
+      caption.textContent = imgs[n].dataset.caption;
+      pager.dataset.index = String(n);
+    };
+    pager.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", (e) => { e.stopPropagation(); show(Number(pager.dataset.index) + Number(b.dataset.dir)); }));
+    dots.forEach((d) => d.addEventListener("click", () => show(Number(d.dataset.go))));
+    pager.querySelector(".ibp-pager-view").addEventListener("click", () => show(Number(pager.dataset.index) + 1));
+  });
 }
 
 function setupMockupPagers(root = document) {
@@ -1396,6 +1431,12 @@ function setupMockupPagers(root = document) {
 function setupScrollPlayVideos(root = document) {
   const videos = [...root.querySelectorAll(".scroll-play-video")];
   if (!videos.length) return;
+
+  /* "Reduce motion" on: the video waits on its first frame until the person presses play */
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    videos.forEach((videoElement) => { videoElement.autoplay = false; videoElement.pause(); });
+    return;
+  }
 
   const resetToStart = (videoElement) => {
     try {
@@ -1457,3 +1498,9 @@ const caseHeroCopy = document.querySelector(".campaign-case-hero > div");
 if (caseBackLink && caseHeroCopy) {
   caseHeroCopy.prepend(caseBackLink);
 }
+
+/* pictures: every picture loads as soon as the page does (no waiting until you scroll near it); the top picture goes first */
+(function () {
+  const hero = document.querySelector("#case-root .campaign-case-hero img");
+  if (hero) hero.fetchPriority = "high";
+})();
