@@ -2775,3 +2775,11 @@ body[data-case="journey"] .campaign-case-hero img{width:100%;height:100%;object-
 /* Who Are the Users?: the picture sits close under the title */
 .ibp-persona-section{row-gap:28px}
 .ibp-persona-section .campaign-story-copy h2{margin-bottom:0}
+
+/* all four case studies: the hero text starts at the same height (it was centred against the picture, so Campaign Board and Journey Flow, whose picture is taller than the text, sat ~26px lower) */
+body[data-case="varonis"] .campaign-case-hero > div:first-child,body[data-case="intent"] .campaign-case-hero > div:first-child,body[data-case="campaigns"] .campaign-case-hero > div:first-child,body[data-case="journey"] .campaign-case-hero > div:first-child{align-self:start}
+
+/* hero picture: the same height as Varonis in all four case studies (420px, 320px up to 900px wide, 220px up to 620px) */
+body[data-case="intent"] .campaign-case-hero figure,body[data-case="campaigns"] .campaign-case-hero figure,body[data-case="journey"] .campaign-case-hero figure{aspect-ratio:auto;height:420px;min-height:420px}
+@media (max-width:900px){body[data-case="intent"] .campaign-case-hero figure,body[data-case="campaigns"] .campaign-case-hero figure,body[data-case="journey"] .campaign-case-hero figure{height:320px;min-height:320px}}
+@media (max-width:620px){body[data-case="intent"] .campaign-case-hero figure,body[data-case="campaigns"] .campaign-case-hero figure,body[data-case="journey"] .campaign-case-hero figure{height:220px;min-height:220px}}
