@@ -192,7 +192,7 @@ const FURN=['p14','p15','p16','p17','p18','p19','p20','p05','p04','p07','p09'].m
 /* my photos, cropped on the board, in the order I chose */
 const SHOTS=Array.from({length:11},(_,i)=>'img/photography/s'+String(i+1).padStart(2,'0')+'.jpg');
 /* my ceramics, cropped on the board, in the order I chose */
-const CERAMICS=Array.from({length:14},(_,i)=>'img/ceramics/c'+String(i+1).padStart(2,'0')+'.jpg');
+const CERAMICS=Array.from({length:17},(_,i)=>'img/ceramics/c'+String(i+1).padStart(2,'0')+'.jpg');
 const CH_L='<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',CH_R='<svg class="chev" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
 const film=(list,label)=>list.length?`<span class="peek film v-header" role="group" aria-label="${label}"><span class="film-head"><span class="t">${label}<small class="cnt">1 / ${list.length}</small></span><span class="ctl"><button type="button" class="arw l" aria-label="Previous photo">${CH_L}</button><button type="button" class="arw r" aria-label="Next photo">${CH_R}</button></span></span><span class="stage">${list.map((f,i)=>`<img src="${f}" alt="" loading="lazy" class="${i?'':'on'}">`).join('')}</span></span>`:`<span class="peek film" role="group" aria-label="${label}"><span class="stage"><span class="soon">Photos coming soon</span></span></span>`;
 const ITEMS=[
