@@ -163,6 +163,10 @@ nav a,.logo,.word,.film .arw{-webkit-tap-highlight-color:transparent}
 @media (prefers-reduced-motion:reduce){.gd,.gd-veil{transition:opacity .15s linear,visibility 0s linear .15s!important}.gd-stage img{transition:none!important}.gd{transform:translate(-50%,-50%)!important}}
 /* phones: a quick double tap on the gallery arrows no longer zooms the page (pinch still works) */
 html,.gd,.gd button,.gd-veil{touch-action:manipulation}
+/* desktop: Italy and Pattern break their lines evenly, with no lonely last word */
+@media (min-width:701px){.t-italy .back p,.t-pattern .back p{text-wrap:balance}}
+/* phones: four icons that sit small in their square are drawn a little bigger */
+@media (max-width:700px){.back img.i-eshbal-flower,.back img.i-complex-systems,.back img.i-bezalel-shenkar,.back img.i-ceramics{width:56px;height:56px}}
 /* phones: the first icon card sits 40px under the page title, the same on Work, Blog and About */
 @media (max-width:600px){.head{margin-bottom:40px}}
 </style>
@@ -198,9 +202,9 @@ const film=(list,label)=>list.length?`<span class="peek film v-header" role="gro
 const ITEMS=[
  ['eshbal-flower','My name','Eshbal is the name of a rare, pink Israeli <span class="flower"><button type="button" class="word">flower</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg><span class="peek v-header" role="img" aria-label="Photo of an eshbal flower"><span class="stage"><img src="img/eshbal-wikipedia.jpg" alt="" loading="lazy" title="Photo: Kurt St\u00fcber, CC BY-SA 3.0, Wikimedia Commons"></span><em>A photo of the flower</em></span></span>. The genus has 373 species!'],
  ['complex-systems','Complex systems','I design complex SaaS platforms: understanding the data, and finding the best way for people to use it.'],
- ['pattern','Pattern',`Colorful patterns are one of my favorite things. I paint <span class="flower gal"><button type="button" class="word">my own patterns</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>${film(FURN,'My art')}</span> on old furniture.`],
+ ['pattern','Pattern',`Colorful patterns are one of my favorite things. I&nbsp;paint <span class="flower gal"><button type="button" class="word">my own patterns</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>${film(FURN,'My art')}</span> on old furniture.`],
  ['bezalel-shenkar','Bezalel + Shenkar','I hold a bachelor’s in design from Bezalel and a master’s in design from Shenkar.'],
- ['italy','Italy','I was born in Italy and lived there until I was five. The Italian culture still has a special place in my heart.'],
+ ['italy','Italy','I was born in Italy and lived there until I was five. The&nbsp;Italian culture still has a special place in my&nbsp;heart.'],
  ['ceramics','Ceramics',`Ceramics is a fairly new hobby of mine. It might look easy to make <span class="flower gal"><button type="button" class="word">vessels</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>${film(CERAMICS,'My ceramics')}</span>, but it is really hard and takes a lot of practice.`],
  ['languages-globe','Languages','Hebrew, English, Italian, a bit of Spanish, and some Arabic. I’m always up for knowing more!'],
  ['photography','Photography',`I love taking photos and looking for interesting compositions. To me, a photo is good when I feel I truly caught the <span class="flower gal"><button type="button" class="word">moment</button><svg class="heart" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.3C.9 8.3 3.1 4.5 6.7 4.5c2.1 0 3.6 1.2 4.3 2.4.7-1.2 2.2-2.4 4.3-2.4 3.6 0 5.8 3.8 4.3 7.2C19.5 16.4 12 21 12 21z" fill="currentColor"/></svg>${film(SHOTS,'My photography')}</span>.`]];
@@ -252,7 +256,7 @@ const syncAll=()=>syncs.forEach(f=>f());addEventListener('resize',syncAll);
 /* one card open at a time: opening one turns the others back; a tap outside every card (not in the photo dialog) turns the open one back */
 
 ITEMS.forEach(([icon,title,text])=>{
-  const t=document.createElement('div');t.className='tile';t.setAttribute('role','group');t.setAttribute('aria-labelledby','tt-'+icon);
+  const t=document.createElement('div');t.className='tile t-'+icon;t.setAttribute('role','group');t.setAttribute('aria-labelledby','tt-'+icon);
   t.innerHTML=`<div class="inner"><div class="face front"><button type="button" class="flip" aria-expanded="false" aria-label="Show details: ${title}"><img class="i-${icon}" src="icons/${icon}.svg" alt=""></button></div><div class="face back"><img class="i-${icon}" src="icons/${icon}.svg" alt=""><b id="tt-${icon}">${title}</b><p>${text}</p></div></div>`;
   /* the back's buttons (words, photo arrows) join the tab order only while the card is turned, so keyboard users never land on a hidden side. Mouse hover still works on them. */
   const fb=t.querySelector('.flip'),backBtns=[...t.querySelectorAll('.back button')];
