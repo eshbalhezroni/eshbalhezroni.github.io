@@ -37,16 +37,17 @@ canvas.k{position:absolute;inset:0;width:100%;height:100%;display:block;cursor:c
 nav{position:absolute;top:calc(34px + env(safe-area-inset-top,0px));left:clamp(16px,3vw,40px);z-index:4;display:grid;gap:12px;justify-items:start}
 nav a{font:700 24px/1 var(--grot);letter-spacing:-.015em;color:var(--ink);text-decoration:none;padding:11px 18px 12px;border-radius:99px;background:rgba(249,249,248,.72);transition:color .15s}
 @media (hover:hover){nav a:hover{color:#A85A12}}
-.card{position:absolute;left:clamp(16px,3vw,40px);bottom:clamp(16px,4vh,40px);z-index:3;background:rgba(253,253,252,.38);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);padding:28px 32px 26px;border-radius:6px;box-shadow:0 1px 0 rgba(0,0,0,.05),0 14px 40px rgba(40,25,5,.16);max-width:min(560px,calc(100% - 32px));pointer-events:none}
+.card{position:absolute;left:clamp(16px,3vw,40px);bottom:clamp(16px,4vh,40px);z-index:3;background:rgba(253,253,252,.5);padding:28px 32px 26px;border:1px solid rgba(29,27,24,.16);border-radius:6px;max-width:min(560px,calc(100% - 32px));pointer-events:none}
+/* progressive blur: strongest along the bottom of the card, easing to a lighter band at the top (never fully clear) */
+.card::before{content:"";position:absolute;inset:0;border-radius:inherit;-webkit-backdrop-filter:blur(30px);backdrop-filter:blur(30px);background:rgba(253,253,252,.3);-webkit-mask-image:linear-gradient(to top,#000 10%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.4) 100%);mask-image:linear-gradient(to top,#000 10%,rgba(0,0,0,.55) 50%,rgba(0,0,0,.4) 100%);pointer-events:none}
+.card>*{position:relative}
 .card h1{font:700 clamp(54px,7vw,88px)/.88 var(--grot);letter-spacing:-.035em;margin:0 0 8px}
 .card h1 .hi{display:block;font-size:.42em;font-weight:500;letter-spacing:-.02em;margin-bottom:.12em}
 .card h1 .me{display:block;white-space:nowrap}
-.card p{color:var(--ink2);margin:0 0 20px;font-size:17px;line-height:1.32;max-width:34ch;text-wrap:pretty}
-.cta{pointer-events:auto;min-height:44px;display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--paper);font:500 15px var(--body);padding:12px 20px;border-radius:99px;text-decoration:none;transition:background-color .18s ease,transform .18s cubic-bezier(.2,.8,.2,1)}
-@media (hover:hover){.cta:hover{background:#A85A12}}
-.cta .arr{display:block;transition:transform .2s cubic-bezier(.2,.8,.2,1)}
-@media (hover:hover){.cta:hover .arr{transform:translateX(3px)}}
-.cta:active{transform:scale(.97)}
+.card p{color:var(--ink);margin:0 0 14px;font-size:17px;line-height:1.32;max-width:34ch;text-wrap:pretty}
+.cta{pointer-events:auto;min-height:44px;display:inline-flex;align-items:center;background:transparent;color:var(--ink);font:400 15px var(--body);padding:12px 20px;border:1px solid var(--ink);border-radius:8px;text-decoration:none;transition:background-color .18s cubic-bezier(.2,.8,.2,1),border-color .18s cubic-bezier(.2,.8,.2,1),color .18s cubic-bezier(.2,.8,.2,1),transform .18s cubic-bezier(.2,.8,.2,1)}
+@media (hover:hover) and (pointer:fine){.cta:hover{background:#A85A12;border-color:#A85A12;color:var(--paper)}}
+.cta:active{transform:scale(.97);transition-duration:.1s}
 a:focus-visible{outline:2px solid #A85A12;outline-offset:3px}
 @media (max-width:600px),(max-height:500px) and (orientation:landscape){.card h1{font-size:50px}.card{padding:22px 22px 20px}.card p{font-size:16px}nav{top:calc(16px + env(safe-area-inset-top,0px));gap:8px}nav a{font-size:19px;padding:9px 12px 10px}}
 .reset{min-height:44px;position:absolute;right:clamp(16px,3vw,32px);bottom:clamp(16px,4vh,40px);z-index:4;font:500 14px var(--body);color:var(--ink);background:rgba(249,249,248,.32);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);border:0;padding:9px 16px;border-radius:99px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
@@ -60,7 +61,7 @@ a:focus-visible{outline:2px solid #A85A12;outline-offset:3px}
 /* hint: tells visitors the pattern is clickable. Same corner and glass as Reset; it fades out (250ms) once the first ring is added, and Reset fades in in its place. */
 .hint{position:absolute;right:clamp(16px,3vw,32px);bottom:clamp(16px,4vh,40px);z-index:4;font:500 14px var(--body);color:var(--ink);background:rgba(249,249,248,.32);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);padding:9px 16px;border-radius:99px;pointer-events:none;opacity:1;visibility:visible;transition:opacity .25s ease}
 .hint.off{opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s}
-@media (prefers-reduced-motion:reduce){.cta,.cta .arr,.reset,.hint{transition:none}}
+@media (prefers-reduced-motion:reduce){.cta,.reset,.hint{transition:none}}
 /* quiet edge: a paper band down the left edge fades into the pattern, so the logo and menu sit on calm ground. The menu words have no pill behind them. */
 .edge{position:absolute;left:0;top:0;bottom:0;width:clamp(180px,17vw,260px);z-index:2;pointer-events:none;background:linear-gradient(90deg,rgba(249,249,248,.96) 0,rgba(249,249,248,.88) 50%,rgba(249,249,248,0) 100%)}
 nav a{background:transparent}
@@ -91,9 +92,9 @@ html{scrollbar-gutter:stable}
 .reset.on::after{display:none}
 @media (max-width:600px),(max-height:500px) and (orientation:landscape){.hint,.reset{left:0;right:auto;border-radius:0 99px 99px 0;padding:9px 26px 9px 20px}}
 /* one band for both states: it keeps its height and simply grows or shrinks between the long hint and "Reset" while the words cross-fade */
-.tape{position:absolute;z-index:4;right:0;bottom:clamp(16px,4vh,40px);display:grid;overflow:hidden;border-radius:6px 0 0 6px;pointer-events:none;background-color:#F9F9F8;background-image:linear-gradient(110deg,rgba(255,255,255,0) 24%,rgba(255,255,255,.55) 38%,rgba(255,255,255,1) 50%,rgba(255,255,255,.55) 62%,rgba(255,255,255,0) 76%);background-size:260% 100%;background-repeat:no-repeat;animation:sheen 4.2s ease-in-out infinite;box-shadow:0 1px 8px rgba(40,25,5,.12);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.tape{position:absolute;z-index:4;right:0;bottom:clamp(16px,4vh,40px);display:grid;overflow:hidden;border-radius:6px 0 0 6px;pointer-events:none;background-color:#F9F9F8;background-image:linear-gradient(110deg,rgba(255,255,255,0) 24%,rgba(255,255,255,.55) 38%,rgba(255,255,255,1) 50%,rgba(255,255,255,.55) 62%,rgba(255,255,255,0) 76%);background-size:260% 100%;background-repeat:no-repeat;animation:sheen 4.2s ease-in-out infinite;border:1px solid rgba(29,27,24,.16);border-right:0}
 .tape.ready{transition:width .55s cubic-bezier(.23,1,.32,1),opacity .3s ease}
-.tape .hint,.tape .reset{position:static;grid-area:1/1;justify-self:start;white-space:nowrap;background:none;box-shadow:none;animation:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0;padding:9px 26px 9px 20px;min-height:0;font:400 14px/1.3 var(--body);color:var(--ink2);border:0}
+.tape .hint,.tape .reset{position:static;grid-area:1/1;justify-self:start;white-space:nowrap;background:none;box-shadow:none;animation:none;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:0;padding:9px 26px 9px 20px;min-height:0;font:400 14px/1.3 var(--body);color:var(--ink);border:0}
 .tape .reset.on{pointer-events:auto}
 @media (hover:hover){.tape .reset:hover{color:#805C00}}
 /* the old words leave first, the new words arrive while the band is already changing width, so they never overlap */
@@ -107,7 +108,7 @@ html{scrollbar-gutter:stable}
 @media (max-width:600px){.card{padding:20px 18px 18px}.card p{font-size:clamp(12px,3.7vw,15px);line-height:1.32;text-wrap:balance}}
 /* phones: Reset is a small box next to the menu box (same glass as the name card), shown once there are rings; the band then only carries the one-time sentence */
 .topreset{display:none}
-@media (max-width:600px),(max-height:500px) and (orientation:landscape){.topreset{display:grid;position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:76px;z-index:51;width:44px;height:44px;padding:0;border:0;border-radius:6px;background:rgba(253,253,252,.38);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);box-shadow:0 1px 0 rgba(0,0,0,.05),0 8px 22px rgba(40,25,5,.14);place-items:center;color:var(--ink);cursor:pointer;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s;-webkit-tap-highlight-color:transparent}.topreset.on{opacity:1;visibility:visible;transition:opacity .25s ease}html.mm-open .topreset{display:none}.topreset:focus-visible{outline:2px solid #A85A12;outline-offset:2px}}
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){.topreset{display:grid;position:fixed;top:calc(10px + env(safe-area-inset-top,0px));right:76px;z-index:51;width:44px;height:44px;padding:0;border:1px solid rgba(29,27,24,.16);border-radius:6px;background:#F9F9F8;place-items:center;color:var(--ink);cursor:pointer;opacity:0;visibility:hidden;transition:opacity .25s ease,visibility 0s linear .25s;-webkit-tap-highlight-color:transparent}.topreset.on{opacity:1;visibility:visible;transition:opacity .25s ease}html.mm-open .topreset{display:none}.topreset:focus-visible{outline:2px solid #A85A12;outline-offset:2px}}
 @media (prefers-reduced-motion:reduce){.topreset{transition:none!important}}
 /* phones held sideways: the screen is short, so the page fits it (no minimum height) and the name card is compact: Hello, and the name on one line, a shorter intro */
 @media (max-height:500px) and (orientation:landscape){.hero{min-height:0}.card{padding:14px 20px 16px}.card h1{font-size:42px;margin-bottom:6px}.card h1 .hi{display:inline;font-size:.55em;margin:0 6px 0 0}.card h1 .me{display:inline}.card p{font-size:14px;margin-bottom:12px}}
@@ -123,7 +124,7 @@ html{scrollbar-gutter:stable}
   <main class="card">
     <h1><span class="hi">Hello,</span><span class="me">I’m Eshbal</span></h1>
     <p>I’m a Senior Product Designer with 7+ years of experience creating complex SaaS platforms</p>
-    <a class="cta" href="work.html">Selected work <svg class="arr" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M13.1969 5.82812L19.1969 11.9996L13.1969 18.171M19.1969 11.9996L4.79688 11.9996" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
+    <a class="cta" href="work.html">Selected work</a>
   </main>
   <button type="button" class="topreset" id="topreset" aria-label="Reset"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.17962 14.9984C4.43937 18.8312 8.0473 21.5984 12.3016 21.5984C17.6035 21.5984 21.9016 17.3004 21.9016 11.9984C21.9016 6.6965 17.6035 2.39844 12.3016 2.39844C8.74821 2.39844 5.64576 4.32899 3.98587 7.19844M6.90156 8.39844H2.10156V3.59844"/></svg></button>
   <div class="tape" id="tape"><div class="hint" id="hint" aria-hidden="true">Click anywhere to add a ring</div><button type="button" class="reset" id="reset">Reset</button></div>
