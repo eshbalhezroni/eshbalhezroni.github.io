@@ -31,6 +31,7 @@ html.mm-open .mm-btn .mm-bars{opacity:0;transform:rotate(45deg) scale(.8)}
 html.mm-open .mm-btn .mm-x{opacity:1;transform:none}
 /* over the home pattern the button gets a little glass so it stays readable */
 html.mm-home .mm-btn{width:44px;height:44px;margin-right:0;border:1px solid rgba(29,27,24,.16);border-radius:6px;background:#F9F9F8}
+html.mm-home .mm-btn svg{width:20px;height:20px;stroke-width:2}
 html.mm-home.mm-open .mm-btn{background:transparent;border-color:transparent}
 .mm-panel{position:fixed;inset:0;z-index:40;background:#2D2B28;color:#F9F9F8;opacity:0;visibility:hidden;overscroll-behavior:contain;transition:opacity .3s cubic-bezier(.4,0,.2,1),visibility 0s linear .3s}
 html.mm-open .mm-panel{opacity:1;visibility:visible;transition:opacity .3s cubic-bezier(.4,0,.2,1)}
