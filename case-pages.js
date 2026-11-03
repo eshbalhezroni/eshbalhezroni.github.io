@@ -1096,7 +1096,7 @@ function renderVaronisCase(root, data) {
         {
           icon: "usability",
           title: "Poor usability",
-          textHtml: "The pane isn't intuitive and includes <strong>unnecessary/duplicated actions.</strong>"
+          textHtml: "The pane isn't intuitive and includes <strong>unnecessary/<wbr>duplicated actions.</strong>"
         },
         {
           icon: "outdatedUi",
