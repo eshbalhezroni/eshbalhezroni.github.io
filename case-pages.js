@@ -56,8 +56,9 @@ const caseStudies = {
     title: "Creating a product from scratch: Intent-Based Promotions",
     blocks: [
       h("Summary"),
-      p("Intent-Based Promotions is a platform that offers individualized discounts for users based on their real-time buying intent. I led the product’s design from conception to its adoption by over a hundred customers.")
+      p("I designed a platform that offers each visitor the right promotion based on real-time buying intent, from the first sketch to adoption by 100+ customers.")
     ],
+    heroStats: { lead: "After the second release", items: [{ value: "−16.5%", label: "Time to create a campaign" }, { value: "−71%", label: "Open support tickets" }] },
     next: { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/Home page/optimized/Home_page_Image_3_flow_v3.jpg" },
     explore: [
       { title: "The design process of a new feature: Campaign Board", href: "campaigns-board.html", image: "assets/Home page/optimized/Home_page_Image_1_campaign_board_v9.jpg" },
@@ -210,7 +211,7 @@ const withJourneyConclusionUnderlines = (value) =>
     .replace("let things go", "<u>let things go</u>");
 
 const withTitleKeeps = (value) =>
-  escapeHtml(value).replace("a\u00A0complex", '<span class="text-keep">a&nbsp;complex</span>');
+  escapeHtml(value).replace("a\u00A0complex", '<span class="text-keep">a&nbsp;complex</span>').replace("Intent-Based Promotions", '<span class="text-keep">Intent-Based&nbsp;Promotions</span>');
 
 const withExploreTitleKeeps = (value) =>
   escapeHtml(value)
@@ -600,7 +601,7 @@ function renderIntentCase(root, data) {
     {
       icon: "background",
       title: "Background",
-      text: "IBP: Product that offers individualized promotions to eCommerce site visitors based on real-time buying intent (B2B2C)."
+      text: "IBP: Product that offers individualized promotions to eCommerce site visitors based on real-time buying intent."
     },
     {
       icon: "problem",
@@ -615,7 +616,7 @@ function renderIntentCase(root, data) {
     {
       icon: "myRole",
       title: "My Role",
-      text: "From 0 → 1\nProduct designer of IBP, from the first sketch to launch."
+      text: "From 0 → 1\nI led the product’s design: research, user flows, wireframes and UI, from the first sketch to launch and the redesign that followed."
     }
   ];
 
@@ -634,7 +635,7 @@ function renderIntentCase(root, data) {
       /* slides 4-5: same structure and images as the live page, new text only */
       className: "intent-speaking-users-section",
       title: "Speaking to Users",
-      text: "I went out and interviewed 6 users who create and manage eCommerce promotion campaigns.\n\nHearing their perspectives was important because it gave me a deeper understanding of their workflows, decision-making, and the challenges they face when creating promotions.",
+      text: "I went out and interviewed 6 users who create and manage eCommerce promotion campaigns.\n\nWhat I heard: building promotions today is complicated, and none of the systems they use knows how to hand out coupons in the right way. The coupons are “dumb”: they don’t take the visitor’s intent into account.",
       media: [
         { ...img("assets/Intent-Based Promotions/Screenshot_10-03-46-AM.png", "User research findings"), caption: "Affinity mapping" }
       ],
@@ -679,8 +680,8 @@ function renderIntentCase(root, data) {
     },
     {
       /* slide 16: text on the left, the smaller picture on the right, both centred vertically */
-      className: "campaign-story-section--copy-left ibp-wireframes-note ibp-no-top-line",
-      text: "My thinking, laid out on paper: working notes, rules for each step, and the first sketches of how the platform could look. This is where the flow started to take shape.",
+      className: "campaign-story-section--copy-left ibp-wireframes-note ibp-no-top-line ibp-sketches-centered",
+      text: "My working notes + Sketches",
       media: [img("img/ibp/ideas-sketches.png", "Notes, sketches and early wireframes of the creation flow")]
     },
     {
@@ -704,7 +705,7 @@ function renderIntentCase(root, data) {
       /* slide 22 */
       className: "campaign-story-section--sketches-stack ibp-issues",
       title: "Issues to Address",
-      textHtml: `<p>After a release, things are rarely perfect, and problems start to surface. <br>Two of them stood out, and we wanted to fix them.</p><ul class="ibp-findings-grid ibp-issues-grid"><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><path d="M24 14v10.5l6 3.5"/></svg></span><h3>Time to Create a Campaign</h3><p>Breaking the workflow into shorter steps didn’t necessarily help users complete the task faster, as they frequently moved back and forth between steps.</p></li><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 40 40" aria-hidden="true" style="fill:currentColor;stroke:#F9F9F8;stroke-width:.9;stroke-linejoin:round"><path d="M34.3903 18.9239L30.8667 15.4016C30.8243 15.3272 30.8012 15.2433 30.7994 15.1576L32.6384 9.6367C32.7732 9.31887 32.81 8.96804 32.7441 8.62917C32.6782 8.29029 32.5126 7.9788 32.2686 7.73462C32.0246 7.49045 31.7132 7.32469 31.3743 7.25861C31.0355 7.19253 30.6846 7.22913 30.3667 7.36371L24.8656 9.20004C24.7798 9.2037 24.6944 9.18697 24.6163 9.15123L21.0795 5.61312C20.855 5.32614 20.5391 5.12455 20.1842 5.04177C19.8294 4.95899 19.4569 5.00001 19.1286 5.15802C18.8002 5.31603 18.5358 5.58153 18.3791 5.9105C18.2223 6.23946 18.1828 6.61211 18.267 6.96663L18.8699 12.3661C18.8573 12.417 18.8378 12.4658 18.8118 12.5113L13.1498 15.6576C12.8184 15.7969 12.5425 16.0421 12.3651 16.3547C12.1877 16.6674 12.1187 17.03 12.169 17.386C12.2194 17.7419 12.3861 18.0712 12.6432 18.3224C12.9003 18.5737 13.2334 18.7328 13.5904 18.7748L17.3237 19.635C17.3813 19.6478 17.4344 19.6759 17.4773 19.7163C17.5203 19.7567 17.5516 19.808 17.5679 19.8646C17.5843 19.9213 17.585 19.9814 17.5701 20.0384C17.5553 20.0955 17.5253 20.1475 17.4834 20.189L3.81508 33.856C3.66193 34.0091 3.54045 34.191 3.45757 34.391C3.37469 34.5911 3.33203 34.8056 3.33203 35.0222C3.33203 35.2388 3.37469 35.4532 3.45757 35.6533C3.54045 35.8534 3.66193 36.0352 3.81508 36.1884C3.96822 36.3415 4.15003 36.463 4.35012 36.5459C4.55022 36.6287 4.76468 36.6714 4.98126 36.6714C5.19783 36.6714 5.41229 36.6287 5.61239 36.5459C5.81248 36.463 5.99429 36.3415 6.14743 36.1884L19.8144 22.5214C19.8561 22.4799 19.9081 22.4503 19.9651 22.4357C20.022 22.421 20.0819 22.4219 20.1384 22.4382C20.1949 22.4545 20.2461 22.4856 20.2865 22.5283C20.327 22.571 20.3553 22.6237 20.3685 22.681L21.2299 26.4157C21.272 26.7727 21.4311 27.1058 21.6823 27.3629C21.9335 27.62 22.2628 27.7867 22.6188 27.837C22.9747 27.8873 23.3373 27.8184 23.65 27.641C23.9627 27.4636 24.2078 27.1877 24.3472 26.8563L27.4737 21.2193C27.5131 21.1849 27.5576 21.1569 27.6056 21.1362L33.0381 21.7378C33.3925 21.8206 33.7645 21.7801 34.0927 21.623C34.4209 21.4658 34.6857 21.2014 34.8433 20.8734C35.0009 20.5454 35.0419 20.1735 34.9596 19.819C34.8772 19.4646 34.6764 19.1488 34.3903 18.9239V18.9239ZM27.8959 18.5136C27.3576 18.4665 26.817 18.5734 26.3372 18.8219C25.8574 19.0705 25.4582 19.4504 25.1862 19.9173L23.6612 22.6612C23.6288 22.7194 23.5796 22.7665 23.5199 22.7962C23.4603 22.8258 23.393 22.8368 23.327 22.8275C23.2611 22.8182 23.1995 22.7892 23.1503 22.7442C23.1012 22.6992 23.0668 22.6404 23.0517 22.5755L22.3921 19.7431C22.2581 19.2298 21.9897 18.7614 21.6145 18.3862C21.2394 18.0111 20.771 17.7427 20.2577 17.6087L17.4266 16.957C17.3618 16.9416 17.3032 16.907 17.2583 16.8577C17.2135 16.8085 17.1845 16.7468 17.1753 16.6809C17.166 16.6149 17.1768 16.5476 17.2064 16.4879C17.2359 16.4282 17.2828 16.3788 17.3409 16.3462L20.0862 14.8212C20.5518 14.5477 20.9304 14.1479 21.1781 13.6681C21.4258 13.1883 21.5325 12.6482 21.4858 12.1102L21.2959 10.4032C21.2887 10.3352 21.3027 10.2668 21.3359 10.2071C21.3692 10.1474 21.42 10.0995 21.4816 10.0699C21.5431 10.0403 21.6123 10.0304 21.6797 10.0417C21.747 10.0529 21.8093 10.0847 21.8579 10.1327L22.7444 11.0205C23.1289 11.3836 23.6025 11.6386 24.1172 11.7598C24.6319 11.8809 25.1696 11.8639 25.6756 11.7105L28.9736 10.6129C29.0317 10.5937 29.094 10.5909 29.1535 10.605C29.213 10.6191 29.2674 10.6495 29.3107 10.6927C29.3539 10.736 29.3843 10.7904 29.3984 10.8499C29.4125 10.9095 29.4098 10.9717 29.3905 11.0298L28.2916 14.3278C28.1396 14.834 28.1235 15.3713 28.2451 15.8856C28.3667 16.4 28.6216 16.8732 28.9842 17.2578L29.8733 18.1456C29.9207 18.1938 29.9522 18.2554 29.9635 18.322C29.9749 18.3886 29.9656 18.4571 29.9368 18.5183C29.9081 18.5795 29.8614 18.6304 29.8028 18.6643C29.7443 18.6981 29.6769 18.7132 29.6095 18.7076L27.8959 18.5136Z"/></svg></span><h3>Template Adjustment</h3><p>The promotions weren’t customizable enough, so tickets were opened with the support team to resolve it.</p></li></ul>`
+      textHtml: `<p>After release, the data told a different story than I expected. Two problems stood out, and we wanted to fix them.</p><ul class="ibp-findings-grid ibp-issues-grid"><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="19"/><path d="M24 14v10.5l6 3.5"/></svg></span><h3>Time to Create a Campaign</h3><p>Breaking the workflow into shorter steps didn’t necessarily help users complete the task faster, as they frequently moved back and forth between steps. Creating a campaign still took 10.3 minutes on average.</p></li><li class="ibp-finding"><span class="ibp-finding-icon"><svg viewBox="0 0 40 40" aria-hidden="true" style="fill:currentColor;stroke:#F9F9F8;stroke-width:.9;stroke-linejoin:round"><path d="M34.3903 18.9239L30.8667 15.4016C30.8243 15.3272 30.8012 15.2433 30.7994 15.1576L32.6384 9.6367C32.7732 9.31887 32.81 8.96804 32.7441 8.62917C32.6782 8.29029 32.5126 7.9788 32.2686 7.73462C32.0246 7.49045 31.7132 7.32469 31.3743 7.25861C31.0355 7.19253 30.6846 7.22913 30.3667 7.36371L24.8656 9.20004C24.7798 9.2037 24.6944 9.18697 24.6163 9.15123L21.0795 5.61312C20.855 5.32614 20.5391 5.12455 20.1842 5.04177C19.8294 4.95899 19.4569 5.00001 19.1286 5.15802C18.8002 5.31603 18.5358 5.58153 18.3791 5.9105C18.2223 6.23946 18.1828 6.61211 18.267 6.96663L18.8699 12.3661C18.8573 12.417 18.8378 12.4658 18.8118 12.5113L13.1498 15.6576C12.8184 15.7969 12.5425 16.0421 12.3651 16.3547C12.1877 16.6674 12.1187 17.03 12.169 17.386C12.2194 17.7419 12.3861 18.0712 12.6432 18.3224C12.9003 18.5737 13.2334 18.7328 13.5904 18.7748L17.3237 19.635C17.3813 19.6478 17.4344 19.6759 17.4773 19.7163C17.5203 19.7567 17.5516 19.808 17.5679 19.8646C17.5843 19.9213 17.585 19.9814 17.5701 20.0384C17.5553 20.0955 17.5253 20.1475 17.4834 20.189L3.81508 33.856C3.66193 34.0091 3.54045 34.191 3.45757 34.391C3.37469 34.5911 3.33203 34.8056 3.33203 35.0222C3.33203 35.2388 3.37469 35.4532 3.45757 35.6533C3.54045 35.8534 3.66193 36.0352 3.81508 36.1884C3.96822 36.3415 4.15003 36.463 4.35012 36.5459C4.55022 36.6287 4.76468 36.6714 4.98126 36.6714C5.19783 36.6714 5.41229 36.6287 5.61239 36.5459C5.81248 36.463 5.99429 36.3415 6.14743 36.1884L19.8144 22.5214C19.8561 22.4799 19.9081 22.4503 19.9651 22.4357C20.022 22.421 20.0819 22.4219 20.1384 22.4382C20.1949 22.4545 20.2461 22.4856 20.2865 22.5283C20.327 22.571 20.3553 22.6237 20.3685 22.681L21.2299 26.4157C21.272 26.7727 21.4311 27.1058 21.6823 27.3629C21.9335 27.62 22.2628 27.7867 22.6188 27.837C22.9747 27.8873 23.3373 27.8184 23.65 27.641C23.9627 27.4636 24.2078 27.1877 24.3472 26.8563L27.4737 21.2193C27.5131 21.1849 27.5576 21.1569 27.6056 21.1362L33.0381 21.7378C33.3925 21.8206 33.7645 21.7801 34.0927 21.623C34.4209 21.4658 34.6857 21.2014 34.8433 20.8734C35.0009 20.5454 35.0419 20.1735 34.9596 19.819C34.8772 19.4646 34.6764 19.1488 34.3903 18.9239V18.9239ZM27.8959 18.5136C27.3576 18.4665 26.817 18.5734 26.3372 18.8219C25.8574 19.0705 25.4582 19.4504 25.1862 19.9173L23.6612 22.6612C23.6288 22.7194 23.5796 22.7665 23.5199 22.7962C23.4603 22.8258 23.393 22.8368 23.327 22.8275C23.2611 22.8182 23.1995 22.7892 23.1503 22.7442C23.1012 22.6992 23.0668 22.6404 23.0517 22.5755L22.3921 19.7431C22.2581 19.2298 21.9897 18.7614 21.6145 18.3862C21.2394 18.0111 20.771 17.7427 20.2577 17.6087L17.4266 16.957C17.3618 16.9416 17.3032 16.907 17.2583 16.8577C17.2135 16.8085 17.1845 16.7468 17.1753 16.6809C17.166 16.6149 17.1768 16.5476 17.2064 16.4879C17.2359 16.4282 17.2828 16.3788 17.3409 16.3462L20.0862 14.8212C20.5518 14.5477 20.9304 14.1479 21.1781 13.6681C21.4258 13.1883 21.5325 12.6482 21.4858 12.1102L21.2959 10.4032C21.2887 10.3352 21.3027 10.2668 21.3359 10.2071C21.3692 10.1474 21.42 10.0995 21.4816 10.0699C21.5431 10.0403 21.6123 10.0304 21.6797 10.0417C21.747 10.0529 21.8093 10.0847 21.8579 10.1327L22.7444 11.0205C23.1289 11.3836 23.6025 11.6386 24.1172 11.7598C24.6319 11.8809 25.1696 11.8639 25.6756 11.7105L28.9736 10.6129C29.0317 10.5937 29.094 10.5909 29.1535 10.605C29.213 10.6191 29.2674 10.6495 29.3107 10.6927C29.3539 10.736 29.3843 10.7904 29.3984 10.8499C29.4125 10.9095 29.4098 10.9717 29.3905 11.0298L28.2916 14.3278C28.1396 14.834 28.1235 15.3713 28.2451 15.8856C28.3667 16.4 28.6216 16.8732 28.9842 17.2578L29.8733 18.1456C29.9207 18.1938 29.9522 18.2554 29.9635 18.322C29.9749 18.3886 29.9656 18.4571 29.9368 18.5183C29.9081 18.5795 29.8614 18.6304 29.8028 18.6643C29.7443 18.6981 29.6769 18.7132 29.6095 18.7076L27.8959 18.5136Z"/></svg></span><h3>Template Adjustment</h3><p>The promotions weren’t customizable enough, so tickets were opened with the support team to resolve it. Over 4 months, support received 76 tickets, about 4 to 5 a week.</p></li></ul>`
     },
     {
       /* slides 23-25 */
@@ -735,22 +736,24 @@ function renderIntentCase(root, data) {
       media: [video("assets/Intent-Based Promotions/Create a campaign.mp4?v=lossless-vfr-remux-20260727", "Create Campaign walkthrough")]
     },
     {
-      /* slide 28: data on the left, one under the other; the users' words on the right, one above the other */
-      className: "campaign-story-section--copy-left ibp-impact-section",
+      /* Impact: numbers in the green box (as in the hero), then the users' words as a quiet list with black avatars */
+      className: "campaign-story-section--copy-left ibp-impact-section ibp-impact-v2",
       title: "Impact",
       textHtml: `
-        <div class="ibp-stats">
-          ${stat("−16.5%", "Time to create a campaign", "Dropped from 10.3 to 8.6 minutes after the redesign")}
-          ${stat("−71%", "Open support tickets", "Dropped from 76 to 22 tickets over 4 months after the redesign")}
-        </div>`,
-      media: [{
-        type: "quotes",
-        quotes: [
-          "I love this! It looks great and it’s so much easier to\u00a0navigate.",
-          "It is pretty much everything I could ask for when creating a campaign.",
-          "Creating a promotion feels much easier now. I can really create what I have in mind."
-        ]
-      }]
+        <p>Both problems from the first release improved after the redesign, <span class="text-keep">and over a hundred customers adopted the platform.</span></p>
+        <div class="ibp-impact-box">
+          <div><strong>−16.5%</strong><span class="l">Time to create a campaign</span><span class="d">Dropped from 10.3 to 8.6 minutes after the redesign</span></div>
+          <div><strong>−71%</strong><span class="l">Open support tickets</span><span class="d">Dropped from 76 to 22 tickets over 4 months after the redesign</span></div>
+          <div><strong>100+</strong><span class="l">Adoption</span><span class="d">Customers using the platform</span></div>
+        </div>
+        <div class="ibp-impact-feedback">
+          <div class="ibp-impact-feedback-label">User feedback</div>
+          <ul>
+            <li><i style="background-image:url('assets/Intent-Based Promotions/screens/Avatars/impact/Lavender.svg')"></i><span>“I love this! It looks great and it’s so much easier to&nbsp;navigate.”</span></li>
+            <li><i style="background-image:url('assets/Intent-Based Promotions/screens/Avatars/impact/Infrared.svg')"></i><span>“It is pretty much everything I could ask for when creating a campaign.”</span></li>
+            <li><i style="background-image:url('assets/Intent-Based Promotions/screens/Avatars/impact/Pedigrey.svg')"></i><span>“Creating a promotion feels much easier now. I can really create what I have in mind.”</span></li>
+          </ul>
+        </div>`
     },
     {
       className: "campaign-story-section--sketches-stack campaign-story-section--final-delivery ibp-more-work",
@@ -1329,6 +1332,7 @@ function renderStructuredCase(root, data, options) {
         <div>
           <h1>${withTitleKeeps(data.title)}</h1>
           <p>${withBreaks(data.blocks[1].text)}</p>
+          ${data.heroStats ? `<div class="ibp-hero-stats"><div class="ibp-hero-stats-lead">${escapeHtml(data.heroStats.lead)}</div><div class="ibp-hero-stats-row">${data.heroStats.items.map((it) => `<div><div class="ibp-hero-stat-value">${escapeHtml(it.value)}</div><div class="ibp-hero-stat-label">${escapeHtml(it.label)}</div></div>`).join("")}</div></div>` : ""}
         </div>
         <figure>
           <img src="${localUrl(options.heroImage.src)}" alt="${escapeHtml(options.heroImage.alt)}"${options.heroImage.width ? ` width="${options.heroImage.width}" height="${options.heroImage.height}"` : ""}>
