@@ -56,7 +56,7 @@ const caseStudies = {
     title: "Creating a product from scratch: Intent-Based Promotions",
     blocks: [
       h("Summary"),
-      p("I designed a platform that offers each visitor the right promotion based on real-time buying intent, from the first sketch to adoption by 100+ customers.")
+      p("I designed a platform at Namogoo that offers each visitor the right promotion based on real-time buying intent, from the first sketch to adoption by 100+ customers.")
     ],
     heroStats: { lead: "After the second release", items: [{ value: "−16.5%", label: "Time to create a campaign" }, { value: "−71%", label: "Open support tickets" }] },
     next: { title: "Building a data visualization tool: Journey Flow", href: "journey-flow.html", image: "assets/Home page/optimized/Home_page_Image_3_flow_v3.jpg" },
