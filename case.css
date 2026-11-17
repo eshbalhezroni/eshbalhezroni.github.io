@@ -2688,6 +2688,12 @@ body[data-case="intent"] .campaign-case-hero img{width:100%;height:100%;object-f
 .ibp-release .ibp-pager-caption{display:none}
 .ibp-issues-grid{max-width:none;width:100%;gap:36px 64px}
 .ibp-issues .ibp-finding p{max-width:36ch}
+/* opportunity card: third item on the right, green dashed frame (no icon) */
+.ibp-issues-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:36px 48px}
+.ibp-issues .ibp-opportunity{align-self:center;gap:12px;padding:28px 30px 30px;border:1.5px dashed #86AD78;border-radius:6px;background:rgba(92,143,75,.07)}
+.ibp-issues .ibp-opportunity p{max-width:none}
+@media (max-width:1000px){.ibp-issues-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ibp-issues .ibp-opportunity{grid-column:1 / -1}}
+@media (max-width:700px){.ibp-issues-grid{grid-template-columns:minmax(0,1fr)}}
 /* impact: data stacked on the left, quotes stacked on the right, same quote design as the live site */
 .ibp-impact-section .ibp-stats{grid-template-columns:minmax(0,1fr);margin:24px 0 0}
 .ibp-quotes-stack{grid-template-columns:minmax(0,1fr)!important;margin-top:0!important;max-width:none!important}
@@ -2874,3 +2880,16 @@ body[data-case] .campaign-case-hero figure { align-self: start; }
 
 /* Competitor Analysis on phones: same space between paragraphs as in "Speaking to Users" (10px) */
 @media (max-width: 900px) { .ibp-competitors .campaign-story-copy > p + p { margin-top: 10px; } }
+
+/* Testimonials (Varonis, last section): label + cards, up to three across */
+.testimonials { margin-top: 56px; max-width: 100%; }
+.testimonials-label { font: 500 14px/1 var(--body); color: #8d887e; margin-bottom: 14px; }
+.testimonials-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.testimonial-card { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 22px; padding: 22px 22px 20px; background: rgba(168, 90, 18, 0.06); border: 1px solid rgba(168, 90, 18, 0.28); border-radius: var(--radius); }
+.testimonial-card blockquote { margin: 0; padding: 0; border: 0; }
+.testimonial-card blockquote p { margin: 0; font: 400 16px/1.55 var(--body); color: var(--muted); }
+.testimonial-card blockquote p + p { margin-top: 12px; }
+.testimonial-card figcaption { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar { flex: none; width: 36px; height: 36px; border-radius: 99px; background: center / contain no-repeat; }
+.testimonial-card figcaption > span { display: grid; gap: 2px; font: 400 14px/1.3 var(--body); color: var(--muted); }
+.testimonial-card figcaption strong { font: 600 15px/1.3 var(--body); color: var(--ink); }
