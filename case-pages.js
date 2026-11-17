@@ -1134,18 +1134,7 @@ function renderVaronisCase(root, data) {
       title: data.blocks[19].text,
       text: data.blocks[20].text,
       media: [video("assets/Account Pane/Finalizing Design2.mp4?v=20260710-finalizing-design-2", "Finalizing Design walkthrough", "video/mp4")],
-      mediaPlacement: "underText",
-      testimonials: [
-        {
-          name: "Maayan",
-          role: "Product Manager at Varonis",
-          avatar: "assets/Intent-Based Promotions/screens/Avatars/impact/Lavender.svg",
-          quote: [
-            "\u201CI worked closely with Eshbal on the Account Pane, and it was a challenging project. Every change we wanted to make required an infrastructure change in the platform, so we had to justify every single move. We leaned on each other the whole way: refining which information to show the user, and figuring out how to frame it for management.",
-            "Throughout, I felt I had a true partner who understands the complexity of a project like this, and whose professional judgment I could trust with my eyes closed.\u201D"
-          ]
-        }
-      ]
+      mediaPlacement: "underText"
     }
   ];
 
@@ -1155,21 +1144,6 @@ function renderVaronisCase(root, data) {
     heroImage: img("assets/Account Pane/header_image_v3.jpg", "Account Pane interface mockup", 1600, 1329),
     heroClassName: "campaign-case-hero--plain"
   });
-}
-
-function renderTestimonials(items) {
-  return `<div class="testimonials">
-    <div class="testimonials-label">What my colleagues say</div>
-    <div class="testimonials-grid">${items.map((t) => `
-      <figure class="testimonial-card">
-        <blockquote>${t.quote.map((para) => `<p>${escapeHtml(para)}</p>`).join("")}</blockquote>
-        <figcaption>
-          <i class="testimonial-avatar" style="background-image:url('${localUrl(t.avatar)}')" aria-hidden="true"></i>
-          <span><strong>${escapeHtml(t.name)}</strong><span>${escapeHtml(t.role)}</span></span>
-        </figcaption>
-      </figure>`).join("")}
-    </div>
-  </div>`;
 }
 
 function renderStructuredCase(root, data, options) {
@@ -1390,7 +1364,6 @@ function renderStructuredCase(root, data, options) {
                   ${renderChapterBullets(chapter.bullets)}
                   ${chapter.feedbackQuotes ? `<div class="campaign-feedback-quotes">${chapter.feedbackQuotes.map((quote) => `<blockquote>&ldquo;${escapeHtml(quote).replaceAll("\n", "<br>")}&rdquo;</blockquote>`).join("")}</div>` : ""}
                   ${chapter.underTextMedia ? renderMedia(chapter.underTextMedia) : chapter.mediaPlacement === "underText" ? renderMedia(chapter.media) : ""}
-                  ${chapter.testimonials ? renderTestimonials(chapter.testimonials) : ""}
                   ${chapter.underMediaText ? `<div class="campaign-story-under-media-copy">${chapter.underMediaTitle ? `<h2>${escapeHtml(chapter.underMediaTitle)}</h2>` : ""}<p>${withBreaks(chapter.underMediaText)}</p></div>` : ""}
                 </div>
                 ${chapter.underTextMedia ? renderMedia(chapter.media, chapter.afterText) : chapter.mediaPlacement === "underText" ? "" : chapter.insightItems && chapter.listMode === "bullets" ? renderBulletInsightItems(chapter.insightItems) : chapter.insightItems ? renderInsightItems(chapter.insightItems) : chapter.mediaMode === "mockupPager" ? renderMockupPager(chapter.media) : renderMedia(chapter.media, chapter.afterText)}
