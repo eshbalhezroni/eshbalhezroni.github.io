@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="392" height="1097" viewBox="0 0 392 1097" fill="none" font-family="Instrument Sans, Inter, system-ui, -apple-system, sans-serif" font-size="15" role="img">
+<defs><marker id="a" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#2B3045"/></marker><marker id="y" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L8 4L0 8z" fill="#E0B100"/></marker></defs>
+<rect x="36" y="24.0" width="200" height="60.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="50.0" text-anchor="middle">The user log in</text><text x="136.0" y="69.0" text-anchor="middle">to the platform</text></g>
+<rect x="36" y="118.0" width="200" height="79.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="144.0" text-anchor="middle">The user arrive</text><text x="136.0" y="163.0" text-anchor="middle">to the campaign</text><text x="136.0" y="182.0" text-anchor="middle">management page</text></g>
+<rect x="36" y="231.0" width="200" height="60.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="257.0" text-anchor="middle">Clicks on</text><text x="136.0" y="276.0" text-anchor="middle">create campaign</text></g>
+<rect x="36" y="325.0" width="200" height="98.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="351.0" text-anchor="middle">Arrive to a modal</text><text x="136.0" y="370.0" text-anchor="middle">to choose a name</text><text x="136.0" y="389.0" text-anchor="middle">and domain for</text><text x="136.0" y="408.0" text-anchor="middle">the campaign</text></g>
+<rect x="36" y="457.0" width="200" height="60.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="483.0" text-anchor="middle">Arrive to</text><text x="136.0" y="502.0" text-anchor="middle">the <tspan font-weight="700">goal</tspan></text></g>
+<rect x="29" y="450.0" width="214" height="74.0" fill="none" stroke="#E0B100" stroke-width="2"/>
+<rect x="36" y="551.0" width="200" height="60.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="577.0" text-anchor="middle">Arrive to the</text><text x="136.0" y="596.0" text-anchor="middle"><tspan font-weight="700">promotion type</tspan></text></g>
+<rect x="29" y="544.0" width="214" height="74.0" fill="none" stroke="#E0B100" stroke-width="2"/>
+<rect x="36" y="645.0" width="200" height="60.0" rx="8" fill="#FFE1E4" stroke="#FFE1E4" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="671.0" text-anchor="middle">Arrive to the</text><text x="136.0" y="690.0" text-anchor="middle">color step</text></g>
+<path d="M50 695.0L222 655.0" stroke="#2B3045" stroke-width="1.2"/>
+<rect x="36" y="739.0" width="200" height="56.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="772.5" text-anchor="middle">Choose a <tspan font-weight="700">template</tspan></text></g>
+<rect x="36" y="829.0" width="200" height="56.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="862.5" text-anchor="middle">Define <tspan font-weight="700">settings</tspan></text></g>
+<rect x="36" y="919.0" width="200" height="60.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="945.0" text-anchor="middle">Design</text><text x="136.0" y="964.0" text-anchor="middle">the template</text></g>
+<rect x="36" y="1013.0" width="200" height="60.0" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/>
+<g fill="#2B3045"><text x="136.0" y="1039.0" text-anchor="middle">Publish</text><text x="136.0" y="1058.0" text-anchor="middle">the campaign</text></g>
+<path d="M136.0 88.0V115.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 201.0V228.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 295.0V322.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 427.0V447.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 528.0V541.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 622.0V642.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 709.0V736.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 799.0V826.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 889.0V916.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M136.0 983.0V1010.0" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<rect x="266" y="177.2" width="112" height="64" rx="8" fill="#fff" stroke="#D6D5D0" stroke-width="1.5"/><g fill="#2B3045" font-size="14"><text x="322.0" y="205.2" text-anchor="middle">Go to the</text><text x="322.0" y="224.2" text-anchor="middle">analytics page</text></g>
+<path d="M240 157.5H322.0V173.2" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M322.0 245.2V261.0H240" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M32 1043.0H14V157.5H32" stroke="#2B3045" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#a)"/>
+<path d="M246 487.0H366V857.0H240" stroke="#E0B100" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#y)"/>
+<circle cx="243" cy="487.0" r="3.5" fill="#E0B100"/>
+<path d="M246 581.0H340V767.0H240" stroke="#E0B100" stroke-width="1.5" stroke-dasharray="5 5" marker-end="url(#y)"/>
+<circle cx="243" cy="581.0" r="3.5" fill="#E0B100"/>
+</svg>

@@ -403,7 +403,7 @@ function renderCampaignCase(root, data) {
       return `<figure class="ibp-pager${block.side ? " ibp-pager--side" : ""}" data-index="0" aria-roledescription="carousel" aria-label="${escapeHtml(block.label || "")}">
         <p class="ibp-pager-caption" aria-live="polite">${escapeHtml(slides[0].caption)}</p>
         <div class="ibp-pager-view"${block.ratio ? ` style="aspect-ratio:${block.ratio}"` : ""}>
-          ${slides.map((s, i) => `<img class="ibp-pager-img${i ? "" : " is-active"}" loading="eager" decoding="async" src="${localUrl(s.src)}" alt="${escapeHtml(s.alt || s.caption)}" data-caption="${escapeHtml(s.caption)}">`).join("")}
+          ${slides.map((s, i) => { const img = `<img class="ibp-pager-img${i ? "" : " is-active"}" loading="eager" decoding="async" src="${localUrl(s.src)}" alt="${escapeHtml(s.alt || s.caption)}" data-caption="${escapeHtml(s.caption)}">`; return s.mobileSrc ? `<picture><source media="(max-width: 700px)" srcset="${localUrl(s.mobileSrc)}">${img}</picture>` : img; }).join("")}
           ${block.side ? arrow(-1, "Previous", prevD) + arrow(1, "Next", nextD) : ""}
         </div>
         <div class="ibp-pager-nav">
@@ -709,10 +709,16 @@ function renderIntentCase(root, data) {
       className: "campaign-story-section--sketches-stack intent-user-flow-section ibp-stack",
       title: "Update the User Flow",
       text: "I went back to the user flow and mapped it again to understand where users were slowing down.\n\nI decided to remove the color step completely. The goal moved into Settings, and the promotion type moved into the Template step. This reduced unnecessary steps and made the flow faster and more intuitive.",
-      media: [
-        { ...img("img/ibp/flow-before.png", "User flow of the first release"), caption: "Before" },
-        { ...img("img/ibp/flow-after.png", "Updated user flow without the color step"), caption: "After" }
-      ],
+      media: [{
+        type: "pager",
+        ratio: "1815 / 639",
+        label: "The user flow before, during and after the change",
+        slides: [
+          { src: "img/ibp/flow-before.png", mobileSrc: "img/ibp/mobile/flow-before-vertical.svg", caption: "The first flow", alt: "User flow of the first release, with the goal, promotion type and color steps" },
+          { src: "img/ibp/flow-after.png", mobileSrc: "img/ibp/mobile/flow-change-vertical.svg", caption: "The change: reordered the goal and promotion type steps, removed the color step", alt: "The same flow with the goal moved into Settings, the promotion type moved into the Template step, and the color step crossed out" },
+          { src: "img/ibp/flow-updated.png", mobileSrc: "img/ibp/mobile/flow-updated-vertical.svg", caption: "The updated flow", alt: "The updated user flow without the goal, promotion type and color steps" }
+        ]
+      }],
       mediaPlacement: "underText"
     },
     {
@@ -1213,7 +1219,7 @@ function renderStructuredCase(root, data, options) {
       return `<figure class="ibp-pager${block.side ? " ibp-pager--side" : ""}" data-index="0" aria-roledescription="carousel" aria-label="${escapeHtml(block.label || "")}">
         <p class="ibp-pager-caption" aria-live="polite">${escapeHtml(slides[0].caption)}</p>
         <div class="ibp-pager-view"${block.ratio ? ` style="aspect-ratio:${block.ratio}"` : ""}>
-          ${slides.map((s, i) => `<img class="ibp-pager-img${i ? "" : " is-active"}" loading="eager" decoding="async" src="${localUrl(s.src)}" alt="${escapeHtml(s.alt || s.caption)}" data-caption="${escapeHtml(s.caption)}">`).join("")}
+          ${slides.map((s, i) => { const img = `<img class="ibp-pager-img${i ? "" : " is-active"}" loading="eager" decoding="async" src="${localUrl(s.src)}" alt="${escapeHtml(s.alt || s.caption)}" data-caption="${escapeHtml(s.caption)}">`; return s.mobileSrc ? `<picture><source media="(max-width: 700px)" srcset="${localUrl(s.mobileSrc)}">${img}</picture>` : img; }).join("")}
           ${block.side ? arrow(-1, "Previous", prevD) + arrow(1, "Next", nextD) : ""}
         </div>
         <div class="ibp-pager-nav">
@@ -1488,8 +1494,31 @@ function setupIbpPagers(root = document) {
       const n = (i + imgs.length) % imgs.length;
       imgs.forEach((im, k) => { im.style.setProperty("--x", (k < n ? -28 : 28) + "px"); im.classList.toggle("is-active", k === n); im.setAttribute("aria-hidden", k === n ? "false" : "true"); });
       dots.forEach((d, k) => { if (k === n) d.setAttribute("aria-current", "true"); else d.removeAttribute("aria-current"); });
-      caption.textContent = imgs[n].dataset.caption;
+      const flow = !!pager.closest(".intent-user-flow-section");
+      const first = pager.dataset.index === undefined;
+      if (flow && !first && caption.textContent !== imgs[n].dataset.caption) {
+        caption.classList.add("is-swapping");
+        clearTimeout(caption._t);
+        caption._t = setTimeout(() => { caption.textContent = imgs[n].dataset.caption; caption.classList.remove("is-swapping"); }, 180);
+      } else caption.textContent = imgs[n].dataset.caption;
       pager.dataset.index = String(n);
+      /* tall mobile flows: after switching, glide back up to the flow's title so the new diagram starts from its top */
+      if (flow && !first && matchMedia("(max-width: 700px)").matches) {
+        const delta = caption.getBoundingClientRect().top - 88;
+        if (Math.abs(delta) > 8) {
+          const from = window.scrollY, to = from + delta;
+          if (matchMedia("(prefers-reduced-motion: reduce)").matches) window.scrollTo({ top: to, behavior: "instant" });
+          else {
+            const dur = Math.min(650, 380 + Math.abs(delta) * 0.12), t0 = performance.now();
+            const step = (now) => {
+              const k = Math.min(1, (now - t0) / dur), e = 1 - Math.pow(1 - k, 3);
+              window.scrollTo({ top: from + (to - from) * e, behavior: "instant" });
+              if (k < 1) requestAnimationFrame(step);
+            };
+            requestAnimationFrame(step);
+          }
+        }
+      }
     };
     pager.querySelectorAll("[data-dir]").forEach((b) => b.addEventListener("click", (e) => { e.stopPropagation(); show(Number(pager.dataset.index) + Number(b.dataset.dir)); }));
     dots.forEach((d) => d.addEventListener("click", () => show(Number(d.dataset.go))));

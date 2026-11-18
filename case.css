@@ -2925,3 +2925,17 @@ body[data-case="intent"] .ibp-speaking-map .ibp-map-zone.on { opacity: 1; }
 @media (max-width: 600px) {
   body[data-case] > .case-back-link--page { visibility: hidden; }
 }
+
+/* Update the User Flow slider: the caption sits close to the diagram (the picture has empty space at its top, about 3.3% of its width, so the caption is pulled down by that much), and the arrows and dots are centred under the picture */
+body[data-case="intent"] .intent-user-flow-section .campaign-story-media .ibp-pager { display: grid; justify-items: center; gap: 14px; }
+body[data-case="intent"] .intent-user-flow-section .ibp-pager-caption { margin-bottom: calc(-3.3% - 4px); }
+body[data-case="intent"] .intent-user-flow-section .campaign-story-media { margin-top: 56px; }
+body[data-case="intent"] .intent-user-flow-section .ibp-pager-caption { transition: opacity .18s ease; }
+body[data-case="intent"] .intent-user-flow-section .ibp-pager-caption.is-swapping { opacity: 0; }
+@media (max-width: 700px) {
+  body[data-case="intent"] .intent-user-flow-section .ibp-pager-view { aspect-ratio: auto !important; }
+  body[data-case="intent"] .intent-user-flow-section .ibp-pager-img { position: static; height: auto; }
+  /* only the current flow takes space; changing slides scrolls back up to its title (see setupIbpPagers) */
+  body[data-case="intent"] .intent-user-flow-section .ibp-pager-img:not(.is-active) { display: none; }
+  body[data-case="intent"] .intent-user-flow-section .ibp-pager-caption { margin-bottom: 0; }
+}
