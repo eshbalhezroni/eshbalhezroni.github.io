@@ -1132,7 +1132,8 @@ function renderVaronisCase(root, data) {
       text: data.blocks[20].text,
       media: [video("assets/Account Pane/Finalizing Design2.mp4?v=20260710-finalizing-design-2", "Finalizing Design walkthrough", "video/mp4")],
       mediaPlacement: "underText",
-      testimonials: [
+      /* hidden for now: rename back to "testimonials" to show "What my colleagues say" again */
+      testimonialsHidden: [
         {
           name: "Maayan",
           role: "Product Manager at Varonis",
