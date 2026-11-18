@@ -2938,4 +2938,6 @@ body[data-case="intent"] .intent-user-flow-section .ibp-pager-caption.is-swappin
   /* only the current flow takes space; changing slides scrolls back up to its title (see setupIbpPagers) */
   body[data-case="intent"] .intent-user-flow-section .ibp-pager-img:not(.is-active) { display: none; }
   body[data-case="intent"] .intent-user-flow-section .ibp-pager-caption { margin-bottom: 0; }
+  /* phone: caption and flow sit closer to the text above them */
+  body[data-case="intent"] .intent-user-flow-section .campaign-story-media { margin-top: 28px; }
 }
