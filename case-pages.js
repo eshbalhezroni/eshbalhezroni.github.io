@@ -657,7 +657,7 @@ function renderIntentCase(root, data) {
       /* slides 8-10: where does the flow live */
       className: "campaign-story-section--copy-left ibp-context",
       title: "From Ideas to Action",
-      textHtml: `<h3 class="ibp-sub">Where does this flow live?<br>What is the surrounding context?</h3><p>These questions occupied me, and the answer was an important decision also for development: it shaped the infrastructure and how the team would build the product. The product was still being built and the other areas didn’t exist yet, so I had to take that into account.</p><p>I explored several options to understand where the campaign creation area should live. In the end I chose to give the flow a world of its own. It’s a short flow, but a complex one, and the user needs to stay focused on the task.</p>`,
+      textHtml: `<h3 class="ibp-sub">Where does this flow live?<br>What is the surrounding context?</h3><p>These questions occupied me, and the answer was an important decision also for development: it shaped the infrastructure and how the team would build the product.</p><p>I explored several options to understand where the campaign creation area should live. In the end I chose to give the flow a world of its own. It’s a short flow, but a complex one, and the user needs to stay focused on the task.</p>`,
       media: [{
         type: "pager",
         ratio: "1079 / 720",
