@@ -21,7 +21,8 @@
   var isCase=!!body.getAttribute('data-case'),title=/^(work|blog|about)(\.html)?$/.test(file),h1=null;
   var links=pages.map(function(p){return '<a href="'+p[2]+'"'+(p[0]===cur?' aria-current="page"':'')+'>'+p[1]+'</a>'}).join('');
   body.insertAdjacentHTML('afterbegin',
-    '<header class="mm-head" style="visibility:hidden"><a class="mm-logo" href="./" aria-label="Eshbal Hezroni, home"><span aria-hidden="true"></span></a>'+
+    '<header class="mm-head'+(isCase?' mm-case':'')+'" style="visibility:hidden"><a class="mm-logo" href="./" aria-label="Eshbal Hezroni, home"><span aria-hidden="true"></span></a>'+
+    (isCase?'<a class="mm-back" href="'+(function(){var b=document.querySelector('.case-back-link');return b&&b.getAttribute('href')||'work.html'})()+'" aria-label="Back to selected work"><span aria-hidden="true">\u2190</span> Back</a>':'')+
     (title?'<button class="mm-title" type="button"></button>':'')+
     '<button class="mm-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">'+
     '<svg class="mm-bars" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>'+
@@ -54,8 +55,11 @@
         else{ttl.classList.add('mm-out');swapTm=setTimeout(function(){ttl.textContent=name;ttl.setAttribute('aria-label',name+', scroll to top');ttl.classList.remove('mm-out')},110)}}
       if(!name)curSec=''}
     if(prog){var max=document.documentElement.scrollHeight-window.innerHeight;prog.style.transform='scaleX('+(max>0?Math.max(0,Math.min(1,(window.scrollY||0)/max)):0)+')'}}
-  function scrolled(){findTitle();head.classList.toggle('mm-scrolled',(window.scrollY||0)>8);if(isCase)caseBar();else if(ttl&&h1)head.classList.toggle('mm-titled',h1.getBoundingClientRect().bottom<72)}
-  addEventListener('scroll',scrolled,{passive:true});scrolled();
+  function backSwap(){var pb=document.querySelector('.case-back-link:not(.mm-back)'),p;
+    if(pb){var r=pb.getBoundingClientRect(),hb=head.getBoundingClientRect().bottom;p=Math.max(0,Math.min(1,(hb-r.top)/((r.height||20)+4)))}else p=(window.scrollY||0)>80?1:0;
+    head.style.setProperty('--mm-p',p.toFixed(3));head.classList.toggle('mm-bp',p>0);head.classList.toggle('mm-bon',p>=.5)}
+  function scrolled(){findTitle();head.classList.toggle('mm-scrolled',(window.scrollY||0)>8);if(isCase){backSwap();caseBar()}else if(ttl&&h1)head.classList.toggle('mm-titled',h1.getBoundingClientRect().bottom<72)}
+  addEventListener('scroll',scrolled,{passive:true});addEventListener('resize',scrolled);addEventListener('load',scrolled);scrolled();
   addEventListener('pageshow',function(e){if(e.persisted)set(false)});
   (mq.addEventListener?mq.addEventListener('change',function(){if(!mq.matches)set(false)}):mq.addListener(function(){if(!mq.matches)set(false)}));
   /* never show the header or the panel before their stylesheet is applied (that flash looked like the menu popping up) */

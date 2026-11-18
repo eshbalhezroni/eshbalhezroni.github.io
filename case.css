@@ -2880,3 +2880,48 @@ body[data-case] .campaign-case-hero figure { align-self: start; }
 
 /* Competitor Analysis on phones: same space between paragraphs as in "Speaking to Users" (10px) */
 @media (max-width: 900px) { .ibp-competitors .campaign-story-copy > p + p { margin-top: 10px; } }
+
+/* Testimonials (Varonis, last section): label + cards, up to three across */
+.testimonials { margin-top: 56px; max-width: 100%; }
+.testimonials-label { font: 500 14px/1 var(--body); color: #8d887e; margin-bottom: 14px; }
+.testimonials-grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); }
+.testimonial-card { margin: 0; display: flex; flex-direction: column; justify-content: space-between; gap: 22px; padding: 22px 22px 20px; background: rgba(168, 90, 18, 0.06); border: 1px solid rgba(168, 90, 18, 0.28); border-radius: var(--radius); }
+.testimonial-card blockquote { margin: 0; padding: 0; border: 0; }
+.testimonial-card blockquote p { margin: 0; font: 400 16px/1.55 var(--body); color: var(--muted); }
+.testimonial-card blockquote p + p { margin-top: 12px; }
+.testimonial-card figcaption { display: flex; align-items: center; gap: 12px; }
+.testimonial-avatar { flex: none; width: 36px; height: 36px; border-radius: 99px; background: center / contain no-repeat; }
+.testimonial-card figcaption > span { display: grid; gap: 2px; font: 400 14px/1.3 var(--body); color: var(--muted); }
+.testimonial-card figcaption strong { font: 600 15px/1.3 var(--body); color: var(--ink); }
+
+/* Speaking to Users (board option 4): findings as cards, map highlights the clusters they came from */
+body[data-case="intent"] .ibp-speaking-map .ibp-key-findings { margin-top: 28px; display: grid; gap: 12px; max-width: 460px; }
+body[data-case="intent"] .ibp-speaking-map .ibp-key-label { font: 500 16px/1.3 var(--body); color: var(--ink); margin: 0 0 4px; max-width: none; }
+body[data-case="intent"] .ibp-speaking-map .ibp-key-finding { all: unset; cursor: pointer; box-sizing: border-box; display: block; width: 100%; padding: 18px 20px; border-radius: 10px; border: 1px solid rgba(29,27,24,.14); background: #fff; transition: border-color .2s, box-shadow .2s, background-color .2s; }
+body[data-case="intent"] .ibp-speaking-map .ibp-key-finding b { display: block; font: 500 20px/1.15 var(--grot); color: var(--ink); margin-bottom: 6px; }
+body[data-case="intent"] .ibp-speaking-map .ibp-key-finding span { display: block; font: 400 18px/1.58 var(--body); color: var(--muted); }
+body[data-case="intent"] .ibp-speaking-map .ibp-key-finding strong { font-weight: 600; color: var(--ink); }
+body[data-case="intent"] .ibp-speaking-map .ibp-key-finding[aria-pressed="true"] { border-color: #1E7B4F; box-shadow: none; background: rgba(34,160,107,.06); }
+body[data-case="intent"] .ibp-speaking-map .ibp-key-finding:focus-visible { outline: 2px solid #1E7B4F; outline-offset: 3px; }
+body[data-case="intent"] .ibp-speaking-map .ibp-map-fig { position: relative; }
+body[data-case="intent"] .ibp-speaking-map .campaign-story-rich-text > p:not(.ibp-key-label) { font: 400 18px/1.58 var(--body); }
+body[data-case="intent"] .intent-speaking-users-section.ibp-speaking-map > .campaign-story-media { transform: none; }
+body[data-case="intent"] .ibp-speaking-map .ibp-map-zone { position: absolute; border: 1px solid #1E7B4F; background: rgba(34,160,107,.12); border-radius: 6px; opacity: 0; transition: opacity .12s; pointer-events: none; }
+body[data-case="intent"] .ibp-speaking-map .ibp-map-zone.on { opacity: 1; }
+@media (max-width: 900px) { body[data-case="intent"] .ibp-speaking-map .ibp-key-findings { max-width: none; } }
+
+/* Speaking to Users: the opening sentence stays on one line on wide screens (it may run over the picture column, the picture sits lower) */
+@media (min-width: 901px) {
+  body[data-case="intent"] .ibp-speaking-map .campaign-story-rich-text > p:not(.ibp-key-label) { white-space: nowrap; }
+}
+
+/* phones: the three findings are plain text cards (no click, no hover, no highlight on the picture) */
+@media (max-width: 900px) {
+  body[data-case="intent"] .ibp-speaking-map .ibp-key-finding { pointer-events: none; cursor: default; }
+  body[data-case="intent"] .ibp-speaking-map .ibp-map-zone { display: none; }
+}
+
+/* phones: before the page content is built, the Back link sits in its raw spot at the top (below the bar) and then jumps into the hero. Keep it hidden until it has been moved there. */
+@media (max-width: 600px) {
+  body[data-case] > .case-back-link--page { visibility: hidden; }
+}

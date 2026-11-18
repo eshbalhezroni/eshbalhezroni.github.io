@@ -42,3 +42,16 @@ html.mm-open .mm-panel{opacity:1;visibility:visible;transition:opacity .3s cubic
 .mm-list a:focus-visible{outline:2px solid #E39A52;outline-offset:-2px;border-radius:6px}
 @media (prefers-reduced-motion:reduce){.mm-head,.mm-title,.mm-prog,.mm-logo span,.mm-btn,.mm-btn svg,.mm-panel,.mm-list a{transition:none!important}}
 }
+
+/* case pages on phones: when the Back link in the page slides under the bar, a Back link in the bar takes the place of the mark. It is tied to the scroll (--mm-p goes 0 to 1 while the page's own Back goes under the bar), the mark fades out first, then Back fades in, so the two never sit on top of each other. The mark returns while the menu is open. */
+@media (max-width:600px),(max-height:500px) and (orientation:landscape){
+.mm-back{position:absolute;z-index:2;touch-action:manipulation;left:0;top:env(safe-area-inset-top,0px);height:64px;min-width:96px;box-sizing:border-box;padding:0 24px 0 20px;display:flex;align-items:center;gap:7px;color:#5D584F;font:400 14px/1 "Instrument Sans",system-ui,sans-serif;text-decoration:none;opacity:max(0,calc(var(--mm-p,0) * 2 - 1));transform:translateY(calc((1 - max(0,calc(var(--mm-p,0) * 2 - 1))) * 8px));visibility:hidden;pointer-events:none;-webkit-tap-highlight-color:transparent}
+.mm-back:focus-visible{outline:2px solid #A85A12;outline-offset:-4px;border-radius:8px}
+.mm-head.mm-case .mm-logo{opacity:max(0,calc(1 - var(--mm-p,0) * 2));transform:translateY(calc(min(1,calc(var(--mm-p,0) * 2)) * -8px))}
+.mm-head.mm-case.mm-bp .mm-back{visibility:visible}
+.mm-head.mm-case.mm-bp.mm-bon .mm-back{pointer-events:auto}
+.mm-head.mm-case.mm-bon .mm-logo{pointer-events:none}
+html.mm-open .mm-head.mm-case .mm-logo{opacity:1!important;transform:none!important;pointer-events:auto!important}
+html.mm-open .mm-head.mm-case .mm-back{opacity:0!important;visibility:hidden!important;pointer-events:none!important}
+.mm-head.mm-case .mm-title{left:104px;right:104px}
+}

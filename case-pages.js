@@ -632,15 +632,12 @@ function renderIntentCase(root, data) {
       media: [img("img/ibp/persona.png", "Persona: Emma, eCommerce Promotions Manager / Digital Marketing Manager")]
     },
     {
-      /* slides 4-5: same structure and images as the live page, new text only */
-      className: "intent-speaking-users-section",
+      /* slides 4-5 (board option 4): the affinity map leads; each finding lights up the clusters it came from */
+      className: "intent-speaking-users-section ibp-speaking-map",
       title: "Speaking to Users",
-      text: "I went out and interviewed 6 users who create and manage eCommerce promotion campaigns.\n\nWhat I heard: building promotions today is complicated, and none of the systems they use knows how to hand out coupons in the right way. The coupons are “dumb”: they don’t take the visitor’s intent into account.",
+      textHtml: `<p>I interviewed 6 users who create and manage eCommerce promotion campaigns.</p><div class="ibp-key-findings"><p class="ibp-key-label">The key findings</p><button type="button" class="ibp-key-finding" data-topic="workflow" aria-pressed="true"><b>Current workflow</b><span>Many users don’t use tools at all and build campaigns <strong>manually</strong></span></button><button type="button" class="ibp-key-finding" data-topic="challenges" aria-pressed="false"><b>Challenges</b><span>It’s hard to understand <strong>what works well,</strong> and how to <strong>split their discounts.</strong></span></button><button type="button" class="ibp-key-finding" data-topic="management" aria-pressed="false"><b>Management</b><span>They want <strong>more control</strong> over their budget.</span></button></div>`,
       media: [
-        { ...img("assets/Intent-Based Promotions/Screenshot_10-03-46-AM.png", "User research findings"), caption: "Affinity mapping" }
-      ],
-      underTextMedia: [
-        { ...img("assets/Intent-Based Promotions/Screenshot_9-52-08-AM.png", "Interview protocol"), caption: "Interview Protocol" }
+        { ...img("assets/Intent-Based Promotions/Screenshot_10-03-46-AM.png", "Affinity map of the user interviews"), caption: "Affinity mapping" }
       ]
     },
     {
@@ -1134,7 +1131,18 @@ function renderVaronisCase(root, data) {
       title: data.blocks[19].text,
       text: data.blocks[20].text,
       media: [video("assets/Account Pane/Finalizing Design2.mp4?v=20260710-finalizing-design-2", "Finalizing Design walkthrough", "video/mp4")],
-      mediaPlacement: "underText"
+      mediaPlacement: "underText",
+      testimonials: [
+        {
+          name: "Maayan",
+          role: "Product Manager at Varonis",
+          avatar: "assets/Intent-Based Promotions/screens/Avatars/impact/Lavender.svg",
+          quote: [
+            "\u201CI worked closely with Eshbal on the Account Pane, and it was a challenging project. Every change we wanted to make required an infrastructure change in the platform, so we had to justify every single move. We leaned on each other the whole way: refining which information to show the user, and figuring out how to frame it for management.",
+            "Throughout, I felt I had a true partner who understands the complexity of a project like this, and whose professional judgment I could trust with my eyes closed.\u201D"
+          ]
+        }
+      ]
     }
   ];
 
@@ -1144,6 +1152,21 @@ function renderVaronisCase(root, data) {
     heroImage: img("assets/Account Pane/header_image_v3.jpg", "Account Pane interface mockup", 1600, 1329),
     heroClassName: "campaign-case-hero--plain"
   });
+}
+
+function renderTestimonials(items) {
+  return `<div class="testimonials">
+    <div class="testimonials-label">What my colleagues say</div>
+    <div class="testimonials-grid">${items.map((t) => `
+      <figure class="testimonial-card">
+        <blockquote>${t.quote.map((para) => `<p>${escapeHtml(para)}</p>`).join("")}</blockquote>
+        <figcaption>
+          <i class="testimonial-avatar" style="background-image:url('${localUrl(t.avatar)}')" aria-hidden="true"></i>
+          <span><strong>${escapeHtml(t.name)}</strong><span>${escapeHtml(t.role)}</span></span>
+        </figcaption>
+      </figure>`).join("")}
+    </div>
+  </div>`;
 }
 
 function renderStructuredCase(root, data, options) {
@@ -1364,6 +1387,7 @@ function renderStructuredCase(root, data, options) {
                   ${renderChapterBullets(chapter.bullets)}
                   ${chapter.feedbackQuotes ? `<div class="campaign-feedback-quotes">${chapter.feedbackQuotes.map((quote) => `<blockquote>&ldquo;${escapeHtml(quote).replaceAll("\n", "<br>")}&rdquo;</blockquote>`).join("")}</div>` : ""}
                   ${chapter.underTextMedia ? renderMedia(chapter.underTextMedia) : chapter.mediaPlacement === "underText" ? renderMedia(chapter.media) : ""}
+                  ${chapter.testimonials ? renderTestimonials(chapter.testimonials) : ""}
                   ${chapter.underMediaText ? `<div class="campaign-story-under-media-copy">${chapter.underMediaTitle ? `<h2>${escapeHtml(chapter.underMediaTitle)}</h2>` : ""}<p>${withBreaks(chapter.underMediaText)}</p></div>` : ""}
                 </div>
                 ${chapter.underTextMedia ? renderMedia(chapter.media, chapter.afterText) : chapter.mediaPlacement === "underText" ? "" : chapter.insightItems && chapter.listMode === "bullets" ? renderBulletInsightItems(chapter.insightItems) : chapter.insightItems ? renderInsightItems(chapter.insightItems) : chapter.mediaMode === "mockupPager" ? renderMockupPager(chapter.media) : renderMedia(chapter.media, chapter.afterText)}
@@ -1382,6 +1406,76 @@ function renderStructuredCase(root, data, options) {
   setupScrollPlayVideos(root);
   setupMockupPagers(root);
   setupIbpPagers(root);
+  setupIbpSpeaking(root);
+}
+
+function setupIbpSpeaking(root = document) {
+  /* clusters of the affinity map (px in the 2092x1364 image) that each finding came from */
+  const W = 2092, H = 1364;
+  const Z = {
+    workflow: [[70, 648, 418, 876], [1228, 748, 1572, 1005], [72, 50, 418, 252]],
+    challenges: [[40, 312, 448, 568], [1628, 52, 1975, 660]],
+    management: [[835, 52, 1180, 308], [1240, 1052, 1735, 1302]]
+  };
+  root.querySelectorAll(".ibp-speaking-map").forEach((sec) => {
+    const media = sec.querySelector(":scope > .campaign-story-media");
+    const fig = media && media.querySelector("figure");
+    const img = fig && fig.querySelector("img");
+    const btns = [...sec.querySelectorAll(".ibp-key-finding")];
+    if (!img || !btns.length) return;
+    fig.classList.add("ibp-map-fig");
+    const zones = [];
+    Object.entries(Z).forEach(([topic, rects]) => rects.forEach((r) => {
+      const d = document.createElement("span");
+      d.className = "ibp-map-zone";
+      d.setAttribute("aria-hidden", "true");
+      fig.appendChild(d);
+      zones.push({ topic, r, d });
+    }));
+    const place = () => {
+      const k = img.clientWidth / W;
+      zones.forEach(({ r, d }) => {
+        d.style.left = `${img.offsetLeft + r[0] * k}px`;
+        d.style.top = `${img.offsetTop + r[1] * k}px`;
+        d.style.width = `${(r[2] - r[0]) * k}px`;
+        d.style.height = `${(r[3] - r[1]) * k}px`;
+      });
+    };
+    /* nothing is selected by default; hovering or clicking a card selects it and it stays, a click anywhere outside the cards clears it */
+    let selected = null, preview = null;
+    const phone = matchMedia("(max-width: 900px)");
+    const paint = () => {
+      if (phone.matches) { selected = null; preview = null; }
+      const topic = preview || selected;
+      btns.forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.topic === selected)));
+      zones.forEach((z) => z.d.classList.toggle("on", z.topic === topic));
+    };
+    const hover = matchMedia("(hover:hover)").matches;
+    btns.forEach((b) => {
+      b.addEventListener("click", (e) => { if (phone.matches) return; e.stopPropagation(); selected = b.dataset.topic; preview = null; paint(); });
+      if (hover) b.addEventListener("mouseenter", () => { if (phone.matches) return; selected = b.dataset.topic; preview = null; paint(); });
+    });
+    document.addEventListener("click", (e) => {
+      if (e.target.closest(".ibp-key-finding")) return;
+      selected = null; preview = null; paint();
+    });
+    /* the picture stays vertically centered on the three finding cards (nothing else moves) */
+    const cards = sec.querySelector(".ibp-key-findings");
+    const center = () => {
+      media.style.transform = "none";
+      const first = btns[0].getBoundingClientRect(), last = btns[btns.length - 1].getBoundingClientRect();
+      const m = img.getBoundingClientRect();
+      if (m.top >= last.bottom - 1) return;
+      media.style.transform = `translateY(${((first.top + last.bottom) / 2) - (m.top + m.height / 2)}px)`;
+    };
+    const refresh = () => { place(); center(); paint(); };
+    img.addEventListener("load", refresh);
+    if (window.ResizeObserver) { const ro = new ResizeObserver(refresh); ro.observe(img); ro.observe(cards); }
+    addEventListener("resize", refresh);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(refresh);
+    refresh();
+    paint();
+  });
 }
 
 function setupIbpPagers(root = document) {
